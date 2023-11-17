@@ -5,6 +5,8 @@
 #include "AABBColliderComponent.h"
 #include "../../Actors/Actor.h"
 #include "../../Game.h"
+#include <unordered_map>
+#include <algorithm>
 
 AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy, int w, int h, ColliderLayer layer, int updateOrder)
         :Component(owner, updateOrder)

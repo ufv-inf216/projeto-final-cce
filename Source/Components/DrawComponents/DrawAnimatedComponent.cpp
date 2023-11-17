@@ -8,9 +8,11 @@
 #include "../../Json.h"
 #include <fstream>
 
-DrawAnimatedComponent::DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder)
+DrawAnimatedComponent::DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder,bool do_flip)
         :DrawSpriteComponent(owner, spriteSheetPath, 0, 0, drawOrder)
 {
+
+    is_pacman=do_flip;
     LoadSpriteSheet(spriteSheetPath, spriteSheetData);
 }
 
@@ -63,10 +65,10 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
 
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-        if(mOwner->GetDirection().y < .0f && mIsFlippedVertically) {
+        if(is_pacman && mOwner->GetDirection().y < .0f && mIsFlippedVertically) {
             flip = SDL_FLIP_VERTICAL;
         }
-        else if (mOwner->GetDirection().x < .0f && mIsFlippedHorizontally) {
+        else if (is_pacman && mOwner->GetDirection().x < .0f && mIsFlippedHorizontally) {
             flip = SDL_FLIP_HORIZONTAL;
         }
 

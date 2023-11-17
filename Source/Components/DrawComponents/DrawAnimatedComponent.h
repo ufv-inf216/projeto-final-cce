@@ -5,11 +5,12 @@
 #pragma once
 
 #include "DrawSpriteComponent.h"
+#include <unordered_map>
 
 class DrawAnimatedComponent : public DrawSpriteComponent {
 public:
     // (Lower draw order corresponds with further back)
-    DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder = 100);
+    DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder = 100,bool do_flip=false);
     ~DrawAnimatedComponent() override;
 
     void Draw(SDL_Renderer* renderer) override;
@@ -34,6 +35,8 @@ private:
 
     // Vector of sprites
     std::vector<SDL_Rect*> mSpriteSheetData;
+
+    bool is_pacman;
 
     // Map of animation name to vector of textures corresponding to the animation
     std::unordered_map<std::string, std::vector<int>> mAnimations;

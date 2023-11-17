@@ -7,9 +7,10 @@
 // ----------------------------------------------------------------
 
 #pragma once
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <vector>
 #include "Math.h"
+#include <string>
 
 class Game
 {
@@ -57,21 +58,12 @@ public:
     void SetGameState(State gameState);
     bool GetGameState() { return mGameState; }
 
-    void AddGhost(class Ghost* ghost);
-    void RemoveGhost(class Ghost* ghost);
-    std::vector<class Ghost*>& GetGhosts() { return mGhosts; }
 
-    void AddItem(class Item* item);
-    void RemoveItem(class Item* item);
-    std::vector<class Item*>& GetItems() { return mItems; }
 
-    void AddWall(class Wall* wall);
-    void RemoveWall(class Wall* wall);
-    std::vector<class Wall*>& GetWalls() { return mWalls; }
 
-    void AddPathNode(class PathNode* node);
-    void RemovePathNode(class PathNode* node);
-    std::vector<class PathNode*>& GetPathNodes() { return mPathNodes; }
+
+
+
 
     class PathNode* GetGhostPen() { return mGhostPen; }
 
@@ -88,17 +80,10 @@ private:
     void UpdateState(float deltaTime);
 
     // Load data
-    void LoadLevel(const std::string& texturePath);
-    void LoadPaths(const std::string& fileName);
+
 
     // AI stuff
-    void DebugDrawPaths();
-    void BuildPathGraphVertices(std::ifstream& file,
-                                std::vector<std::vector<char>>& txtGrid,
-                                std::vector<std::vector<PathNode*>> &nodeGrid);
 
-    void BuildPathGraphEdges(std::vector<std::vector<char>>& txtGrid,
-                             std::vector<std::vector<PathNode *>> &grid);
 
     // All the actors in the game
     std::vector<class Actor*> mActors;
@@ -136,7 +121,7 @@ private:
     class PathNode* mGhostPen = nullptr;
 
     bool mShowGraph = false;
-    bool mShowGhostPaths = true;
+    bool mShowGhostPaths = false;
     bool mPrev1Input = false;
     bool mPrev2Input = false;
     int mGameState = State::Intro;
