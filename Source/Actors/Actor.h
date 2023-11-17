@@ -8,7 +8,7 @@
 
 #pragma once
 #include <vector>
-#include <SDL2/SDL_stdinc.h>
+#include <SDL_stdinc.h>
 #include "../Math.h"
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
 
@@ -22,7 +22,7 @@ enum class ActorState
 class Actor
 {
 public:
-    Actor(class Game* game);
+    explicit Actor(class Game* game);
     virtual ~Actor();
 
     // Update function called from Game (not overridable)
