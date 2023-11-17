@@ -70,14 +70,14 @@ void Game::InitializeActors()
 
     //system("cd ../Assets/Sprites/");
 
-    float hx  = ((float)mWindowHeight*3/4);
-    hx -= 0.0f;
+    float floorHeight  = ((float)mWindowHeight*3/4);
+    //floorHeight -= 0.0f;
     auto* background = new Actor(this);
-    background->SetPosition(Vector2(0.0f, hx ));
+    background->SetPosition(Vector2(0.0f, floorHeight ));
     new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2);
 
     auto* background2 = new Actor(this);
-    background2->SetPosition(Vector2(606.0f, hx ));
+    background2->SetPosition(Vector2(606.0f, floorHeight ));
     new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2);
 
 
