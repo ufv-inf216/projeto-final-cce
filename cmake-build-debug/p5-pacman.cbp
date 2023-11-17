@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="p5-pacman"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\Program Files\;CMake Files\..\..\..\..\..\..\Program Files\SDL2\;CMake Files\..\..\..\..\..\..\Program Files\SDL2\cmake\;CMake Files\..\..\..\..\..\..\Program Files\SDL2_image-2.6.3\;CMake Files\..\..\..\..\..\..\Program Files\SDL2_image-2.6.3\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="p5-pacman">
+				<Option output="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug/p5-pacman.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Program Files/SDL2/cmake/../include"/>
+					<Add directory="C:/Program Files/SDL2_image-2.6.3/cmake/../include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 p5-pacman"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="p5-pacman/fast">
+				<Option output="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug/p5-pacman.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Program Files/SDL2/cmake/../include"/>
+					<Add directory="C:/Program Files/SDL2_image-2.6.3/cmake/../include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 p5-pacman/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Campo\OneDrive\Documentos\inf_216\p5-pacman-gabriel-cmf\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Actor.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Actor.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/Ghost.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/Ghost.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/ChaseState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/ChaseState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/DeadState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/DeadState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/FrightenedState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/FrightenedState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/GhostState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/GhostState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/ScatterState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Ghost/States/ScatterState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Item.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Item.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Pacman.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Pacman.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/PathNode.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/PathNode.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Wall.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Actors/Wall.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/AIComponents/FSMComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/AIComponents/FSMComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/AIComponents/FSMState.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/AIComponents/FSMState.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/ColliderComponents/AABBColliderComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/ColliderComponents/AABBColliderComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/ColliderComponents/CircleColliderComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/ColliderComponents/CircleColliderComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/Component.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/Component.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawAnimatedComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawAnimatedComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawPolygonComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawPolygonComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawSpriteComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/DrawComponents/DrawSpriteComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/RigidBodyComponent.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Components/RigidBodyComponent.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Game.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Game.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Json.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Main.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Math.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Math.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Random.cpp">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/Source/Random.h">
+			<Option target="p5-pacman"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/../../../../../../Program Files/SDL2/cmake/sdl2-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Program Files\SDL2\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/../../../../../../Program Files/SDL2/cmake/sdl2-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Program Files\SDL2\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/../../../../../../Program Files/SDL2_image-2.6.3/cmake/sdl2_image-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Program Files\SDL2_image-2.6.3\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Campo/OneDrive/Documentos/inf_216/p5-pacman-gabriel-cmf/../../../../../../Program Files/SDL2_image-2.6.3/cmake/sdl2_image-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Program Files\SDL2_image-2.6.3\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
