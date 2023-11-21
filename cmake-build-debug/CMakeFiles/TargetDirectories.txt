@@ -1,3 +1,0 @@
-C:/Users/Campo/OneDrive/Documentos/inf_216/CCE dev/main/cmake-build-debug/CMakeFiles/t1-cce.dir
-C:/Users/Campo/OneDrive/Documentos/inf_216/CCE dev/main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Campo/OneDrive/Documentos/inf_216/CCE dev/main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
