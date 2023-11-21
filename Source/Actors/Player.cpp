@@ -12,12 +12,16 @@
 
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
+
+      mWidth=mHeight=256;
       mRigidBodyComponent= new RigidBodyComponent(this,1.0,10);
+      mRigidBodyComponent->Set_is_mobile(true);
 
-      mColliderComponent= new AABBColliderComponent(this,0,0,256,256,ColliderLayer::Player);
+      mColliderComponent= new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
 
 
-      mDrawComponent= new DrawSpriteComponent(this,"../Assets/placeholder.png",256,256,1000);
+      mDrawComponent= new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
+      SetUpdateDrawOrder(true);
 }
 
 
@@ -43,14 +47,14 @@ void Player::OnProcessInput(const Uint8 *keyState)
     if(keyState[SDL_SCANCODE_W])
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
-        mGame->set_resort(true);
+
 
     }
 
     if(keyState[SDL_SCANCODE_S])
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,mForwardSpeed));
-        mGame->set_resort(true);
+
 
     }
 
@@ -60,4 +64,33 @@ void Player::OnProcessInput(const Uint8 *keyState)
 void Player::OnUpdate(float deltaTime)
 {
     //mRigidBodyComponent->SetVelocity(Vector2::Zero);
+    auto pos = GetPosition();
+    if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
+    {
+        SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
+    }
+
+
+
+    if(pos.y< mGame->get_floor_height()-((float)mHeight) )
+    {
+        SetPosition(Vector2(pos.x,mGame->get_floor_height()-((float)mHeight)));
+    }
+
+    if(pos.x< mGame->GetCameraPos().x + ((float)mHeight/2))
+    {
+        SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mHeight/2),pos.y));
+    }
+
+    if(pos.x> mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
+    {
+        SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
+    }
+
+    if(GetUpdateDrawOrder()==true)
+    {
+        SetUpdateDrawOrder(false);
+        mDrawComponent->SetDrawOrder((int)GetPosition().y);
+        mGame->set_resort(true);
+    }
 }

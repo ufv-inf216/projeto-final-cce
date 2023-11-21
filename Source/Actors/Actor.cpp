@@ -58,6 +58,8 @@ void Actor::OnCollision(std::vector<AABBColliderComponent::Overlap>& responses)
 
 }
 
+
+
 void Actor::ProcessInput(const Uint8* keyState)
 {
     if (mState == ActorState::Active)

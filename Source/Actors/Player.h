@@ -17,6 +17,8 @@ class Player: public  Actor
 
     private:
         float mForwardSpeed;
+        int mWidth;
+        int mHeight;
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawSpriteComponent*  mDrawComponent;
         class AABBColliderComponent* mColliderComponent;

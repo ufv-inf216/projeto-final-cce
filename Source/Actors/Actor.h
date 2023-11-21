@@ -40,6 +40,10 @@ public:
     float GetScale() const { return mScale; }
     void SetScale(float scale) { mScale = scale; }
 
+
+    bool GetUpdateDrawOrder() const { return update_draw_order; }
+    void SetUpdateDrawOrder(bool b) { update_draw_order=b; }
+
     // Rotation getter/setter
     float GetRotation() const { return mRotation; }
     void SetRotation(float rotation) { mRotation = rotation; }
@@ -74,6 +78,8 @@ public:
     // Any actor-specific collision code (overridable)
     virtual void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses);
 
+
+
 protected:
     class Game* mGame;
 
@@ -98,6 +104,7 @@ protected:
 
 private:
     friend class Component;
+    bool update_draw_order;
 
     // Adds component to Actor (this is automatically called
     // in the component constructor)

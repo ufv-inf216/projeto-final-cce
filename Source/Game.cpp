@@ -29,6 +29,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mWindowWidth(windowWidth)
         ,mWindowHeight(windowHeight)
         ,mRespawnTimer(RESPAWN_TIME)
+        ,camera_is_blocked(false)
 {
 
 }
@@ -74,6 +75,9 @@ void Game::InitializeActors()
     float hx  = ((float)mWindowHeight*3/4);
     hx -= 0.0f;
     auto* background = new Actor(this);
+
+    set_floor_height(hx);
+
     background->SetPosition(Vector2(0.0f, hx ));
     new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,0);
 
@@ -86,11 +90,16 @@ void Game::InitializeActors()
     }
 
 
+    auto* plac = new Actor(this);
+    plac->SetPosition(Vector2((float)mWindowHeight/2, (float)GetWindowHeight()*0.7f ));
+    int posq = (int)((float)GetWindowHeight()*0.7f);
+    new DrawSpriteComponent(plac,"../Assets/placeholder2.png",256,256,posq);
+
 
     //mPacman = new Pacman(this);
     mPlayer = new Player(this);
     auto vx = Vector2((float)mWindowHeight/2,hx);
-    vx.y += (hx/2) - (256/2);
+    vx.y += 256;
     mPlayer->SetPosition(vx);
 
     //SetCameraPos(vx);
@@ -183,7 +192,7 @@ void Game::UpdateCamera()
 {
     auto v= GetCameraPos();
     v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
-    camera_is_blocked=false;
+
     if(camera_is_blocked==false&&v.x >= GetCameraPos().x)
     {
         //SDL_Log("camera move");
@@ -257,6 +266,7 @@ void Game::AddActor(Actor* actor)
     {
         mActors.emplace_back(actor);
     }
+    resort_sprites=true;
 }
 
 void Game::RemoveActor(Actor* actor)
@@ -276,6 +286,7 @@ void Game::RemoveActor(Actor* actor)
         std::iter_swap(iter, mActors.end() - 1);
         mActors.pop_back();
     }
+    resort_sprites=true;
 }
 
 void Game::AddDrawable(class DrawComponent *drawable)

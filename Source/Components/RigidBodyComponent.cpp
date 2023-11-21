@@ -18,6 +18,7 @@ RigidBodyComponent::RigidBodyComponent(class Actor* owner, float mass, float fri
         ,mFrictionCoefficient(friction)
         ,mVelocity(Vector2::Zero)
         ,mAcceleration(Vector2::Zero)
+
 {
 
 }
@@ -52,6 +53,12 @@ void RigidBodyComponent::Update(float deltaTime)
     //ScreenWrap(position);
     mOwner->SetPosition(position);
 
+    if(mVelocity.y!= 0.0f&&is_mobile==true)
+    {
+
+        mOwner->SetUpdateDrawOrder(true);
+    }
+
 
 
 
@@ -67,3 +74,4 @@ void RigidBodyComponent::ScreenWrap(Vector2 &position)
         position.x = 0.0f;
     }
 }
+

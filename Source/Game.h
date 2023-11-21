@@ -59,6 +59,9 @@ public:
     bool GetGameState() { return mGameState; }
     void set_resort(bool b);
 
+    float get_floor_height() const { return floor_height; }
+    void set_floor_height(float f) {floor_height=f;};
+
 
 
 
@@ -101,6 +104,7 @@ private:
     // Window properties
     int mWindowWidth;
     int mWindowHeight;
+    float floor_height;
 
     // Track elapsed time since game start
     Uint32 mTicksCount;

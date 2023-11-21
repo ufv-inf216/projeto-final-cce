@@ -20,6 +20,9 @@ public:
     const Vector2& GetAcceleration() const { return mAcceleration; }
     void SetAcceleration(const Vector2& acceleration) { mAcceleration = acceleration; }
 
+    bool Get_is_mobile() const { return is_mobile; }
+    void Set_is_mobile(bool b)  {is_mobile=b;}
+
     void ApplyForce(const Vector2 &force);
 
 private:
@@ -29,6 +32,12 @@ private:
     float mFrictionCoefficient;
     float mMass;
     float m{};
+
+    // Deve ser verdade se o actor consegue se mover verticalmente
+    bool is_mobile;
+
+
+private:
 
     Vector2 mVelocity;
     Vector2 mAcceleration;
