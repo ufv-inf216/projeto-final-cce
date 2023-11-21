@@ -24,3 +24,7 @@ void DrawComponent::Draw(SDL_Renderer *renderer)
 {
 
 }
+
+void DrawComponent::SetDrawOrder(int ord) {
+    mDrawOrder=ord;
+}

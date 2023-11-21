@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
         Source/Components/AIComponents/FSMComponent.h
         Source/Components/AIComponents/FSMState.cpp
         Source/Components/AIComponents/FSMState.h
+        Source/Actors/Player.h
+        Source/Actors/Player.cpp
 )
 
 ####### DO NOT EDIT BELLOW

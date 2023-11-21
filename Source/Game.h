@@ -53,10 +53,12 @@ public:
     SDL_Texture* LoadTexture(const std::string& texturePath);
 
     // Game-specific
-    const class Pacman* GetPlayer() { return mPacman; }
+    //const class Pacman* GetPlayer() { return mPacman; }
 
     void SetGameState(State gameState);
     bool GetGameState() { return mGameState; }
+    void set_resort(bool b);
+
 
 
 
@@ -107,10 +109,12 @@ private:
     bool mIsRunning;
     bool mUpdatingActors;
 
+    bool camera_is_blocked;
+
     Vector2 mCameraPos;
 
     // Game-specific
-    class Pacman *mPacman;
+    class Player *mPlayer= nullptr;
     std::vector<class Item*> mItems;
     std::vector<class Wall*> mWalls;
     std::vector<class Ghost*> mGhosts;
@@ -127,4 +131,7 @@ private:
     int mGameState = State::Intro;
 
     float mRespawnTimer = 0.0f;
+
+    //Se verdadeiro a ordem dos sprites é reordenada
+    bool resort_sprites;
 };

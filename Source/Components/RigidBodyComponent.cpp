@@ -29,7 +29,17 @@ void RigidBodyComponent::ApplyForce(const Vector2 &force) {
 void RigidBodyComponent::Update(float deltaTime)
 {
     // Euler Integration
+    if(mVelocity.x != 0.0f) {
+        ApplyForce(Vector2::UnitX * -mFrictionCoefficient * mVelocity.x);
+    }
+
+    if(mVelocity.y != 0.0f) {
+        ApplyForce(Vector2::UnitY * -mFrictionCoefficient * mVelocity.y);
+    }
+
      mVelocity += mAcceleration * deltaTime;
+
+
 
      mVelocity.x = Math::Clamp<float>(mVelocity.x, -MAX_SPEED_X, MAX_SPEED_X);
      mVelocity.y = Math::Clamp<float>(mVelocity.y, -MAX_SPEED_Y, MAX_SPEED_Y);
@@ -39,8 +49,11 @@ void RigidBodyComponent::Update(float deltaTime)
 
     Vector2 position = mOwner->GetPosition();
     position += mVelocity * deltaTime;
-    ScreenWrap(position);
+    //ScreenWrap(position);
     mOwner->SetPosition(position);
+
+
+
 
     SetAcceleration(Vector2::Zero);
 }

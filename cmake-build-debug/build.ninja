@@ -32,14 +32,14 @@ CONFIGURATION = Debug
 #############################################
 # Include rules file.
 
-include CMakeFiles/rules.ninja
+include CMakeFiles\rules.ninja
 
 # =============================================================================
 
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-build-debug/
+cmake_ninja_workdir = C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\cmake-build-debug\
 # =============================================================================
 # Object build statements for EXECUTABLE target t1-cce
 
@@ -47,112 +47,135 @@ cmake_ninja_workdir = /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-
 #############################################
 # Order-only phony target for t1-cce
 
-build cmake_object_order_depends_target_t1-cce: phony || CMakeFiles/t1-cce.dir
+build cmake_object_order_depends_target_t1-cce: phony || CMakeFiles\t1-cce.dir
 
-build CMakeFiles/t1-cce.dir/Source/Main.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Main.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Main.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source
+build CMakeFiles\t1-cce.dir\Source\Main.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Main.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Math.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Math.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Math.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source
+build CMakeFiles\t1-cce.dir\Source\Math.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Math.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Random.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Random.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Random.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source
+build CMakeFiles\t1-cce.dir\Source\Random.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Random.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Actors/Actor.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Actors/Actor.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Actors/Actor.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Actors
+build CMakeFiles\t1-cce.dir\Source\Actors\Actor.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Actors\Actor.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Actors
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/Component.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/Component.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/Component.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components
+build CMakeFiles\t1-cce.dir\Source\Components\Component.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\Component.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Game.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Game.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Game.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source
+build CMakeFiles\t1-cce.dir\Source\Game.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Game.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/DrawComponents/DrawComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents
+build CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\DrawComponents\DrawComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\DrawComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/RigidBodyComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/RigidBodyComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/RigidBodyComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components
+build CMakeFiles\t1-cce.dir\Source\Components\RigidBodyComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\RigidBodyComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/CircleColliderComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/ColliderComponents/CircleColliderComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/CircleColliderComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents
+build CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents\CircleColliderComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\ColliderComponents\CircleColliderComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawSpriteComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/DrawComponents/DrawSpriteComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawSpriteComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents
+build CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawSpriteComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\DrawComponents\DrawSpriteComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\DrawComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawPolygonComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/DrawComponents/DrawPolygonComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawPolygonComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents
+build CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawPolygonComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\DrawComponents\DrawPolygonComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\DrawComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/AABBColliderComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/ColliderComponents/AABBColliderComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/AABBColliderComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents
+build CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents\AABBColliderComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\ColliderComponents\AABBColliderComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawAnimatedComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/DrawComponents/DrawAnimatedComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawAnimatedComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/DrawComponents
+build CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawAnimatedComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\DrawComponents\DrawAnimatedComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\DrawComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMComponent.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/AIComponents/FSMComponent.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMComponent.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/AIComponents
+build CMakeFiles\t1-cce.dir\Source\Components\AIComponents\FSMComponent.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\AIComponents\FSMComponent.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\AIComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
-build CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMState.cpp.o: CXX_COMPILER__t1-cce_unscanned_Debug /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/Source/Components/AIComponents/FSMState.cpp || cmake_object_order_depends_target_t1-cce
-  DEP_FILE = CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMState.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F /Library/Frameworks/ -F /Library/Frameworks/
-  INCLUDES = -isystem /Library/Frameworks/SDL2.framework/Headers -iframework /Library/Frameworks -isystem /Library/Frameworks/SDL2_image.framework/Headers
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  OBJECT_FILE_DIR = CMakeFiles/t1-cce.dir/Source/Components/AIComponents
+build CMakeFiles\t1-cce.dir\Source\Components\AIComponents\FSMState.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Components\AIComponents\FSMState.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Components\AIComponents
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
+
+build CMakeFiles\t1-cce.dir\Source\Actors\Player.cpp.obj: CXX_COMPILER__t1-cce_unscanned_Debug C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\Source\Actors\Player.cpp || cmake_object_order_depends_target_t1-cce
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  INCLUDES = -external:I"C:\Program Files\SDL2\cmake\..\include" -external:I"C:\Program Files\SDL2_image-2.6.3\cmake\..\include" -external:W0
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  OBJECT_FILE_DIR = CMakeFiles\t1-cce.dir\Source\Actors
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_PDB = t1-cce.pdb
 
 
 # =============================================================================
@@ -160,42 +183,47 @@ build CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMState.cpp.o: CXX_C
 
 
 #############################################
-# Link the executable t1-cce
+# Link the executable t1-cce.exe
 
-build t1-cce: CXX_EXECUTABLE_LINKER__t1-cce_Debug CMakeFiles/t1-cce.dir/Source/Main.cpp.o CMakeFiles/t1-cce.dir/Source/Math.cpp.o CMakeFiles/t1-cce.dir/Source/Random.cpp.o CMakeFiles/t1-cce.dir/Source/Actors/Actor.cpp.o CMakeFiles/t1-cce.dir/Source/Components/Component.cpp.o CMakeFiles/t1-cce.dir/Source/Game.cpp.o CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/RigidBodyComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/CircleColliderComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawSpriteComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawPolygonComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/ColliderComponents/AABBColliderComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/DrawComponents/DrawAnimatedComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMComponent.cpp.o CMakeFiles/t1-cce.dir/Source/Components/AIComponents/FSMState.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
-  LINK_FLAGS = -F /Library/Frameworks/ -framework SDL2 -F /Library/Frameworks/ -framework SDL2_image
-  OBJECT_DIR = CMakeFiles/t1-cce.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = t1-cce
-  TARGET_PDB = t1-cce.dbg
+build t1-cce.exe: CXX_EXECUTABLE_LINKER__t1-cce_Debug CMakeFiles\t1-cce.dir\Source\Main.cpp.obj CMakeFiles\t1-cce.dir\Source\Math.cpp.obj CMakeFiles\t1-cce.dir\Source\Random.cpp.obj CMakeFiles\t1-cce.dir\Source\Actors\Actor.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\Component.cpp.obj CMakeFiles\t1-cce.dir\Source\Game.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\RigidBodyComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents\CircleColliderComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawSpriteComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawPolygonComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\ColliderComponents\AABBColliderComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\DrawComponents\DrawAnimatedComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\AIComponents\FSMComponent.cpp.obj CMakeFiles\t1-cce.dir\Source\Components\AIComponents\FSMState.cpp.obj CMakeFiles\t1-cce.dir\Source\Actors\Player.cpp.obj | C$:\Program$ Files\SDL2\cmake\..\lib\x64\SDL2main.lib C$:\Program$ Files\SDL2\cmake\..\lib\x64\SDL2.lib C$:\Program$ Files\SDL2_image-2.6.3\cmake\..\lib\x64\SDL2_image.lib
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = "C:\Program Files\SDL2\cmake\..\lib\x64\SDL2main.lib"  "C:\Program Files\SDL2\cmake\..\lib\x64\SDL2.lib"  "C:\Program Files\SDL2_image-2.6.3\cmake\..\lib\x64\SDL2_image.lib"  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = CMakeFiles\t1-cce.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\t1-cce.dir\
+  TARGET_FILE = t1-cce.exe
+  TARGET_IMPLIB = t1-cce.lib
+  TARGET_PDB = t1-cce.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D "C:\Users\Campo\OneDrive\Documentos\inf_216\CCE dev\main\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2023.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build edit_cache: phony CMakeFiles/edit_cache.util
+build edit_cache: phony CMakeFiles\edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce -B/Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-build-debug
+build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D "C:\Users\Campo\OneDrive\Documentos\inf_216\CCE dev\main\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2023.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\Campo\OneDrive\Documentos\inf_216\CCE dev\main" -B"C:\Users\Campo\OneDrive\Documentos\inf_216\CCE dev\main\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
+
+build t1-cce: phony t1-cce.exe
 
 # =============================================================================
 # Folder targets.
@@ -203,9 +231,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/cmake-build-debug
+# Folder: C:/Users/Campo/OneDrive/Documentos/inf_216/CCE dev/main/cmake-build-debug
 
-build all: phony t1-cce
+build all: phony t1-cce.exe
 
 # =============================================================================
 # Built-in targets
@@ -214,14 +242,14 @@ build all: phony t1-cce
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config-version.cmake /Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config.cmake /Library/Frameworks/SDL2_image.framework/Resources/CMake/sdl2_image-config-version.cmake /Library/Frameworks/SDL2_image.framework/Resources/CMake/sdl2_image-config.cmake /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\FeatureSummary.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\SDL2\cmake\sdl2-config-version.cmake C$:\Program$ Files\SDL2\cmake\sdl2-config.cmake C$:\Program$ Files\SDL2_image-2.6.3\cmake\sdl2_image-config-version.cmake C$:\Program$ Files\SDL2_image-2.6.3\cmake\sdl2_image-config.cmake C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\CMakeLists.txt CMakeCache.txt CMakeFiles\3.26.4\CMakeCCompiler.cmake CMakeFiles\3.26.4\CMakeCXXCompiler.cmake CMakeFiles\3.26.4\CMakeRCCompiler.cmake CMakeFiles\3.26.4\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config-version.cmake /Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config.cmake /Library/Frameworks/SDL2_image.framework/Resources/CMake/sdl2_image-config-version.cmake /Library/Frameworks/SDL2_image.framework/Resources/CMake/sdl2_image-config.cmake /Users/danierumr/Documents/UFV/2023-2/INF216/t1-cce/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeRCInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\FeatureSummary.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\Windows.cmake C$:\Program$ Files\JetBrains\CLion$ 2023.2\bin\cmake\win\x64\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\SDL2\cmake\sdl2-config-version.cmake C$:\Program$ Files\SDL2\cmake\sdl2-config.cmake C$:\Program$ Files\SDL2_image-2.6.3\cmake\sdl2_image-config-version.cmake C$:\Program$ Files\SDL2_image-2.6.3\cmake\sdl2_image-config.cmake C$:\Users\Campo\OneDrive\Documentos\inf_216\CCE$ dev\main\CMakeLists.txt CMakeCache.txt CMakeFiles\3.26.4\CMakeCCompiler.cmake CMakeFiles\3.26.4\CMakeCXXCompiler.cmake CMakeFiles\3.26.4\CMakeRCCompiler.cmake CMakeFiles\3.26.4\CMakeSystem.cmake: phony
 
 
 #############################################

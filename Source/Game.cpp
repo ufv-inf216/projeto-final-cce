@@ -14,6 +14,7 @@
 #include "Random.h"
 #include "Game.h"
 #include "Actors/Actor.h"
+#include "Actors/Player.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
 
@@ -74,14 +75,25 @@ void Game::InitializeActors()
     hx -= 0.0f;
     auto* background = new Actor(this);
     background->SetPosition(Vector2(0.0f, hx ));
-    new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2);
+    new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,0);
 
-    auto* background2 = new Actor(this);
-    background2->SetPosition(Vector2(606.0f, hx ));
-    new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2);
+
+    for(int a=1;a<=10;a++)
+    {
+        auto* background2 = new Actor(this);
+        background2->SetPosition(Vector2(606.0f*(float)a, hx ));
+        new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,1);
+    }
+
 
 
     //mPacman = new Pacman(this);
+    mPlayer = new Player(this);
+    auto vx = Vector2((float)mWindowHeight/2,hx);
+    vx.y += (hx/2) - (256/2);
+    mPlayer->SetPosition(vx);
+
+    //SetCameraPos(vx);
 
     SetGameState(State::Intro);
 }
@@ -169,7 +181,14 @@ void Game::UpdateGame()
 
 void Game::UpdateCamera()
 {
-
+    auto v= GetCameraPos();
+    v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
+    camera_is_blocked=false;
+    if(camera_is_blocked==false&&v.x >= GetCameraPos().x)
+    {
+        //SDL_Log("camera move");
+        SetCameraPos(v);
+    }
 }
 
 SDL_Texture* Game::LoadTexture(const std::string& texturePath) {
@@ -266,12 +285,14 @@ void Game::AddDrawable(class DrawComponent *drawable)
     std::sort(mDrawables.begin(), mDrawables.end(),[](DrawComponent* a, DrawComponent* b) {
         return a->GetDrawOrder() < b->GetDrawOrder();
     });
+    //resort_sprites=true;
 }
 
 void Game::RemoveDrawable(class DrawComponent *drawable)
 {
     auto iter = std::find(mDrawables.begin(), mDrawables.end(), drawable);
     mDrawables.erase(iter);
+    //resort_sprites=true;
 }
 
 
@@ -289,6 +310,13 @@ void Game::GenerateOutput()
 
 
 
+    if(resort_sprites==true)
+    {
+        resort_sprites=false;
+        std::sort(mDrawables.begin(), mDrawables.end(),[](DrawComponent* a, DrawComponent* b) {
+            return a->GetDrawOrder() < b->GetDrawOrder();
+        });
+    }
 
 
 
@@ -318,3 +346,5 @@ void Game::Shutdown()
     SDL_DestroyWindow(mWindow);
     SDL_Quit();
 }
+
+void Game::set_resort(bool b) {resort_sprites=b;}
