@@ -17,7 +17,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
       mRigidBodyComponent->Set_is_mobile(true);
 
-      mColliderComponent= new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
+      mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
 
 
       mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
@@ -52,6 +52,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
         mRigidBodyComponent->ApplyForce(Vector2(0,mForwardSpeed));
     }
 
+    // Punch
     if(keyState[SDL_SCANCODE_P])
     {
 
