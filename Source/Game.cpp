@@ -18,7 +18,7 @@
 #include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
-
+#include "Actors/Mob.h"
 
 
 Game::Game(int windowWidth, int windowHeight)
@@ -64,9 +64,9 @@ bool Game::Initialize()
     // Init all game actors
     InitializeActors();
 
-    auto s= new AudioSystem();
+    /*auto s= new AudioSystem();
     s->CacheSound("punch-2-37333.mp3");
-    s->PlaySound("punch-2-37333.mp3");
+    s->PlaySound("punch-2-37333.mp3");*/
 
 
 
@@ -79,24 +79,29 @@ void Game::InitializeActors()
 
     //system("cd ../Assets/Sprites/");
 
-    float hx  = ((float)mWindowHeight*3/4);
-    hx -= 0.0f;
+    float hx  = ((float)mWindowHeight*1/2);
+    //hx += 640-hx;
     auto* background = new Actor(this);
 
+    float fx = hx + (640-hx);
+
+    std::cout << fx << std::endl;
 
 
-    background->SetPosition(Vector2(0.0f, hx ));
-    new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,0);
+    background->SetPosition(Vector2(0.0f,  fx));
+    new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, 640,0);
 
 
     for(int a=1;a<=10;a++)
     {
         auto* background2 = new Actor(this);
-        background2->SetPosition(Vector2(606.0f*(float)a, hx ));
-        new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,1);
+        background2->SetPosition(Vector2(606.0f*(float)a, fx ));
+        new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, 640,1);
     }
 
-    SetFloorHeight(hx-(float)mWindowHeight/4);
+    //hx-(float)mWindowHeight/4
+
+    SetFloorHeight(fx-320);
 
 
 
@@ -113,11 +118,14 @@ void Game::InitializeActors()
     vx.y += 256;
     mPlayer->SetPosition(vx);
 
-    /*auto* line = new Actor(this);
-    line->SetPosition(Vector2(0.0f, get_floor_height() ));
-    new DrawSpriteComponent(line, "../Assets/placeholder2.png", 10000, 1,3);*/
+    auto* line = new Actor(this);
+    line->SetPosition(Vector2(0.0f, GetFloorHeight() ));
+    new DrawSpriteComponent(line, "../Assets/placeholder2.png", 10000, 1,3);
 
     //SetCameraPos(vx);
+
+    auto croc = new Mob(this);
+    croc->SetPosition(Vector2(1200.0f, fx ));
 
     SetGameState(State::Intro);
 }
@@ -266,6 +274,8 @@ void Game::AddActor(Actor* actor)
     mResortSprites = true;
 }
 
+
+
 void Game::RemoveActor(Actor* actor)
 {
     auto iter = std::find(mPendingActors.begin(), mPendingActors.end(), actor);
@@ -305,7 +315,16 @@ void Game::RemoveDrawable(class DrawComponent *drawable)
 
 
 
+void Game::AddCollider(class AABBColliderComponent* collider)
+{
+    mColliders.emplace_back(collider);
+}
 
+void Game::RemoveCollider(AABBColliderComponent* collider)
+{
+    auto iter = std::find(mColliders.begin(), mColliders.end(), collider);
+    mColliders.erase(iter);
+}
 
 
 void Game::GenerateOutput()

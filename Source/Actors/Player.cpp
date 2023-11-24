@@ -10,6 +10,7 @@
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
 
 
+
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
@@ -18,7 +19,9 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mRigidBodyComponent->Set_is_mobile(true);
 
       mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
-
+      //mColliderComponent->SetEnabled(false);
+      mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
+      //mShoeCollider->SetEnabled(false);
 
       mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
       SetUpdateDrawOrder(true);
@@ -100,4 +103,17 @@ void Player::OnUpdate(float deltaTime)
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
         mGame->SetResort(true);
     }
+}
+
+
+void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
+{
+    for(auto rp:responses)
+    {
+
+
+
+
+    }
+
 }

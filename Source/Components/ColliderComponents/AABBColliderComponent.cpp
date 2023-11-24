@@ -15,7 +15,7 @@ AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy,
         ,mHeight(h)
         ,mLayer(layer)
 {
-
+        mOwner->GetGame()->AddCollider(this);
 }
 
 Vector2 AABBColliderComponent::GetMin() const
@@ -101,13 +101,14 @@ void AABBColliderComponent::DetectCollision(RigidBodyComponent *rigidBody, std::
     // Check collision against each target collider
     for(auto target : colliders)
     {
-        if(target == this || !target->IsEnabled())
+        if(target == this || !target->IsEnabled() || target->GetOwner() == this->GetOwner())
             continue;
 
         if(Intersect(*target))
         {
+
             Overlap minOverlap = GetMinOverlap(target);
-            if (target->GetLayer() == ColliderLayer::Wall) {
+            if (target->GetLayer() == ColliderLayer::Shoe) {
                 ResolveCollisions(rigidBody, minOverlap);
             }
 

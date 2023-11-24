@@ -57,10 +57,14 @@ public:
     bool GetGameState() { return mGameState; }
     void SetResort(bool b);
 
+    void AddCollider(class AABBColliderComponent* collider);
+    void RemoveCollider(class AABBColliderComponent* collider);
+    std::vector<class AABBColliderComponent*>& GetColliders() { return mColliders; }
+
     float GetFloorHeight() const { return mFloorHeight; }
     void SetFloorHeight(float f) {mFloorHeight=f;};
 
-    class PathNode* GetGhostPen() { return mGhostPen; }
+    //class PathNode* GetGhostPen() { return mGhostPen; }
 
 private:
     const float RESPAWN_TIME = 1.1f;
@@ -86,6 +90,7 @@ private:
 
     // All the draw components
     std::vector<class DrawComponent*> mDrawables;
+    std::vector<class AABBColliderComponent*> mColliders;
 
     // SDL stuff
     SDL_Window* mWindow;
@@ -109,14 +114,14 @@ private:
 
     // Game-specific
     class Player *mPlayer= nullptr;
-    std::vector<class Item*> mItems;
+    /*std::vector<class Item*> mItems;
     std::vector<class Wall*> mWalls;
     std::vector<class Ghost*> mGhosts;
     std::vector<class PathNode*> mPathNodes;
 
     class PathNode* mTunnelLeft = nullptr;
     class PathNode* mTunnelRight = nullptr;
-    class PathNode* mGhostPen = nullptr;
+    class PathNode* mGhostPen = nullptr;*/
 
     bool mShowGraph = false;
     bool mShowGhostPaths = false;

@@ -34,6 +34,8 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Player.h
         Source/Actors/Player.cpp
         Source/AudioSystem.cpp
+        Source/Actors/Mob.h
+        Source/Actors/Mob.cpp
 )
 
 ####### DO NOT EDIT BELLOW

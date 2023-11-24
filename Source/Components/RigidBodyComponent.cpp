@@ -59,7 +59,10 @@ void RigidBodyComponent::Update(float deltaTime)
         mOwner->SetUpdateDrawOrder(true);
     }
 
-
+    auto collider = mOwner->GetComponent<AABBColliderComponent>();
+    if (collider) {
+        collider->DetectCollision(this,mOwner->GetGame()->GetColliders());
+    }
 
 
     SetAcceleration(Vector2::Zero);

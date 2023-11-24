@@ -14,6 +14,7 @@ class Player: public  Actor
         explicit  Player(Game* game,float forwardSpeed = 2500.0f);
         void OnProcessInput(const Uint8* keyState) override;
         void OnUpdate(float deltaTime) override;
+        void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses) override;
 
     private:
         float mForwardSpeed;
@@ -22,5 +23,6 @@ class Player: public  Actor
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawSpriteComponent*  mDrawComponent;
         class AABBColliderComponent* mColliderComponent;
+        class AABBColliderComponent* mShoeCollider;
 
 };
