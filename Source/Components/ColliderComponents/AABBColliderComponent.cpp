@@ -7,6 +7,7 @@
 #include "../../Game.h"
 #include <unordered_map>
 #include <algorithm>
+#include <iostream>
 
 AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy, int w, int h, ColliderLayer layer, int updateOrder)
         :Component(owner, updateOrder)
@@ -18,8 +19,15 @@ AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy,
         mOwner->GetGame()->AddCollider(this);
 }
 
+AABBColliderComponent::~AABBColliderComponent()
+{
+    //mOwner->GetGame()->RemoveCollider(this);
+}
+
 Vector2 AABBColliderComponent::GetMin() const
 {
+    //std::cout << mOwner->GetName() << std::endl;
+
     return mOwner->GetPosition() - Vector2(mWidth/2.0f, mHeight/2.0f) + mOffset;
 }
 

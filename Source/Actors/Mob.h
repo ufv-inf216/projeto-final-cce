@@ -14,6 +14,8 @@ class Mob: public Actor
     public:
         explicit  Mob(Game* game,float forwardSpeed = 2500.0f);
         void OnUpdate(float deltaTime) override;
+        std::string GetName() override;
+
 
 
    private:
@@ -24,6 +26,7 @@ class Mob: public Actor
         class DrawSpriteComponent*  mDrawComponent;
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;
+
 
 
 };

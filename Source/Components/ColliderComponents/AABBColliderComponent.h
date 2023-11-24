@@ -9,6 +9,7 @@
 #include <vector>
 #include <set>
 
+
 enum class ColliderLayer
 {
     Player,
@@ -17,6 +18,9 @@ enum class ColliderLayer
     Item,
     Node,
     Shoe,
+    attack_hitbox,
+    mob_hitbox,
+
 };
 
 enum class CollisionSide
@@ -40,16 +44,20 @@ public:
     AABBColliderComponent(class Actor* owner, int dx, int dy, int w, int h,
                                 ColliderLayer layer, int updateOrder = 20);
 
+    ~AABBColliderComponent();
+
     bool Intersect(const AABBColliderComponent& b) const;
-    void DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders);
+    virtual void DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders);
     void ResolveCollisions(RigidBodyComponent *rigidBody, const Overlap& minOverlap);
 
     Vector2 GetMin() const;
     Vector2 GetMax() const;
     Vector2 GetCenter() const;
+    Vector2 GetOffset() const { return mOffset; }
     ColliderLayer GetLayer() const { return mLayer; }
 
 private:
+
     Overlap GetMinOverlap(AABBColliderComponent* b) const;
 
     Vector2 mOffset;

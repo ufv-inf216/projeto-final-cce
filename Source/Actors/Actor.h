@@ -11,6 +11,7 @@
 #include <SDL_stdinc.h>
 #include "../Math.h"
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
+#include <string>
 
 enum class ActorState
 {
@@ -77,6 +78,9 @@ public:
 
     // Any actor-specific collision code (overridable)
     virtual void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses);
+    virtual void take_damage(int d);
+    virtual void kill();
+    virtual std::string GetName();
 
 
 
@@ -87,6 +91,7 @@ protected:
     virtual void OnUpdate(float deltaTime);
     // Any actor-specific update code (overridable)
     virtual void OnProcessInput(const Uint8* keyState);
+
 
     // Actor's state
     ActorState mState;
@@ -102,11 +107,16 @@ protected:
     // Game specific
     Vector2 mCurrentDirection;
 
+    bool Get_should_die() const {return  should_die;};
+    void Set_should_die(bool b) {should_die=b;}
+
 private:
     friend class Component;
     bool update_draw_order;
+    bool should_die;
 
     // Adds component to Actor (this is automatically called
     // in the component constructor)
     void AddComponent(class Component* c);
+
 };

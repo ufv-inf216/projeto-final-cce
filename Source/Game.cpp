@@ -32,7 +32,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mRespawnTimer(RESPAWN_TIME)
         ,mCameraIsBlocked(false)
 {
-
+    SetCameraPos(Vector2::Zero);
 }
 
 bool Game::Initialize()
@@ -195,13 +195,19 @@ void Game::UpdateGame()
 
 void Game::UpdateCamera()
 {
-    auto v= GetCameraPos();
-    v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
 
-    if(!mCameraIsBlocked && v.x >= GetCameraPos().x)
+    //SDL_Log("update camera");
+
+    if(mPlayer!=nullptr)
     {
-        //SDL_Log("camera move");
-        SetCameraPos(v);
+        auto v= GetCameraPos();
+        v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
+
+        if(!mCameraIsBlocked && v.x >= GetCameraPos().x)
+        {
+            //SDL_Log("camera move");
+            SetCameraPos(v);
+        }
     }
 }
 
@@ -278,6 +284,7 @@ void Game::AddActor(Actor* actor)
 
 void Game::RemoveActor(Actor* actor)
 {
+
     auto iter = std::find(mPendingActors.begin(), mPendingActors.end(), actor);
     if (iter != mPendingActors.end())
     {
@@ -324,6 +331,7 @@ void Game::RemoveCollider(AABBColliderComponent* collider)
 {
     auto iter = std::find(mColliders.begin(), mColliders.end(), collider);
     mColliders.erase(iter);
+
 }
 
 

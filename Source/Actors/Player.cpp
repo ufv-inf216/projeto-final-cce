@@ -2,12 +2,15 @@
 // Created by Campo on 20/11/2023.
 //
 
+#include <iostream>
 #include "Player.h"
 #include "../Game.h"
 #include "../Components/RigidBodyComponent.h"
 #include "../Components/DrawComponents/DrawAnimatedComponent.h"
 #include "../Components/DrawComponents/DrawPolygonComponent.h"
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
+#include "../Components/ColliderComponents/Hitbox.h"
+
 
 
 
@@ -18,13 +21,14 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
       mRigidBodyComponent->Set_is_mobile(true);
 
-      mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
+      mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Wall);
       //mColliderComponent->SetEnabled(false);
       mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
       //mShoeCollider->SetEnabled(false);
 
       mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
       SetUpdateDrawOrder(true);
+      mPunch= nullptr;
 }
 
 
@@ -56,9 +60,15 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
     // Punch
-    if(keyState[SDL_SCANCODE_P])
+    if(keyState[SDL_SCANCODE_P] && mPunch == nullptr)
     {
+         SDL_Log("punch");
+         mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::attack_hitbox);
 
+         mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
+         mPunch->SetEnabled(false);
+
+         //delete mPunch;
     }
 
 
@@ -68,8 +78,12 @@ void Player::OnUpdate(float deltaTime)
 {
     //mRigidBodyComponent->SetVelocity(Vector2::Zero);
     auto pos = GetPosition();
-    auto posCorrect = Vector2();
+    auto posCorrect = Vector2::Zero;
     posCorrect.x = pos.x; posCorrect.y = pos.y;
+
+
+
+
     if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
     {
         //SDL_Log("don't go bellow");
@@ -103,6 +117,11 @@ void Player::OnUpdate(float deltaTime)
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
         mGame->SetResort(true);
     }
+
+    if(Get_should_die()==true)
+    {
+        kill();
+    }
 }
 
 
@@ -117,3 +136,14 @@ void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
     }
 
 }
+
+void Player::take_damage(int d)
+{
+    SDL_Log("Player takes damage");
+    if(d>0)
+    {
+        Set_should_die(true);
+    }
+}
+
+std::string Player::GetName() {return  "Player";}

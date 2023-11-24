@@ -10,6 +10,8 @@
 #include "../Game.h"
 #include "../Components/Component.h"
 #include <algorithm>
+#include <typeinfo>
+#include "../Components/ColliderComponents/AABBColliderComponent.h"
 
 Actor::Actor(Game* game)
         : mState(ActorState::Active)
@@ -27,6 +29,11 @@ Actor::~Actor()
 
     for(auto component : mComponents)
     {
+        auto ac = dynamic_cast<AABBColliderComponent*>(component);
+        if(ac != nullptr)
+        {
+             mGame->RemoveCollider(ac);
+        }
         delete component;
     }
     mComponents.clear();
@@ -45,6 +52,11 @@ void Actor::Update(float deltaTime)
         }
 
         OnUpdate(deltaTime);
+    }
+
+    if(should_die==true)
+    {
+        kill();
     }
 }
 
@@ -85,3 +97,17 @@ void Actor::AddComponent(Component* c)
         return a->GetUpdateOrder() < b->GetUpdateOrder();
     });
 }
+
+void Actor::take_damage(int d) {
+    SDL_Log("take daMAGE");
+    if(d>0)
+    {
+       should_die=true;
+    }
+}
+
+void Actor::kill() {
+    SetState(ActorState::Destroy);
+}
+
+std::string Actor::GetName() {return  "Generic actor";}

@@ -36,6 +36,8 @@ add_executable(${PROJECT_NAME}
         Source/AudioSystem.cpp
         Source/Actors/Mob.h
         Source/Actors/Mob.cpp
+        Source/Components/ColliderComponents/Hitbox.h
+        Source/Components/ColliderComponents/Hitbox.cpp
 )
 
 ####### DO NOT EDIT BELLOW
