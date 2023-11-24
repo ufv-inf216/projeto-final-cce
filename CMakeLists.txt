@@ -41,7 +41,10 @@ find_package(SDL2 2.28.2 EXACT REQUIRED)
 find_package(SDL2_image REQUIRED)
 
 find_package(SDL2_mixer REQUIRED)
+<<<<<<< Updated upstream
 #add_executable(my_game ${MY_SOURCES})
+=======
+>>>>>>> Stashed changes
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_mixer::SDL2_mixer)
 
 include_directories(${SDL2_INCLUDE_DIRS})
