@@ -13,7 +13,7 @@
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
-      mWidth=mHeight=256;
+      mWidth=mHeight=64;
       mRigidBodyComponent= new RigidBodyComponent(this,1.0,10);
       mRigidBodyComponent->Set_is_mobile(true);
 
@@ -65,27 +65,36 @@ void Player::OnUpdate(float deltaTime)
 {
     //mRigidBodyComponent->SetVelocity(Vector2::Zero);
     auto pos = GetPosition();
+    auto pos_correct = Vector2();
+    pos_correct.x = pos.x;pos_correct.y = pos.y;
     if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
     {
-        SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
+        //SDL_Log("don't go bellow");
+        //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
+        pos_correct.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
     }
 
 
 
-    if(pos.y< mGame->get_floor_height()-((float)mHeight) )
+    if(pos.y< mGame->get_floor_height() )
     {
-        SetPosition(Vector2(pos.x,mGame->get_floor_height()-((float)mHeight)));
+        //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
+        pos_correct.y = mGame->get_floor_height();
     }
 
-    if(pos.x< mGame->GetCameraPos().x + ((float)mHeight/2))
+    if(pos.x< mGame->GetCameraPos().x + ((float)mWidth/2))
     {
-        SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mHeight/2),pos.y));
+        //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
+        pos_correct.x = mGame->GetCameraPos().x + ((float)mWidth/2);
     }
 
     if(pos.x> mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
     {
-        SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
+        //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
+        pos_correct.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
     }
+
+    SetPosition(pos_correct);
 
     if(GetUpdateDrawOrder()==true)
     {
