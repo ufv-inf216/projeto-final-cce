@@ -39,5 +39,9 @@ add_executable(${PROJECT_NAME}
 find_package(SDL2 2.28.2 EXACT REQUIRED)
 find_package(SDL2_image REQUIRED)
 
+find_package(SDL2_mixer REQUIRED)
+add_executable(my_game ${MY_SOURCES})
+target_link_libraries(my_game PRIVATE SDL2_mixer::SDL2_mixer)
+
 include_directories(${SDL2_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
