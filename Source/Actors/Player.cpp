@@ -58,6 +58,10 @@ void Player::OnProcessInput(const Uint8 *keyState)
 
     }
 
+    if(keyState[SDL_SCANCODE_P]) {
+
+    }
+
 
 }
 

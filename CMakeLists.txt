@@ -33,6 +33,8 @@ add_executable(${PROJECT_NAME}
         Source/Components/AIComponents/FSMState.h
         Source/Actors/Player.h
         Source/Actors/Player.cpp
+        Source/AudioSystem.h
+        Source/AudioSystem.cpp
 )
 
 ####### DO NOT EDIT BELLOW
