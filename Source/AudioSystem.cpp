@@ -1,7 +1,8 @@
 #include "AudioSystem.h"
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "SDL_mixer.h"
 #include <filesystem>
+#include <system_error>
 
 SoundHandle SoundHandle::Invalid;
 

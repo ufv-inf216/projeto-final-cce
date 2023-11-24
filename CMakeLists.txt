@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 # Configurando o padrão c++
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Configurando o nome e executável do projeto
 set(PROJECT_NAME "t1-cce")
@@ -33,7 +33,6 @@ add_executable(${PROJECT_NAME}
         Source/Components/AIComponents/FSMState.h
         Source/Actors/Player.h
         Source/Actors/Player.cpp
-        Source/AudioSystem.h
         Source/AudioSystem.cpp
 )
 
@@ -42,6 +41,8 @@ find_package(SDL2 2.28.2 EXACT REQUIRED)
 find_package(SDL2_image REQUIRED)
 
 find_package(SDL2_mixer REQUIRED)
+#add_executable(my_game ${MY_SOURCES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_mixer::SDL2_mixer)
 
 include_directories(${SDL2_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image)

@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "SDL2/SDL_stdinc.h"
+#include "SDL_stdinc.h"
 
 // SoundHandles are used to operate on active sounds
 class SoundHandle
