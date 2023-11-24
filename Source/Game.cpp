@@ -30,7 +30,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mWindowWidth(windowWidth)
         ,mWindowHeight(windowHeight)
         ,mRespawnTimer(RESPAWN_TIME)
-        ,camera_is_blocked(false)
+        ,mCameraIsBlocked(false)
 {
 
 }
@@ -96,7 +96,7 @@ void Game::InitializeActors()
         new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, (float)mWindowHeight/2,1);
     }
 
-    set_floor_height(hx-(float)mWindowHeight/4);
+    SetFloorHeight(hx-(float)mWindowHeight/4);
 
 
 
@@ -122,28 +122,10 @@ void Game::InitializeActors()
     SetGameState(State::Intro);
 }
 
-void Game::SetGameState(State gameState)
-{
+void Game::SetGameState(State gameState) {
 
     mGameState = gameState;
 }
-
-
-
-static bool IsPathNode(char adj)
-{
-    return adj == 'X' || adj == 'T' || adj == 'G' || adj == 'M' || adj == 'P' ||
-           (adj >= '1' && adj <= '4') ||
-           (adj >= 'A' && adj <= 'D');
-}
-
-static bool IsPath(char adj)
-{
-    return IsPathNode(adj) || adj == '*';
-}
-
-
-
 
 
 void Game::RunLoop()
@@ -208,7 +190,7 @@ void Game::UpdateCamera()
     auto v= GetCameraPos();
     v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
 
-    if(camera_is_blocked==false&&v.x >= GetCameraPos().x)
+    if(!mCameraIsBlocked && v.x >= GetCameraPos().x)
     {
         //SDL_Log("camera move");
         SetCameraPos(v);
@@ -281,7 +263,7 @@ void Game::AddActor(Actor* actor)
     {
         mActors.emplace_back(actor);
     }
-    resort_sprites=true;
+    mResortSprites = true;
 }
 
 void Game::RemoveActor(Actor* actor)
@@ -301,7 +283,7 @@ void Game::RemoveActor(Actor* actor)
         std::iter_swap(iter, mActors.end() - 1);
         mActors.pop_back();
     }
-    resort_sprites=true;
+    mResortSprites = true;
 }
 
 void Game::AddDrawable(class DrawComponent *drawable)
@@ -336,9 +318,9 @@ void Game::GenerateOutput()
 
 
 
-    if(resort_sprites==true)
+    if(mResortSprites)
     {
-        resort_sprites=false;
+        mResortSprites = false;
         std::sort(mDrawables.begin(), mDrawables.end(),[](DrawComponent* a, DrawComponent* b) {
             return a->GetDrawOrder() < b->GetDrawOrder();
         });
@@ -373,4 +355,4 @@ void Game::Shutdown()
     SDL_Quit();
 }
 
-void Game::set_resort(bool b) {resort_sprites=b;}
+void Game::SetResort(bool b) {mResortSprites=b;}

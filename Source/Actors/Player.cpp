@@ -13,14 +13,14 @@
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
-      mWidth=mHeight=64;
-      mRigidBodyComponent= new RigidBodyComponent(this,1.0,10);
+      mWidth = mHeight = 64;
+      mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
       mRigidBodyComponent->Set_is_mobile(true);
 
       mColliderComponent= new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Player);
 
 
-      mDrawComponent= new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
+      mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
       SetUpdateDrawOrder(true);
 }
 
@@ -33,7 +33,6 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
         SetRotation(0);
-
     }
 
     
@@ -41,24 +40,20 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
         SetRotation(Math::Pi);
-
     }
 
     if(keyState[SDL_SCANCODE_W])
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
-
-
     }
 
     if(keyState[SDL_SCANCODE_S])
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,mForwardSpeed));
-
-
     }
 
-    if(keyState[SDL_SCANCODE_P]) {
+    if(keyState[SDL_SCANCODE_P])
+    {
 
     }
 
@@ -69,41 +64,39 @@ void Player::OnUpdate(float deltaTime)
 {
     //mRigidBodyComponent->SetVelocity(Vector2::Zero);
     auto pos = GetPosition();
-    auto pos_correct = Vector2();
-    pos_correct.x = pos.x;pos_correct.y = pos.y;
+    auto posCorrect = Vector2();
+    posCorrect.x = pos.x; posCorrect.y = pos.y;
     if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
     {
         //SDL_Log("don't go bellow");
         //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
-        pos_correct.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
+        posCorrect.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
     }
 
-
-
-    if(pos.y< mGame->get_floor_height() )
+    if(pos.y < mGame->GetFloorHeight() )
     {
         //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
-        pos_correct.y = mGame->get_floor_height();
+        posCorrect.y = mGame->GetFloorHeight();
     }
 
-    if(pos.x< mGame->GetCameraPos().x + ((float)mWidth/2))
+    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
-        pos_correct.x = mGame->GetCameraPos().x + ((float)mWidth/2);
+        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
     }
 
-    if(pos.x> mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
+    if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
-        pos_correct.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
+        posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
     }
 
-    SetPosition(pos_correct);
+    SetPosition(posCorrect);
 
-    if(GetUpdateDrawOrder()==true)
+    if(GetUpdateDrawOrder())
     {
         SetUpdateDrawOrder(false);
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
-        mGame->set_resort(true);
+        mGame->SetResort(true);
     }
 }

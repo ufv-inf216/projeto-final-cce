@@ -23,8 +23,6 @@ public:
         Won
     };
 
-    static const int GHOST_COUNT = 4;
-
     Game(int windowWidth, int windowHeight);
 
     bool Initialize();
@@ -57,18 +55,10 @@ public:
 
     void SetGameState(State gameState);
     bool GetGameState() { return mGameState; }
-    void set_resort(bool b);
+    void SetResort(bool b);
 
-    float get_floor_height() const { return floor_height; }
-    void set_floor_height(float f) {floor_height=f;};
-
-
-
-
-
-
-
-
+    float GetFloorHeight() const { return mFloorHeight; }
+    void SetFloorHeight(float f) {mFloorHeight=f;};
 
     class PathNode* GetGhostPen() { return mGhostPen; }
 
@@ -104,7 +94,7 @@ private:
     // Window properties
     int mWindowWidth;
     int mWindowHeight;
-    float floor_height;
+    float mFloorHeight;
 
     // Track elapsed time since game start
     Uint32 mTicksCount;
@@ -113,7 +103,7 @@ private:
     bool mIsRunning;
     bool mUpdatingActors;
 
-    bool camera_is_blocked;
+    bool mCameraIsBlocked;
 
     Vector2 mCameraPos;
 
@@ -137,5 +127,5 @@ private:
     float mRespawnTimer = 0.0f;
 
     //Se verdadeiro a ordem dos sprites é reordenada
-    bool resort_sprites;
+    bool mResortSprites;
 };
