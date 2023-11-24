@@ -15,6 +15,7 @@
 #include "Game.h"
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
+#include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
 
@@ -62,6 +63,12 @@ bool Game::Initialize()
 
     // Init all game actors
     InitializeActors();
+
+    auto s= new AudioSystem();
+    s->CacheSound("punch-2-37333.mp3");
+    s->PlaySound("punch-2-37333.mp3");
+
+
 
     return true;
 }
