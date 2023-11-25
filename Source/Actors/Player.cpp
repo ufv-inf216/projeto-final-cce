@@ -63,7 +63,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     if(keyState[SDL_SCANCODE_P] && mPunch == nullptr)
     {
          SDL_Log("punch");
-         mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::attack_hitbox);
+         mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
@@ -118,9 +118,9 @@ void Player::OnUpdate(float deltaTime)
         mGame->SetResort(true);
     }
 
-    if(Get_should_die()==true)
+    if(GetShouldDie())
     {
-        kill();
+        Kill();
     }
 }
 
@@ -140,9 +140,9 @@ void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
 void Player::take_damage(int d)
 {
     SDL_Log("Player takes damage");
-    if(d>0)
+    if(d > 0)
     {
-        Set_should_die(true);
+        SetShouldDie(true);
     }
 }
 

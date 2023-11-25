@@ -2,10 +2,7 @@
 // Created by Campo on 24/11/2023.
 //
 
-#ifndef T1_CCE_HITBOX_H
-#define T1_CCE_HITBOX_H
-
-#endif //T1_CCE_HITBOX_H
+#pragma once
 
 #include "AABBColliderComponent.h"
 
@@ -21,22 +18,22 @@ class Hitbox : public AABBColliderComponent
 
 
 
-    int GetDmg()const {return  dmg;}
-    void SetDmg(int d){dmg=d;}
+    int GetDmg()const {return  mDmg;}
+    void SetDmg(int d){mDmg = d;}
 
 
-    int GetKnockback()const {return  knockback;}
-    void SetKnockback(int k){knockback=k;}
+    int GetKnockback()const {return  mKnockback;}
+    void SetKnockback(int k){mKnockback = k;}
 
 
-    [[nodiscard]] Vector2 GetKnockDir()const {return  knock_dir;}
-    void SetKnockDir(Vector2 v){knock_dir=v;}
+    [[nodiscard]] Vector2 GetKnockDir()const {return  mKnockDir;}
+    void SetKnockDir(Vector2 v){mKnockDir = v;}
 
     private:
 
        Overlap GetMinOverlap(AABBColliderComponent* b) const;
 
-       int dmg;
-       int knockback;
-       Vector2 knock_dir;
+       int mDmg;
+       int mKnockback;
+       Vector2 mKnockDir;
 };

@@ -12,16 +12,12 @@
 #include "../../Components/DrawComponents/DrawPolygonComponent.h"
 
 Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer layer, int updateOrder,int dmgx,int knockx) :
-        AABBColliderComponent(owner,dx,dy,w,h,layer,updateOrder),dmg(dmgx),knockback(knockx)
-
+        AABBColliderComponent(owner,dx,dy,w,h,layer,updateOrder)
+        ,mDmg(dmgx)
+        ,mKnockback(knockx)
         {
-             knock_dir= Vector2::Zero;
-
-
-
+             mKnockDir = Vector2::Zero;
         }
-
-
 
 Hitbox::~Hitbox()
 {
@@ -73,10 +69,10 @@ void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AA
         {
 
             Overlap minOverlap = GetMinOverlap(target);
-            if (target->GetLayer() == ColliderLayer::mob_hitbox) {
+            if (target->GetLayer() == ColliderLayer::MobHitBox) {
                 //ResolveCollisions(rigidBody, minOverlap);
                 //target->GetOwner()->SetState(ActorState::Destroy);
-                target->GetOwner()->take_damage(dmg);
+                target->GetOwner()->TakeDamage(mDmg);
             }
 
             responses.emplace_back(minOverlap);

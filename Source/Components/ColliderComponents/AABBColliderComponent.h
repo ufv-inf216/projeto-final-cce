@@ -18,8 +18,8 @@ enum class ColliderLayer
     Item,
     Node,
     Shoe,
-    attack_hitbox,
-    mob_hitbox,
+    AttackHitBox,
+    MobHitBox,
 
 };
 

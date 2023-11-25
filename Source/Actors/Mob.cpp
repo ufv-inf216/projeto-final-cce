@@ -8,12 +8,12 @@
 
 Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
-    mHeight=64;
+    mHeight = 64;
     mWidth = mHeight*2;
     mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
     mRigidBodyComponent->Set_is_mobile(true);
 
-    mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::mob_hitbox);
+    mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::MobHitBox);
     mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
 
     mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder3.png",mWidth,mHeight,1000);
@@ -60,9 +60,9 @@ void Mob::OnUpdate(float deltaTime)
         mGame->SetResort(true);
     }
 
-    if(Get_should_die()==true)
+    if(GetShouldDie())
     {
-        kill();
+        Kill();
     }
 }
 

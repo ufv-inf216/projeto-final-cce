@@ -54,9 +54,9 @@ void Actor::Update(float deltaTime)
         OnUpdate(deltaTime);
     }
 
-    if(should_die==true)
+    if(mShouldDie)
     {
-        kill();
+        Kill();
     }
 }
 
@@ -98,15 +98,15 @@ void Actor::AddComponent(Component* c)
     });
 }
 
-void Actor::take_damage(int d) {
+void Actor::TakeDamage(int d) {
     SDL_Log("take daMAGE");
     if(d>0)
     {
-       should_die=true;
+       mShouldDie = true;
     }
 }
 
-void Actor::kill() {
+void Actor::Kill() {
     SetState(ActorState::Destroy);
 }
 
