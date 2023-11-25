@@ -59,6 +59,7 @@ public:
 
     void AddCollider(class AABBColliderComponent* collider);
     void RemoveCollider(class AABBColliderComponent* collider);
+    void UpdateColliders();
     std::vector<class AABBColliderComponent*>& GetColliders() { return mColliders; }
 
     float GetFloorHeight() const { return mFloorHeight; }

@@ -36,5 +36,5 @@ void DrawSpriteComponent::Draw(SDL_Renderer *renderer)
 
     SDL_RenderCopyEx(renderer, mSpriteSheetSurface, nullptr, &renderQuad, .0f, nullptr, flip);
 
-    SDL_RenderDrawPoint(renderer,pos.x,pos.y);
+    //SDL_RenderDrawPoint(renderer,pos.x,pos.y);
 }

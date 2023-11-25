@@ -43,7 +43,7 @@ bool Game::Initialize()
         return false;
     }
 
-    mWindow = SDL_CreateWindow("Blank game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWindowWidth, mWindowHeight, 0);
+    mWindow = SDL_CreateWindow("CCE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWindowWidth, mWindowHeight, 0);
     if (!mWindow)
     {
         SDL_Log("Failed to create window: %s", SDL_GetError());
@@ -186,6 +186,8 @@ void Game::UpdateGame()
     // Update all actors and pending actors
     UpdateActors(deltaTime);
 
+    UpdateColliders();
+
     // Update camera position
     UpdateCamera();
 
@@ -207,6 +209,18 @@ void Game::UpdateCamera()
         {
             //SDL_Log("camera move");
             SetCameraPos(v);
+        }
+    }
+}
+
+
+void Game::UpdateColliders()
+{
+    for(auto c: mColliders)
+    {
+        if(c->GetDestroy()==true)
+        {
+            RemoveCollider(c);
         }
     }
 }
@@ -305,6 +319,7 @@ void Game::RemoveActor(Actor* actor)
 
 void Game::AddDrawable(class DrawComponent *drawable)
 {
+    //std::cout << "Add drawable" <<std::endl;
     mDrawables.emplace_back(drawable);
 
     std::sort(mDrawables.begin(), mDrawables.end(),[](DrawComponent* a, DrawComponent* b) {
@@ -318,6 +333,7 @@ void Game::RemoveDrawable(class DrawComponent *drawable)
     auto iter = std::find(mDrawables.begin(), mDrawables.end(), drawable);
     mDrawables.erase(iter);
     //resort_sprites=true;
+    //std::cout << "Removed drawable" <<std::endl;
 }
 
 
@@ -330,7 +346,12 @@ void Game::AddCollider(class AABBColliderComponent* collider)
 void Game::RemoveCollider(AABBColliderComponent* collider)
 {
     auto iter = std::find(mColliders.begin(), mColliders.end(), collider);
-    mColliders.erase(iter);
+    if(iter != mColliders.end())
+    {
+        std::iter_swap(iter, mColliders.end() - 1);
+        mColliders.pop_back();
+    }
+    //mColliders.erase(iter);
 
 }
 
@@ -347,6 +368,7 @@ void Game::GenerateOutput()
 
     if(mResortSprites)
     {
+        //std::cout <<"rsort" <<std::endl;
         mResortSprites = false;
         std::sort(mDrawables.begin(), mDrawables.end(),[](DrawComponent* a, DrawComponent* b) {
             return a->GetDrawOrder() < b->GetDrawOrder();
@@ -355,7 +377,7 @@ void Game::GenerateOutput()
 
 
 
-
+    //std::cout << mDrawables.size() <<std::endl;
     for (auto drawable : mDrawables)
     {
         if (drawable->IsVisible())

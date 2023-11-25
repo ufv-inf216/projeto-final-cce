@@ -66,6 +66,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
+         mPunch->SetDestroy(true);
 
          //delete mPunch;
     }

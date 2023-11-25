@@ -29,6 +29,9 @@ public:
     void SetEnabled(const bool enabled) { mIsEnabled = enabled; };
     bool IsEnabled() const { return mIsEnabled; };
 
+    void SetDestroy(const bool enabled) { mDestroy = enabled; };
+    bool GetDestroy() const { return mDestroy; };
+
 protected:
     // Owning actor
     class Actor* mOwner;
@@ -36,4 +39,5 @@ protected:
     int mUpdateOrder;
 
     bool mIsEnabled;
+    bool mDestroy;
 };

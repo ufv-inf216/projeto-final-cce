@@ -21,6 +21,7 @@ Actor::Actor(Game* game)
         , mGame(game)
 {
     mGame->AddActor(this);
+    mShouldDie=false;
 }
 
 Actor::~Actor()
@@ -37,6 +38,16 @@ Actor::~Actor()
         delete component;
     }
     mComponents.clear();
+}
+
+void Actor::RemoveComponent(Component *c)
+{
+    auto iter = std::find(mComponents.begin(), mComponents.end(), c);
+    if(iter != mComponents.end())
+    {
+        std::iter_swap(iter, mComponents.end() - 1);
+        mComponents.pop_back();
+    }
 }
 
 void Actor::Update(float deltaTime)

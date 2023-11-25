@@ -22,6 +22,8 @@ Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer l
 Hitbox::~Hitbox()
 {
 
+    /*mOwner->GetGame()->RemoveCollider(this);
+    mOwner->RemoveComponent(this);*/
 }
 
 AABBColliderComponent::Overlap Hitbox::GetMinOverlap(AABBColliderComponent* b) const

@@ -72,6 +72,8 @@ public:
         return nullptr;
     }
 
+    void RemoveComponent(Component* c);
+
     // Game specific
     Vector2& GetDirection() { return mCurrentDirection; };
     void SetDirection(const Vector2 &direction) { mCurrentDirection = direction; }
