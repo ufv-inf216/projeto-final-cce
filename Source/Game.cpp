@@ -77,7 +77,7 @@ void Game::InitializeActors()
 {
     // Background
     float floorHeight  = (float)mWindowHeight*4.5/10;
-    auto* background = new Actor(this);
+    auto background = new Actor(this);
 
     float drawFloorHeight = floorHeight + 320;
 
@@ -94,7 +94,7 @@ void Game::InitializeActors()
     
     SetFloorHeight(floorHeight);
 
-    auto* plac = new Actor(this);
+    auto plac = new Actor(this);
     plac->SetPosition(Vector2((float)mWindowHeight/2, (float)GetWindowHeight()*0.7f ));
     int posq = (int)((float)GetWindowHeight()*0.7f);
     new DrawSpriteComponent(plac,"../Assets/placeholder2.png",256,256,posq);
@@ -107,9 +107,11 @@ void Game::InitializeActors()
     mPlayer->SetPosition(playerPosInit);
 
     // Line para background e chão
+    /*
     auto* line = new Actor(this);
     line->SetPosition(Vector2(0.0f, GetFloorHeight() ));
     new DrawSpriteComponent(line, "../Assets/placeholder2.png", 10000, 1,3);
+     */
 
     // Croc placeholder
     auto croc = new Mob(this);

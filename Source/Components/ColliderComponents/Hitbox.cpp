@@ -16,7 +16,7 @@ Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer l
         ,mDmg(dmgx)
         ,mKnockback(knockx)
         {
-             mKnockDir = Vector2::Zero;
+            mKnockDir = Vector2::Zero;
         }
 
 Hitbox::~Hitbox()
