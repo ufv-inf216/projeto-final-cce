@@ -29,18 +29,16 @@ void RigidBodyComponent::ApplyForce(const Vector2 &force) {
 
 void RigidBodyComponent::Update(float deltaTime)
 {
-    // Euler Integration
-    if(mVelocity.x != 0.0f) {
+     // Euler Integration
+     if(mVelocity.x != 0.0f) {
         ApplyForce(Vector2::UnitX * -mFrictionCoefficient * mVelocity.x);
-    }
+     }
 
-    if(mVelocity.y != 0.0f) {
-        ApplyForce(Vector2::UnitY * -mFrictionCoefficient * mVelocity.y);
-    }
+     if(mVelocity.y != 0.0f) {
+         ApplyForce(Vector2::UnitY * -mFrictionCoefficient * mVelocity.y);
+     }
 
      mVelocity += mAcceleration * deltaTime;
-
-
 
      mVelocity.x = Math::Clamp<float>(mVelocity.x, -MAX_SPEED_X, MAX_SPEED_X);
      mVelocity.y = Math::Clamp<float>(mVelocity.y, -MAX_SPEED_Y, MAX_SPEED_Y);
@@ -53,17 +51,16 @@ void RigidBodyComponent::Update(float deltaTime)
     //ScreenWrap(position);
     mOwner->SetPosition(position);
 
-    if(mVelocity.y!= 0.0f&&is_mobile==true)
+    if(mVelocity.y!= 0.0f)
     {
 
         mOwner->SetUpdateDrawOrder(true);
     }
-
+    
     auto collider = mOwner->GetComponent<AABBColliderComponent>();
     if (collider) {
         collider->DetectCollision(this,mOwner->GetGame()->GetColliders());
     }
-
 
     SetAcceleration(Vector2::Zero);
 }

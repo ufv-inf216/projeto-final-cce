@@ -19,7 +19,6 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 
       mWidth = mHeight = 64;
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
-      mRigidBodyComponent->Set_is_mobile(true);
 
       mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Wall);
       //mColliderComponent->SetEnabled(false);
