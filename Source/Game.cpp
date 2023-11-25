@@ -338,7 +338,7 @@ void Game::RemoveCollider(AABBColliderComponent* collider)
 void Game::GenerateOutput()
 {
     // Set draw color to black
-    SDL_SetRenderDrawColor(mRenderer, 0, 128, 0, 255);
+    SDL_SetRenderDrawColor(mRenderer, 250, 250, 206, 255);
 
     // Clear back buffer
     SDL_RenderClear(mRenderer);
