@@ -17,12 +17,15 @@ class Player: public  Actor
         void OnProcessInput(const Uint8* keyState) override;
         void OnUpdate(float deltaTime) override;
         void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses) override;
-        virtual void take_damage(int d);
+        virtual void TakeDamage(int d);
         std::string GetName() override;
 
 
 
     private:
+
+        void ProcessMov();
+
         float mForwardSpeed;
         int mWidth;
         int mHeight;

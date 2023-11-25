@@ -67,8 +67,6 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
          mPunch->SetDestroy(true);
-
-         //delete mPunch;
     }
 
 
@@ -76,41 +74,10 @@ void Player::OnProcessInput(const Uint8 *keyState)
 
 void Player::OnUpdate(float deltaTime)
 {
-    //mRigidBodyComponent->SetVelocity(Vector2::Zero);
-    auto pos = GetPosition();
-    auto posCorrect = Vector2::Zero;
-    posCorrect.x = pos.x; posCorrect.y = pos.y;
 
+    ProcessMov();
 
-
-
-    if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
-    {
-        //SDL_Log("don't go bellow");
-        //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
-        posCorrect.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
-    }
-
-    if(pos.y < mGame->GetFloorHeight() )
-    {
-        //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
-        posCorrect.y = mGame->GetFloorHeight();
-    }
-
-    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
-    {
-        //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
-        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
-    }
-
-    if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
-    {
-        //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
-        posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
-    }
-
-    SetPosition(posCorrect);
-
+    //Ordem de desenhar
     if(GetUpdateDrawOrder())
     {
         SetUpdateDrawOrder(false);
@@ -118,6 +85,7 @@ void Player::OnUpdate(float deltaTime)
         mGame->SetResort(true);
     }
 
+    //Morrer
     if(GetShouldDie())
     {
         Kill();
@@ -129,15 +97,10 @@ void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
 {
     for(auto rp:responses)
     {
-
-
-
-
     }
-
 }
 
-void Player::take_damage(int d)
+void Player::TakeDamage(int d)
 {
     SDL_Log("Player takes damage");
     if(d > 0)
@@ -147,3 +110,41 @@ void Player::take_damage(int d)
 }
 
 std::string Player::GetName() {return  "Player";}
+
+void Player::ProcessMov() {
+    //mRigidBodyComponent->SetVelocity(Vector2::Zero);
+    auto pos = GetPosition();
+    auto posCorrect = Vector2::Zero;
+    posCorrect.x = pos.x; posCorrect.y = pos.y;
+
+    //Descer
+    if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
+    {
+        //SDL_Log("don't go bellow");
+        //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
+        posCorrect.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
+    }
+
+    //Subir
+    if(pos.y < mGame->GetFloorHeight() )
+    {
+        //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
+        posCorrect.y = mGame->GetFloorHeight();
+    }
+
+    //Não pode voltar
+    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
+    {
+        //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
+        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
+    }
+
+    //Camera começa andar
+    if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
+    {
+        //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
+        posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
+    }
+
+    SetPosition(posCorrect);
+}
