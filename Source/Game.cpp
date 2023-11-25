@@ -76,35 +76,23 @@ bool Game::Initialize()
 void Game::InitializeActors()
 {
     // Background
-
-    //system("cd ../Assets/Sprites/");
-
-    float hx  = ((float)mWindowHeight*1/2);
-    //hx += 640-hx;
+    float floorHeight  = (float)mWindowHeight*4.5/10;
     auto* background = new Actor(this);
 
-    float fx = hx + (640-hx);
+    float drawFloorHeight = floorHeight + 320;
 
-    std::cout << fx << std::endl;
-
-
-    background->SetPosition(Vector2(0.0f,  fx));
+    background->SetPosition(Vector2(0.0f,  drawFloorHeight));
     new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, 640,0);
 
 
     for(int a=1;a<=10;a++)
     {
         auto* background2 = new Actor(this);
-        background2->SetPosition(Vector2(606.0f*(float)a, fx ));
+        background2->SetPosition(Vector2(606.0f*(float)a, drawFloorHeight ));
         new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, 640,1);
     }
-
-    //hx-(float)mWindowHeight/4
-
-    SetFloorHeight(fx-320);
-
-
-
+    
+    SetFloorHeight(floorHeight);
 
     auto* plac = new Actor(this);
     plac->SetPosition(Vector2((float)mWindowHeight/2, (float)GetWindowHeight()*0.7f ));
@@ -112,20 +100,20 @@ void Game::InitializeActors()
     new DrawSpriteComponent(plac,"../Assets/placeholder2.png",256,256,posq);
 
 
-    //mPacman = new Pacman(this);
+    // Player
     mPlayer = new Player(this);
-    auto vx = Vector2((float)mWindowWidth/2,hx);
-    vx.y += 256;
-    mPlayer->SetPosition(vx);
+    auto playerPosInit = Vector2((float)mWindowWidth/2,floorHeight + 100.f);
+    playerPosInit.y += 256;
+    mPlayer->SetPosition(playerPosInit);
 
+    // Line para background e chão
     auto* line = new Actor(this);
     line->SetPosition(Vector2(0.0f, GetFloorHeight() ));
     new DrawSpriteComponent(line, "../Assets/placeholder2.png", 10000, 1,3);
 
-    //SetCameraPos(vx);
-
+    // Croc placeholder
     auto croc = new Mob(this);
-    croc->SetPosition(Vector2(1200.0f, fx ));
+    croc->SetPosition(Vector2(1200.0f, floorHeight+100.f));
 
     SetGameState(State::Intro);
 }

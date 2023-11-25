@@ -26,8 +26,6 @@ AABBColliderComponent::~AABBColliderComponent()
 
 Vector2 AABBColliderComponent::GetMin() const
 {
-    //std::cout << mOwner->GetName() << std::endl;
-
     return mOwner->GetPosition() - Vector2(mWidth/2.0f, mHeight/2.0f) + mOffset;
 }
 
