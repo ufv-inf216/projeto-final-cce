@@ -28,6 +28,8 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
       SetUpdateDrawOrder(true);
       mPunch= nullptr;
+
+      mPunchCooldown=0;
 }
 
 
@@ -59,7 +61,8 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
     // Punch
-    if(keyState[SDL_SCANCODE_P] && mPunch == nullptr)
+
+    if(keyState[SDL_SCANCODE_P] &&mPunchCooldown<=0)
     {
          SDL_Log("punch");
          mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
@@ -67,6 +70,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
          mPunch->SetDestroy(true);
+         mPunchCooldown=Punch_cooldown;
     }
 
 
@@ -84,6 +88,10 @@ void Player::OnUpdate(float deltaTime)
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
         mGame->SetResort(true);
     }
+
+    if(mPunchCooldown>0){ mPunchCooldown--;}
+
+    //if(mPunchCooldown<=0){std::cout << "can punch" << std::endl;}
 
     //Morrer
     if(GetShouldDie())
