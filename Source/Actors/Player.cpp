@@ -28,6 +28,8 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
       SetUpdateDrawOrder(true);
       mPunch= nullptr;
+      mJumpSpeed = -750.0f;
+      SetIsJumping(false);
 
       mPunchCooldown=0;
 }
@@ -50,12 +52,12 @@ void Player::OnProcessInput(const Uint8 *keyState)
         SetRotation(Math::Pi);
     }
 
-    if(keyState[SDL_SCANCODE_W])
+    if(keyState[SDL_SCANCODE_W]&&GetIsJumping()==false)
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
     }
 
-    if(keyState[SDL_SCANCODE_S])
+    if(keyState[SDL_SCANCODE_S]&&GetIsJumping()==false)
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,mForwardSpeed));
     }
@@ -73,6 +75,16 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunchCooldown=Punch_cooldown;
     }
 
+    if(keyState[SDL_SCANCODE_SPACE]&&GetIsJumping()==false)
+    {
+        //SDL_Log("jump");
+        SetIsJumping(true);
+        mOgY=GetPosition().y;
+        mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,mJumpSpeed));
+
+
+    }
+
 
 }
 
@@ -82,7 +94,7 @@ void Player::OnUpdate(float deltaTime)
     ProcessMov();
 
     //Ordem de desenhar
-    if(GetUpdateDrawOrder())
+    if(GetUpdateDrawOrder() && GetIsJumping()==false)
     {
         SetUpdateDrawOrder(false);
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
@@ -92,6 +104,12 @@ void Player::OnUpdate(float deltaTime)
     if(mPunchCooldown>0){ mPunchCooldown--;}
 
     //if(mPunchCooldown<=0){std::cout << "can punch" << std::endl;}
+
+    if(  GetIsJumping()==true&&GetPosition().y>=mOgY)
+    {
+        SetIsJumping(false);
+        mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,0));
+    }
 
     //Morrer
     if(GetShouldDie())
@@ -124,6 +142,12 @@ void Player::ProcessMov() {
     auto pos = GetPosition();
     auto posCorrect = Vector2::Zero;
     posCorrect.x = pos.x; posCorrect.y = pos.y;
+    float upper_bound = mGame->GetFloorHeight();
+
+    if(GetIsJumping()==true)
+    {
+        upper_bound=mHeight;
+    }
 
     //Descer
     if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
@@ -134,7 +158,7 @@ void Player::ProcessMov() {
     }
 
     //Subir
-    if(pos.y < mGame->GetFloorHeight() )
+    if(pos.y <  upper_bound)
     {
         //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
         posCorrect.y = mGame->GetFloorHeight();

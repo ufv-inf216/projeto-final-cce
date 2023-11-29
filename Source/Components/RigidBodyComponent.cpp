@@ -30,11 +30,16 @@ void RigidBodyComponent::ApplyForce(const Vector2 &force) {
 void RigidBodyComponent::Update(float deltaTime)
 {
      // Euler Integration
+     if(mOwner->GetIsJumping()==true)
+     {
+         ApplyForce(Vector2::UnitY * GRAVITY);
+     }
+
      if(mVelocity.x != 0.0f) {
         ApplyForce(Vector2::UnitX * -mFrictionCoefficient * mVelocity.x);
      }
 
-     if(mVelocity.y != 0.0f) {
+     if(mVelocity.y != 0.0f && mOwner->GetIsJumping()==false) {
          ApplyForce(Vector2::UnitY * -mFrictionCoefficient * mVelocity.y);
      }
 

@@ -70,8 +70,12 @@ void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AA
         if(Intersect(*target))
         {
 
+            //Se o alvo está pulando,devemos checar se a hitbox pode antingir-lo
+
+
+            bool jump_check = target->GetOwner()->GetIsJumping() <= GetStopJump();
             Overlap minOverlap = GetMinOverlap(target);
-            if (target->GetLayer() == ColliderLayer::MobHitBox) {
+            if (jump_check&&target->GetLayer() == ColliderLayer::MobHitBox) {
                 //ResolveCollisions(rigidBody, minOverlap);
                 //target->GetOwner()->SetState(ActorState::Destroy);
                 target->GetOwner()->TakeDamage(mDmg);

@@ -53,6 +53,9 @@ public:
     ActorState GetState() const { return mState; }
     void SetState(ActorState state) { mState = state; }
 
+    bool GetIsJumping() const {return  mIs_jumping;}
+    void SetIsJumping(bool b ) {mIs_jumping=b;}
+
     // Game getter
     class Game* GetGame() { return mGame; }
 
@@ -116,6 +119,7 @@ private:
     friend class Component;
     bool mUpdateDrawOrder;
     bool mShouldDie;
+    bool mIs_jumping;
 
     // Adds component to Actor (this is automatically called
     // in the component constructor)

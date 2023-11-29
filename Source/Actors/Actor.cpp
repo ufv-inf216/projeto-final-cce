@@ -22,6 +22,7 @@ Actor::Actor(Game* game)
 {
     mGame->AddActor(this);
     mShouldDie=false;
+    SetIsJumping(false);
 }
 
 Actor::~Actor()

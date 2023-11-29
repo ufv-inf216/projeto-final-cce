@@ -31,6 +31,9 @@ class Player: public  Actor
         int mWidth;
         int mHeight;
         int mPunchCooldown;
+        //bool mIs_jumping;
+        float mOgY;
+        float mJumpSpeed;
         class Hitbox* mPunch;
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawSpriteComponent*  mDrawComponent;

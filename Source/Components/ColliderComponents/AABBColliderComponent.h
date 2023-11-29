@@ -50,11 +50,16 @@ public:
     virtual void DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders);
     void ResolveCollisions(RigidBodyComponent *rigidBody, const Overlap& minOverlap);
 
+    bool GetStopJump() const {return mStopJump;}
+    void SetStopJump(bool b) {mStopJump=b;}
+
     Vector2 GetMin() const;
     Vector2 GetMax() const;
     Vector2 GetCenter() const;
     Vector2 GetOffset() const { return mOffset; }
     ColliderLayer GetLayer() const { return mLayer; }
+
+
 
 private:
 
@@ -63,6 +68,7 @@ private:
     Vector2 mOffset;
     int mWidth;
     int mHeight;
+    bool mStopJump;
 
     ColliderLayer mLayer;
 };

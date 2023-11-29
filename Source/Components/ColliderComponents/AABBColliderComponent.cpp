@@ -17,6 +17,7 @@ AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy,
         ,mLayer(layer)
 {
         mOwner->GetGame()->AddCollider(this);
+        SetStopJump(false);
 }
 
 AABBColliderComponent::~AABBColliderComponent()
@@ -112,9 +113,10 @@ void AABBColliderComponent::DetectCollision(RigidBodyComponent *rigidBody, std::
 
         if(Intersect(*target))
         {
-
+            bool jump_check = target->GetOwner()->GetIsJumping() <= GetStopJump() && mOwner->GetIsJumping() <=  target->GetStopJump();
+            //std::cout << ((target->GetOwner()->GetIsJumping())? "true":"false") << std::endl;
             Overlap minOverlap = GetMinOverlap(target);
-            if (target->GetLayer() == ColliderLayer::Shoe) {
+            if (jump_check&&target->GetLayer() == ColliderLayer::Shoe) {
                 ResolveCollisions(rigidBody, minOverlap);
             }
 
