@@ -10,6 +10,7 @@
 #include "../Components/DrawComponents/DrawPolygonComponent.h"
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
 #include "../Components/ColliderComponents/Hitbox.h"
+#include "../Components/StatBlock.h"
 
 
 
@@ -32,6 +33,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       SetIsJumping(false);
 
       mPunchCooldown=0;
+      mStatBlock = new StatBlock(this,4);
 }
 
 
@@ -129,7 +131,8 @@ void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
 void Player::TakeDamage(int d)
 {
     SDL_Log("Player takes damage");
-    if(d > 0)
+    mStatBlock->TakeDmg(d);
+    if(mStatBlock->Is_dead())
     {
         SetShouldDie(true);
     }

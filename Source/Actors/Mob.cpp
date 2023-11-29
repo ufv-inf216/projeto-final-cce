@@ -4,6 +4,7 @@
 #include "Mob.h"
 #include "../Game.h"
 #include "../Components/DrawComponents/DrawAnimatedComponent.h"
+#include "../Components/StatBlock.h"
 
 
 Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
@@ -17,6 +18,7 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
 
     mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder3.png",mWidth,mHeight,1000);
     SetUpdateDrawOrder(true);
+    mStatBlock = new StatBlock(this,1);
 
 }
 
@@ -66,3 +68,13 @@ void Mob::OnUpdate(float deltaTime)
 }
 
 std::string Mob::GetName() {return  "Mob actor";}
+
+void Mob::TakeDamage(int d)
+{
+
+    mStatBlock->TakeDmg(d);
+    if(mStatBlock->Is_dead())
+    {
+        SetShouldDie(true);
+    }
+}

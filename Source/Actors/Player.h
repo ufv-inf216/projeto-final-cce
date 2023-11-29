@@ -5,6 +5,7 @@
 #include <string>
 
 
+
 #ifndef T1_CCE_PLAYER_H
 #define T1_CCE_PLAYER_H
 
@@ -39,5 +40,6 @@ class Player: public  Actor
         class DrawSpriteComponent*  mDrawComponent;
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;
+        class StatBlock* mStatBlock;
 
 };

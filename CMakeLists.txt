@@ -38,6 +38,8 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Mob.cpp
         Source/Components/ColliderComponents/Hitbox.h
         Source/Components/ColliderComponents/Hitbox.cpp
+        Source/Components/StatBlock.h
+        Source/Components/StatBlock.cpp
 )
 
 ####### DO NOT EDIT BELLOW
