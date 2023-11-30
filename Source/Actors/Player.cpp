@@ -26,7 +26,20 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
       //mShoeCollider->SetEnabled(false);
 
-      mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
+
+
+      //mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
+      mDrawComponent = new DrawAnimatedComponent(this, "../Assets/Sprites/Capivaristo/Capivaristo.png", "../Assets/Sprites/Capivaristo/Capivaristo.json");
+      mDrawComponent->AddAnimation("idle", {1,0});
+      mDrawComponent->AddAnimation("run", {4,5,6,5});
+      mDrawComponent->AddAnimation("jump", {4});
+      mDrawComponent->AddAnimation("punch", {2,3});
+
+      mDrawComponent->SetAnimation("idle");
+      mDrawComponent->SetAnimFPS(4.0f);
+
+
+
       SetUpdateDrawOrder(true);
       mPunch= nullptr;
       mJumpSpeed = -750.0f;

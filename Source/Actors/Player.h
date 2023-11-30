@@ -1,15 +1,7 @@
-//
-// Created by Campo on 20/11/2023.
-//
+#pragma once
+
 #include "Actor.h"
 #include <string>
-
-
-
-#ifndef T1_CCE_PLAYER_H
-#define T1_CCE_PLAYER_H
-
-#endif //T1_CCE_PLAYER_H
 
 class Player: public  Actor
 {
@@ -37,7 +29,7 @@ class Player: public  Actor
         float mJumpSpeed;
         class Hitbox* mPunch;
         class RigidBodyComponent* mRigidBodyComponent;
-        class DrawSpriteComponent*  mDrawComponent;
+        class DrawAnimatedComponent*  mDrawComponent;
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;
         class StatBlock* mStatBlock;
