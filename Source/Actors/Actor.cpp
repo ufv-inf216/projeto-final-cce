@@ -53,6 +53,7 @@ void Actor::RemoveComponent(Component *c)
 
 void Actor::Update(float deltaTime)
 {
+
     if (mState == ActorState::Active)
     {
         for (auto comp : mComponents)
@@ -60,11 +61,13 @@ void Actor::Update(float deltaTime)
             if(comp->IsEnabled())
             {
                 comp->Update(deltaTime);
+
             }
         }
 
         OnUpdate(deltaTime);
     }
+
 
     if(mShouldDie)
     {

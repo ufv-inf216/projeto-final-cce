@@ -10,13 +10,16 @@
 #include "../../Actors/Actor.h"
 #include "../../Game.h"
 #include "../../Components/DrawComponents/DrawPolygonComponent.h"
+#include "../StatBlock.h"
 
-Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer layer, int updateOrder,int dmgx,int knockx) :
+Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer layer, int updateOrder,int dmgx,float knockx) :
         AABBColliderComponent(owner,dx,dy,w,h,layer,updateOrder)
         ,mDmg(dmgx)
         ,mKnockback(knockx)
         {
-            mKnockDir = Vector2::Zero;
+            //mKnockDir = Vector2::Zero;
+            mKnockDir = Vector2(1,0);
+            SetDestroy(false);
         }
 
 Hitbox::~Hitbox()
@@ -79,6 +82,8 @@ void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AA
                 //ResolveCollisions(rigidBody, minOverlap);
                 //target->GetOwner()->SetState(ActorState::Destroy);
                 target->GetOwner()->TakeDamage(mDmg);
+                float mod = mKnockback*target->GetOwner()->GetComponent<StatBlock>()->GetKnockbackMod();
+                target->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2(mKnockDir*mod));
             }
 
             responses.emplace_back(minOverlap);

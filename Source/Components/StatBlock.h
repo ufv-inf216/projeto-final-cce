@@ -18,7 +18,11 @@ class StatBlock: public Component
         void TakeDmg(int d) {mHp-=d;}
         bool Is_dead() const { return mHp  <= 0;}
 
+        float GetKnockbackMod() const {return  mKnockbackMod;}
+        void SetKnockbackMod(float k) {mKnockbackMod=k;}
+
     private:
         int mMaxHp;
         int mHp;
+        float mKnockbackMod;
 };

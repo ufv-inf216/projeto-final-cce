@@ -21,10 +21,18 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mWidth = mHeight = 64;
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
 
+      mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
       mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Wall);
       //mColliderComponent->SetEnabled(false);
-      mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
+
       //mShoeCollider->SetEnabled(false);
+      mShoeCollider->SetEnabled(true);
+      //std::cout << ((mShoeCollider->GetLayer()==ColliderLayer::Shoe)? "True":"False") << std::endl;
+      mShoeCollider->SetName("Player Shoe collider");
+      mColliderComponent->SetName("Player Hitbox collider");
+      mRigidBodyComponent->SetName("Player Rigid body");
+
+
 
 
 
@@ -47,6 +55,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 
       mPunchCooldown=0;
       mStatBlock = new StatBlock(this,4);
+      mStatBlock->SetName("Player Statblock componenent");
 }
 
 
@@ -143,7 +152,7 @@ void Player::ManageAnimations() {
         mDrawComponent->SetAnimation("run");
 
         std::string t = std::to_string(velocity.x) + " X " + std::to_string(velocity.y);
-        std::cout << t << std::endl;
+        //std::cout << t << std::endl;
     }
     else {
         mDrawComponent->SetAnimation("idle");

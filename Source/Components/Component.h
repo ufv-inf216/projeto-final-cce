@@ -8,6 +8,7 @@
 
 #pragma once
 #include <SDL_stdinc.h>
+#include <string>
 
 class Component
 {
@@ -29,14 +30,18 @@ public:
     void SetEnabled(const bool enabled) { mIsEnabled = enabled; };
     bool IsEnabled() const { return mIsEnabled; };
 
-    void SetDestroy(const bool enabled) { mDestroy = enabled; };
+    void SetDestroy(bool enabled) { mDestroy = enabled; };
     bool GetDestroy() const { return mDestroy; };
+
+    void SetName(std::string n) { mName =n; };
+    std::string GetName() const { return mName; };
 
 protected:
     // Owning actor
     class Actor* mOwner;
     // Update order
     int mUpdateOrder;
+    std::string mName;
 
     bool mIsEnabled;
     bool mDestroy;

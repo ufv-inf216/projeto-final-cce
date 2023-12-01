@@ -11,7 +11,7 @@ class Hitbox : public AABBColliderComponent
 {
     public:
        explicit Hitbox(class Actor* owner, int dx, int dy, int w, int h,ColliderLayer layer, int updateOrder = 20,
-               int dmgx=1,int knockx=1);
+               int dmgx=1,float knockx=400);
 
        ~Hitbox();
        void DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders) override;
@@ -34,6 +34,6 @@ class Hitbox : public AABBColliderComponent
        Overlap GetMinOverlap(AABBColliderComponent* b) const;
 
        int mDmg;
-       int mKnockback;
+       float mKnockback;
        Vector2 mKnockDir;
 };

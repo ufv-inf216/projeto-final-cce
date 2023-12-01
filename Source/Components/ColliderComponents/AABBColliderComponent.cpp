@@ -18,6 +18,7 @@ AABBColliderComponent::AABBColliderComponent(class Actor* owner, int dx, int dy,
 {
         mOwner->GetGame()->AddCollider(this);
         SetStopJump(false);
+        SetDestroy(false);
 }
 
 AABBColliderComponent::~AABBColliderComponent()
@@ -95,6 +96,14 @@ void AABBColliderComponent::ResolveCollisions(RigidBodyComponent *rigidBody, con
 
 void AABBColliderComponent::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders)
 {
+
+    if(GetLayer()!=ColliderLayer::Shoe)
+    {
+        //SDL_Log("Not shoe");
+        return;
+    }
+
+
     // Sort colliders by distance to the player (center-to-center)
     // auto colliders = mOwner->GetGame()->GetColliders();
     std::sort(colliders.begin(), colliders.end(),[this](AABBColliderComponent* a, AABBColliderComponent* b) {

@@ -208,8 +208,9 @@ void Game::UpdateColliders()
 {
     for(auto c: mColliders)
     {
-        if(c->GetDestroy()==true)
+        if(c->GetDestroy())
         {
+
             RemoveCollider(c);
         }
     }
@@ -338,6 +339,7 @@ void Game::RemoveCollider(AABBColliderComponent* collider)
     auto iter = std::find(mColliders.begin(), mColliders.end(), collider);
     if(iter != mColliders.end())
     {
+
         std::iter_swap(iter, mColliders.end() - 1);
         mColliders.pop_back();
     }

@@ -9,4 +9,5 @@ StatBlock::StatBlock(class Actor* owner,int hp, int updateOrder) : Component(own
 
 {
          mMaxHp = mHp = hp;
+         mKnockbackMod = 1.0f;
 }
