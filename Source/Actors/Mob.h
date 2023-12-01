@@ -25,7 +25,7 @@ class Mob: public Actor
         int mHeight;
 
         class RigidBodyComponent* mRigidBodyComponent;
-        class DrawSpriteComponent*  mDrawComponent;
+        class DrawAnimatedComponent*  mDrawComponent;
 
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;

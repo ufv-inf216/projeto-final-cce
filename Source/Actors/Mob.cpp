@@ -18,7 +18,15 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::MobHitBox);
 
 
-    mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder3.png",mWidth,mHeight,1000);
+    mDrawComponent = new DrawAnimatedComponent(this,"../Assets/Sprites/Croc/Croc.png", "../Assets/Sprites/Croc/Croc.json",3);
+    mDrawComponent->AddAnimation("run", {1,2});
+    mDrawComponent->AddAnimation("bite", {1,0});
+
+    mDrawComponent->SetAnimation("run");
+    mDrawComponent->SetAnimFPS(5.0f);
+
+
+
     SetUpdateDrawOrder(true);
     mStatBlock = new StatBlock(this,5);
 
