@@ -66,12 +66,10 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
 
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-        if(is_pacman && mOwner->GetDirection().y < .0f && mIsFlippedVertically) {
-            flip = SDL_FLIP_VERTICAL;
-        }
-        else if (is_pacman && mOwner->GetDirection().x < .0f && mIsFlippedHorizontally) {
+        if (this->mOwner->GetRotation() == 0)
+            flip = SDL_FLIP_NONE;
+        else if (this->mOwner->GetRotation() == Math::Pi)
             flip = SDL_FLIP_HORIZONTAL;
-        }
 
         SDL_RenderCopyEx(renderer, mSpriteSheetSurface, clipRect, &renderQuad, .0f, nullptr, flip);
     }

@@ -76,13 +76,13 @@ void Player::OnProcessInput(const Uint8 *keyState)
     if(keyState[SDL_SCANCODE_D])
     {
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
-        SetRotation(0);
+        mRotation = 0.0f;
     }
 
     if(keyState[SDL_SCANCODE_A])
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
-        SetRotation(Math::Pi);
+        mRotation = Math::Pi;
     }
 
     if(keyState[SDL_SCANCODE_W] && !GetIsJumping())
