@@ -19,6 +19,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 {
 
       mWidth = mHeight = 64;
+      int size=3;
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
 
       mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
@@ -37,7 +38,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 
 
       //mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
-      mDrawComponent = new DrawAnimatedComponent(this, "../Assets/Sprites/Capivaristo/Capivaristo.png", "../Assets/Sprites/Capivaristo/Capivaristo.json");
+      mDrawComponent = new DrawAnimatedComponent(this, "../Assets/Sprites/Capivaristo/Capivaristo.png", "../Assets/Sprites/Capivaristo/Capivaristo.json",size);
       mDrawComponent->AddAnimation("idle", {1,0});
       mDrawComponent->AddAnimation("run", {4,5,6,5});
       mDrawComponent->AddAnimation("jump", {4});
