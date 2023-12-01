@@ -10,7 +10,7 @@
 class DrawAnimatedComponent : public DrawSpriteComponent {
 public:
     // (Lower draw order corresponds with further back)
-    DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder = 100,bool do_flip=false);
+    DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int resize=1, int drawOrder = 100,bool do_flip=false);
     ~DrawAnimatedComponent() override;
 
     void Draw(SDL_Renderer* renderer) override;
@@ -52,4 +52,7 @@ private:
 
     // Whether or not the animation is paused (defaults to false)
     bool mIsPaused = false;
+
+    //Resize
+    int mResize = 1;
 };

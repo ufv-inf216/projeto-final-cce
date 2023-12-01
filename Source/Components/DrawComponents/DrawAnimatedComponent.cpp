@@ -8,12 +8,13 @@
 #include "../../Json.h"
 #include <fstream>
 
-DrawAnimatedComponent::DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int drawOrder,bool do_flip)
+DrawAnimatedComponent::DrawAnimatedComponent(class Actor* owner, const std::string &spriteSheetPath, const std::string &spriteSheetData, int resize, int drawOrder,bool do_flip)
         :DrawSpriteComponent(owner, spriteSheetPath, 0, 0, drawOrder)
 {
 
     is_pacman=do_flip;
     LoadSpriteSheet(spriteSheetPath, spriteSheetData);
+    mResize = resize;
 }
 
 DrawAnimatedComponent::~DrawAnimatedComponent()
@@ -51,8 +52,6 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
 {
     int spriteIdx = mAnimations[mAnimName][(int)mAnimTimer];
 
-    int resize = 3;
-
     // Is the texture in the map?
     if(spriteIdx < mSpriteSheetData.size())
     {
@@ -60,10 +59,10 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
         Vector2 cameraPos = mOwner->GetGame()->GetCameraPos();
 
         SDL_Rect *clipRect = mSpriteSheetData[spriteIdx];
-        SDL_Rect renderQuad = {static_cast<int>(pos.x - clipRect->w*resize/2.0f - cameraPos.x),
-                               static_cast<int>(pos.y - clipRect->h*resize/2.0f - cameraPos.y),
-                               clipRect->w*resize,
-                               clipRect->h*resize};
+        SDL_Rect renderQuad = {static_cast<int>(pos.x - clipRect->w*mResize/2.0f - cameraPos.x),
+                               static_cast<int>(pos.y - clipRect->h*mResize/2.0f - cameraPos.y),
+                               clipRect->w * mResize,
+                               clipRect->h * mResize};
 
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
