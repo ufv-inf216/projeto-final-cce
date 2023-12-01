@@ -23,12 +23,15 @@ class Mob: public Actor
         float mForwardSpeed;
         int mWidth;
         int mHeight;
+
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawSpriteComponent*  mDrawComponent;
+
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;
+
         class StatBlock* mStatBlock;
 
-
+        class DrawPolygonComponent* mDrawPolygonComponent;
 
 };

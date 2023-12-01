@@ -5,6 +5,7 @@
 #include "../Game.h"
 #include "../Components/DrawComponents/DrawAnimatedComponent.h"
 #include "../Components/StatBlock.h"
+#include "../Components/DrawComponents/DrawPolygonComponent.h"
 
 
 Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
@@ -23,6 +24,14 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
 
     mShoeCollider->SetName("Mob Shoe collider");
     mColliderComponent->SetName("Mob Hitbox collider");
+
+    std::vector<Vector2> verts;
+    Vector2 min = mShoeCollider->GetMin(); Vector2 max = mShoeCollider->GetMax();
+    verts.emplace_back(min);
+    verts.emplace_back(max.x , min.y);
+    verts.emplace_back(max);
+    verts.emplace_back(min.x, max.y);
+    mDrawPolygonComponent = new DrawPolygonComponent(this, verts);
 
 }
 

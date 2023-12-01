@@ -18,20 +18,29 @@
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
-      mWidth = mHeight = 64;
-      int size=3;
+      int size = 3;
+
+      mWidth = mHeight = 32*size;
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
 
-      mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
+      mShoeCollider = new AABBColliderComponent(this,-5,mHeight/3,mWidth/3 + 10,mHeight/4,ColliderLayer::Shoe);
       mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Wall);
       //mColliderComponent->SetEnabled(false);
 
       //mShoeCollider->SetEnabled(false);
       mShoeCollider->SetEnabled(true);
-      //std::cout << ((mShoeCollider->GetLayer()==ColliderLayer::Shoe)? "True":"False") << std::endl;
       mShoeCollider->SetName("Player Shoe collider");
+
       mColliderComponent->SetName("Player Hitbox collider");
       mRigidBodyComponent->SetName("Player Rigid body");
+
+    std::vector<Vector2> verts;
+    Vector2 min = mShoeCollider->GetMin(); Vector2 max = mShoeCollider->GetMax();
+    verts.emplace_back(min);
+    verts.emplace_back(max.x , min.y);
+    verts.emplace_back(max);
+    verts.emplace_back(min.x, max.y);
+    mDrawPolygonComponent = new DrawPolygonComponent(this, verts);
 
 
 

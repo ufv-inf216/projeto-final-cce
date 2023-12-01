@@ -27,13 +27,20 @@ class Player: public  Actor
         int mPunchCooldown;
         bool mIsRunning;
         //bool mIs_jumping;
+
         float mOgY;
         float mJumpSpeed;
+
         class Hitbox* mPunch;
+
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawAnimatedComponent*  mDrawComponent;
+
         class AABBColliderComponent* mColliderComponent;
         class AABBColliderComponent* mShoeCollider;
+
         class StatBlock* mStatBlock;
+
+        class DrawPolygonComponent* mDrawPolygonComponent;
 
 };
