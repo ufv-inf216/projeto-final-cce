@@ -34,6 +34,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mColliderComponent->SetName("Player Hitbox collider");
       mRigidBodyComponent->SetName("Player Rigid body");
 
+
     std::vector<Vector2> verts;
     Vector2 min = mShoeCollider->GetMin(); Vector2 max = mShoeCollider->GetMax();
     verts.emplace_back(min);
@@ -41,9 +42,6 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
     verts.emplace_back(max);
     verts.emplace_back(min.x, max.y);
     mDrawPolygonComponent = new DrawPolygonComponent(this, verts);
-
-
-
 
 
       //mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
@@ -59,11 +57,12 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 
 
       SetUpdateDrawOrder(true);
-      mPunch= nullptr;
+      mPunch = nullptr;
       mJumpSpeed = -750.0f;
       SetIsJumping(false);
 
-      mPunchCooldown=0;
+      mPunchCooldown = 0.0f;
+      mIsAttacking = false;
       mStatBlock = new StatBlock(this,4);
       mStatBlock->SetName("Player Statblock componenent");
 }
@@ -96,8 +95,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
     // Punch
-
-    if(keyState[SDL_SCANCODE_P] &&mPunchCooldown<=0)
+    if(keyState[SDL_SCANCODE_P] && !mIsAttacking)
     {
          SDL_Log("punch");
          mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
@@ -105,7 +103,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
          mPunch->SetDestroy(true);
-         mPunchCooldown=Punch_cooldown;
+         mIsAttacking = true;
     }
 
     if(keyState[SDL_SCANCODE_SPACE] && !GetIsJumping())
@@ -114,8 +112,6 @@ void Player::OnProcessInput(const Uint8 *keyState)
         SetIsJumping(true);
         mOgY=GetPosition().y;
         mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,mJumpSpeed));
-
-
     }
 
 
@@ -134,9 +130,14 @@ void Player::OnUpdate(float deltaTime)
         mGame->SetResort(true);
     }
 
-    if(mPunchCooldown > 0) mPunchCooldown--;
-
-    //if(mPunchCooldown<=0){std::cout << "can punch" << std::endl;}
+    //Verificacao de ataque
+    if(mIsAttacking) {
+        mPunchCooldown += deltaTime;
+        if(mPunchCooldown >= .5f) {
+            mIsAttacking = false;
+            mPunchCooldown = 0.0f;
+        }
+    }
 
     if( GetIsJumping() && GetPosition().y >= mOgY)
     {
@@ -150,22 +151,26 @@ void Player::OnUpdate(float deltaTime)
         Kill();
     }
 
-
     //Animacao
     ManageAnimations();
+
 }
 
 void Player::ManageAnimations() {
     Vector2 velocity = mRigidBodyComponent->GetVelocity();
 
-    if ( !Math::NearZero(velocity.x, 15) || !Math::NearZero(velocity.y, 15)) {
-        mDrawComponent->SetAnimation("run");
-
-        std::string t = std::to_string(velocity.x) + " X " + std::to_string(velocity.y);
-        //std::cout << t << std::endl;
+    if (mIsAttacking) {
+        mDrawComponent->SetAnimation("punch");
+        mDrawComponent->SetAnimFPS(3.f);
     }
     else {
-        mDrawComponent->SetAnimation("idle");
+        mDrawComponent->SetAnimFPS(4.f);
+        if ( !Math::NearZero(velocity.x, 15) || !Math::NearZero(velocity.y, 15)) {
+            mDrawComponent->SetAnimation("run");
+        }
+        else {
+            mDrawComponent->SetAnimation("idle");
+        }
     }
 }
 

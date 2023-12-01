@@ -24,7 +24,10 @@ class Player: public  Actor
         float mForwardSpeed;
         int mWidth;
         int mHeight;
-        int mPunchCooldown;
+
+        float mPunchCooldown;
+        bool mIsAttacking;
+
         bool mIsRunning;
         //bool mIs_jumping;
 
