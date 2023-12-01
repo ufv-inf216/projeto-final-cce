@@ -18,12 +18,14 @@ class Player: public  Actor
     private:
 
         void ProcessMov();
+        void ManageAnimations();
         const int Punch_cooldown =20;
 
         float mForwardSpeed;
         int mWidth;
         int mHeight;
         int mPunchCooldown;
+        bool mIsRunning;
         //bool mIs_jumping;
         float mOgY;
         float mJumpSpeed;

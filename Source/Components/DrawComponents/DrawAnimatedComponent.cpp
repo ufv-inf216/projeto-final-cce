@@ -51,6 +51,8 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
 {
     int spriteIdx = mAnimations[mAnimName][(int)mAnimTimer];
 
+    int resize = 3;
+
     // Is the texture in the map?
     if(spriteIdx < mSpriteSheetData.size())
     {
@@ -58,10 +60,10 @@ void DrawAnimatedComponent::Draw(SDL_Renderer *renderer)
         Vector2 cameraPos = mOwner->GetGame()->GetCameraPos();
 
         SDL_Rect *clipRect = mSpriteSheetData[spriteIdx];
-        SDL_Rect renderQuad = {static_cast<int>(pos.x - clipRect->w/2.0f - cameraPos.x),
-                               static_cast<int>(pos.y - clipRect->h/2.0f - cameraPos.y),
-                               clipRect->w,
-                               clipRect->h};
+        SDL_Rect renderQuad = {static_cast<int>(pos.x - clipRect->w*resize/2.0f - cameraPos.x),
+                               static_cast<int>(pos.y - clipRect->h*resize/2.0f - cameraPos.y),
+                               clipRect->w*resize,
+                               clipRect->h*resize};
 
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 

@@ -60,19 +60,18 @@ void Player::OnProcessInput(const Uint8 *keyState)
         SetRotation(0);
     }
 
-    
     if(keyState[SDL_SCANCODE_A])
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
         SetRotation(Math::Pi);
     }
 
-    if(keyState[SDL_SCANCODE_W]&&GetIsJumping()==false)
+    if(keyState[SDL_SCANCODE_W] && !GetIsJumping())
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
     }
 
-    if(keyState[SDL_SCANCODE_S]&&GetIsJumping()==false)
+    if(keyState[SDL_SCANCODE_S] && !GetIsJumping())
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,mForwardSpeed));
     }
@@ -90,7 +89,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunchCooldown=Punch_cooldown;
     }
 
-    if(keyState[SDL_SCANCODE_SPACE]&&GetIsJumping()==false)
+    if(keyState[SDL_SCANCODE_SPACE] && !GetIsJumping())
     {
         //SDL_Log("jump");
         SetIsJumping(true);
@@ -109,18 +108,18 @@ void Player::OnUpdate(float deltaTime)
     ProcessMov();
 
     //Ordem de desenhar
-    if(GetUpdateDrawOrder() && GetIsJumping()==false)
+    if(GetUpdateDrawOrder() && !GetIsJumping())
     {
         SetUpdateDrawOrder(false);
         mDrawComponent->SetDrawOrder((int)GetPosition().y);
         mGame->SetResort(true);
     }
 
-    if(mPunchCooldown>0){ mPunchCooldown--;}
+    if(mPunchCooldown > 0) mPunchCooldown--;
 
     //if(mPunchCooldown<=0){std::cout << "can punch" << std::endl;}
 
-    if(  GetIsJumping()==true&&GetPosition().y>=mOgY)
+    if( GetIsJumping() && GetPosition().y >= mOgY)
     {
         SetIsJumping(false);
         mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,0));
@@ -130,6 +129,24 @@ void Player::OnUpdate(float deltaTime)
     if(GetShouldDie())
     {
         Kill();
+    }
+
+
+    //Animacao
+    ManageAnimations();
+}
+
+void Player::ManageAnimations() {
+    Vector2 velocity = mRigidBodyComponent->GetVelocity();
+
+    if ( !Math::NearZero(velocity.x, 15) || !Math::NearZero(velocity.y, 15)) {
+        mDrawComponent->SetAnimation("run");
+
+        std::string t = std::to_string(velocity.x) + " X " + std::to_string(velocity.y);
+        std::cout << t << std::endl;
+    }
+    else {
+        mDrawComponent->SetAnimation("idle");
     }
 }
 
@@ -160,7 +177,7 @@ void Player::ProcessMov() {
     posCorrect.x = pos.x; posCorrect.y = pos.y;
     float upper_bound = mGame->GetFloorHeight();
 
-    if(GetIsJumping()==true)
+    if(GetIsJumping())
     {
         upper_bound=mHeight;
     }
