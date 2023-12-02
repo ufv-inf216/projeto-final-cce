@@ -6,7 +6,7 @@
 #include "FSMState.h"
 #include <iostream>
 
-FSMComponent::FSMComponent(struct Actor *owner, int updateOrder)
+FSMComponent::FSMComponent(class Actor *owner, int updateOrder)
     : Component(owner, updateOrder)
     ,mStateTime(.0f)
     ,mIsRunning(false)

@@ -56,6 +56,8 @@ public:
     bool GetIsJumping() const {return  mIs_jumping;}
     void SetIsJumping(bool b ) {mIs_jumping=b;}
 
+    virtual void Move(Vector2 mv);
+
     // Game getter
     class Game* GetGame() { return mGame; }
 

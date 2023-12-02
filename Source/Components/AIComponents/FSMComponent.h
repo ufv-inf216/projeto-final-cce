@@ -12,7 +12,7 @@
 class FSMComponent : public Component
 {
 public:
-    explicit FSMComponent(struct Actor *owner, int updateOrder = 50);
+    explicit FSMComponent(class Actor *owner, int updateOrder = 50);
     ~FSMComponent();
 
     void Start(const std::string &startState);

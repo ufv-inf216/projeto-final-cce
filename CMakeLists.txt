@@ -40,6 +40,10 @@ add_executable(${PROJECT_NAME}
         Source/Components/ColliderComponents/Hitbox.cpp
         Source/Components/StatBlock.h
         Source/Components/StatBlock.cpp
+        Source/Components/AIComponents/CrocChase.h
+        Source/Components/AIComponents/CrocChase.cpp
+        Source/Components/AIComponents/CrocWait.h
+        Source/Components/AIComponents/CrocWait.cpp
 )
 
 ####### DO NOT EDIT BELLOW

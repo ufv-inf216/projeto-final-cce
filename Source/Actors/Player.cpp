@@ -24,7 +24,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
 
       mShoeCollider = new AABBColliderComponent(this,-5,mHeight/3,mWidth/3 + 10,mHeight/4,ColliderLayer::Shoe);
-      mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::Wall);
+      mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::MobHitBox);
       //mColliderComponent->SetEnabled(false);
 
       //mShoeCollider->SetEnabled(false);
@@ -65,6 +65,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mIsAttacking = false;
       mStatBlock = new StatBlock(this,4);
       mStatBlock->SetName("Player Statblock componenent");
+      SetShouldDie(false);
 }
 
 
@@ -84,7 +85,9 @@ void Player::OnProcessInput(const Uint8 *keyState)
         mRotation = Math::Pi;
     }
 
-    if(keyState[SDL_SCANCODE_W] && !GetIsJumping())
+
+
+    if(keyState[SDL_SCANCODE_W]  && !GetIsJumping() )
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
     }
@@ -99,6 +102,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
          SDL_Log("punch");
          mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
+         mPunch->SetKnockback(2000);
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
@@ -188,7 +192,8 @@ void Player::TakeDamage(int d)
     mStatBlock->TakeDmg(d);
     if(mStatBlock->Is_dead())
     {
-        SetShouldDie(true);
+        SDL_Log("Player will die");
+        //SetShouldDie(true);
     }
 }
 

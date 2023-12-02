@@ -23,6 +23,7 @@ Actor::Actor(Game* game)
     mGame->AddActor(this);
     mShouldDie=false;
     SetIsJumping(false);
+
 }
 
 Actor::~Actor()
@@ -122,7 +123,10 @@ void Actor::TakeDamage(int d) {
 }
 
 void Actor::Kill() {
+    SDL_Log("Actor will die");
     SetState(ActorState::Destroy);
 }
+
+void Actor::Move(Vector2 mv) {}
 
 std::string Actor::GetName() {return  "Generic actor";}

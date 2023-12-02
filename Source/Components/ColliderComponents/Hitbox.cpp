@@ -25,6 +25,7 @@ Hitbox::Hitbox(class Actor *owner, int dx, int dy, int w, int h, ColliderLayer l
 Hitbox::~Hitbox()
 {
 
+
     /*mOwner->GetGame()->RemoveCollider(this);
     mOwner->RemoveComponent(this);*/
 }
@@ -52,6 +53,7 @@ AABBColliderComponent::Overlap Hitbox::GetMinOverlap(AABBColliderComponent* b) c
 
 void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AABBColliderComponent*>& colliders)
 {
+
 
     //std::cout << GetOffset().x << " , " << GetOffset().y << std::endl;
     // Sort colliders by distance to the player (center-to-center)

@@ -11,6 +11,9 @@
 #include <vector>
 #include "Math.h"
 #include <string>
+#include "Actors/Player.h"
+#include "stack"
+//#include "Actors/Mob.h"
 
 class Game
 {
@@ -63,7 +66,12 @@ public:
     std::vector<class AABBColliderComponent*>& GetColliders() { return mColliders; }
 
     float GetFloorHeight() const { return mFloorHeight; }
-    void SetFloorHeight(float f) {mFloorHeight=f;};
+    void SetFloorHeight(float f) {mFloorHeight=f;}
+
+    bool Add_to_AtkStack(class Mob* m);
+    void Remove_from_AtkStack(class Mob* m);
+
+    class Player* GetPlayer(){return  mPlayer;}
 
     //class PathNode* GetGhostPen() { return mGhostPen; }
 
@@ -92,6 +100,7 @@ private:
     // All the draw components
     std::vector<class DrawComponent*> mDrawables;
     std::vector<class AABBColliderComponent*> mColliders;
+    std::vector<class Mob*> mAtkStack;
 
     // SDL stuff
     SDL_Window* mWindow;

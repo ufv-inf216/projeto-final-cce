@@ -6,6 +6,8 @@
 #include "../Components/DrawComponents/DrawAnimatedComponent.h"
 #include "../Components/StatBlock.h"
 #include "../Components/DrawComponents/DrawPolygonComponent.h"
+#include "../Components/AIComponents/CrocChase.h"
+#include "../Components/AIComponents/CrocWait.h"
 
 
 Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
@@ -40,6 +42,18 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     verts.emplace_back(max);
     verts.emplace_back(min.x, max.y);
     mDrawPolygonComponent = new DrawPolygonComponent(this, verts);
+
+    mAtkRange=mHeight;
+
+    mCrocAi= new FSMComponent(this);
+    new CrocChase(this,mCrocAi,"Chase",(float)mWidth,(float)mHeight,mForwardSpeed);
+    new CrocWait(this,mCrocAi,"Wait",mForwardSpeed);
+
+    mCrocAi->Start("start");
+    mCrocAi->SetState("Chase");
+    SetDoAtk(false);
+
+
 
 }
 
@@ -96,6 +110,22 @@ void Mob::TakeDamage(int d)
     mStatBlock->TakeDmg(d);
     if(mStatBlock->Is_dead())
     {
+
+        SDL_Log("mob will die");
         SetShouldDie(true);
+        mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
     }
+}
+
+void Mob::Move(Vector2 mv) {
+
+    /*if(GetRotation() == Math::Pi && mv.x > 0.0f)
+    {
+        SetRotation(0);
+    }
+    else if(GetRotation() ==0 && mv.x < 0.0f)
+    {
+        SetRotation(Math::Pi);
+    }*/
+    mRigidBodyComponent->ApplyForce(mv);
 }

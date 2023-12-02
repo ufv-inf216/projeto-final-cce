@@ -9,13 +9,21 @@
 
 #include "Actor.h"
 
+
 class Mob: public Actor
 {
     public:
         explicit  Mob(Game* game,float forwardSpeed = 2500.0f);
         void OnUpdate(float deltaTime) override;
-        virtual void TakeDamage(int d);
+        virtual void TakeDamage(int d) override;
         std::string GetName() override;
+        void Move(Vector2 mv) override;
+
+        float GetFowardSpeed() const {return  mForwardSpeed;}
+
+        bool GetDoAtk() const {return mDoAtk;}
+        void SetDoAtk(bool b) {mDoAtk=b;}
+
 
 
 
@@ -23,6 +31,8 @@ class Mob: public Actor
         float mForwardSpeed;
         int mWidth;
         int mHeight;
+        int mAtkRange;
+        bool mDoAtk;
 
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawAnimatedComponent*  mDrawComponent;
@@ -31,6 +41,8 @@ class Mob: public Actor
         class AABBColliderComponent* mShoeCollider;
 
         class StatBlock* mStatBlock;
+
+        class FSMComponent* mCrocAi;
 
         class DrawPolygonComponent* mDrawPolygonComponent;
 

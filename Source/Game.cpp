@@ -13,12 +13,14 @@
 #include "SDL_image.h"
 #include "Random.h"
 #include "Game.h"
+
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
+#include "Actors/Mob.h"
 #include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
-#include "Actors/Mob.h"
+
 
 
 Game::Game(int windowWidth, int windowHeight)
@@ -285,11 +287,32 @@ void Game::AddActor(Actor* actor)
     mResortSprites = true;
 }
 
+bool Game::Add_to_AtkStack(Mob* m)
+{
+    if(mAtkStack.empty())
+    {
+        mAtkStack.emplace_back(m);
+        SDL_Log("Mob will attack");
+        m->SetDoAtk(true);
+        return  true;
+    }
+    return  false;
+}
 
+void Game::Remove_from_AtkStack(class Mob *m)
+{
+    auto iter = std::find(mAtkStack.begin(), mAtkStack.end(), m);
+    if (iter != mAtkStack.end())
+    {
+        std::iter_swap(iter,mAtkStack.end()-1);
+        mAtkStack.pop_back();
+    }
+}
 
 void Game::RemoveActor(Actor* actor)
 {
 
+    //SDL_Log("Actor will be removed");
     auto iter = std::find(mPendingActors.begin(), mPendingActors.end(), actor);
     if (iter != mPendingActors.end())
     {

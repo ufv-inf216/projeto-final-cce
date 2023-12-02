@@ -22,4 +22,5 @@ public:
 protected:
     class FSMComponent *mFSM;
     std::string mName;
+
 };
