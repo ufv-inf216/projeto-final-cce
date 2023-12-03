@@ -2,10 +2,7 @@
 // Created by Campo on 29/11/2023.
 //
 
-#ifndef T1_CCE_STATBLOCK_H
-#define T1_CCE_STATBLOCK_H
-
-#endif //T1_CCE_STATBLOCK_H
+#pragma once
 
 #include "Component.h"
 

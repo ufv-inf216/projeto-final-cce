@@ -2,10 +2,7 @@
 // Created by Campo on 01/12/2023.
 //
 
-#ifndef T1_CCE_CROCWAIT_H
-#define T1_CCE_CROCWAIT_H
-
-#endif //T1_CCE_CROCWAIT_H
+#pragma once
 
 #include "FSMComponent.h"
 #include <string>

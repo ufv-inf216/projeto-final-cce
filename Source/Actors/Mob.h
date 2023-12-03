@@ -2,10 +2,7 @@
 // Created by Campo on 24/11/2023.
 //
 
-#ifndef T1_CCE_MOB_H
-#define T1_CCE_MOB_H
-
-#endif //T1_CCE_MOB_H
+#pragma once
 
 #include "Actor.h"
 

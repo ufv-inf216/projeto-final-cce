@@ -23,16 +23,16 @@ CrocChase::CrocChase(class Mob* m,FSMComponent* fsm,const std::string &name, flo
 void CrocChase::Update(float deltaTime)
 {
 
-     Change_rotation();
-     if(!Is_in_atk_range())
+     ChangeRotation();
+     if(!IsInRange())
      {
          //SDL_Log("Get in range");
-         Move_to_range();
+         MoveToRange();
      }
 
 }
 
-void CrocChase::Change_rotation()
+void CrocChase::ChangeRotation()
 {
     auto mOwner = mFSM->GetOwner();
     auto tg = mOwner->GetGame()->GetPlayer();
@@ -46,7 +46,7 @@ void CrocChase::Change_rotation()
     }
 }
 
-bool CrocChase::Is_in_atk_range()
+bool CrocChase::IsInRange()
 {
     auto mOwner = mFSM->GetOwner();
     auto pl =mOwner->GetGame()->GetPlayer();
@@ -78,7 +78,7 @@ bool CrocChase::Is_in_atk_range()
 
 }
 
-void CrocChase::Move_to_range()
+void CrocChase::MoveToRange()
 {
     auto mOwner = mFSM->GetOwner();
     auto tg = mOwner->GetGame()->GetPlayer()->GetPosition();
@@ -110,7 +110,7 @@ void CrocChase::Move_to_range()
 void CrocChase::HandleStateTransition(float stateTime)
 {
     auto mOwner = mFSM->GetOwner();
-    if(Is_in_atk_range())
+    if(IsInRange())
     {
 
         if(mMob->GetDoAtk())
