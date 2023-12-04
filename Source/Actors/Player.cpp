@@ -201,14 +201,13 @@ std::string Player::GetName() {return  "Player";}
 
 void Player::ProcessMov() {
     //mRigidBodyComponent->SetVelocity(Vector2::Zero);
-    auto pos = GetPosition();
-    auto posCorrect = Vector2::Zero;
-    posCorrect.x = pos.x; posCorrect.y = pos.y;
+    auto pos = mShoeCollider->GetCenter();
+    auto posCorrect = GetPosition();
     float upper_bound = mGame->GetFloorHeight();
 
     if(GetIsJumping())
     {
-        upper_bound=mHeight;
+        upper_bound = mHeight;
     }
 
     //Descer
@@ -216,14 +215,14 @@ void Player::ProcessMov() {
     {
         //SDL_Log("don't go bellow");
         //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
-        posCorrect.y = (float)mGame->GetWindowHeight()- ((float)mHeight/2);
+        posCorrect.y = (float)mGame->GetWindowHeight() - ((float)mHeight/2);
     }
 
     //Subir
     if(pos.y <  upper_bound)
     {
         //SetPosition(Vector2(pos.x,mGame->get_floor_height()));
-        posCorrect.y = mGame->GetFloorHeight();
+        posCorrect.y = mGame->GetFloorHeight() - abs(posCorrect.y - pos.y);
     }
 
     //Não pode voltar

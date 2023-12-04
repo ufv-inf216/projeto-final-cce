@@ -78,20 +78,27 @@ bool Game::Initialize()
 void Game::InitializeActors()
 {
     // Background
-    float floorHeight  = (float)mWindowHeight*4.5/10;
-    auto background = new Actor(this);
 
+    float floorHeight  = (float)mWindowHeight*4.5/10;
     float drawFloorHeight = floorHeight + 320;
 
+
+    //Wall
+    auto wall = new Actor(this);
+    wall->SetPosition(Vector2(1000, floorHeight/2 + 3));
+    new DrawSpriteComponent(wall, "../Assets/Sprites/Bg/wall-bg.png", 2000, floorHeight, 0);
+
+    //Floor
+    auto background = new Actor(this);
     background->SetPosition(Vector2(0.0f,  drawFloorHeight));
-    new DrawSpriteComponent(background, "../Assets/teste-floor.png", 640, 640,0);
+    new DrawSpriteComponent(background, "../Assets/Sprites/Bg/teste-floor.png", 640, 640,0);
 
 
     for(int a=1;a<=10;a++)
     {
         auto* background2 = new Actor(this);
         background2->SetPosition(Vector2(606.0f*(float)a, drawFloorHeight ));
-        new DrawSpriteComponent(background2, "../Assets/teste-floor.png", 640, 640,1);
+        new DrawSpriteComponent(background2, "../Assets/Sprites/Bg/teste-floor.png", 640, 640,1);
     }
     
     SetFloorHeight(floorHeight);
