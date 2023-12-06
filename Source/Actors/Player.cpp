@@ -101,12 +101,18 @@ void Player::OnProcessInput(const Uint8 *keyState)
     if(keyState[SDL_SCANCODE_P] && !mIsAttacking)
     {
          SDL_Log("punch");
-         mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
+         int inv = 1;
+         if (mRotation == Math::Pi) {
+             inv = -1;
+         }
+
+         mPunch = new Hitbox(this,mWidth/2*-1,0,mWidth/2,mHeight/2,ColliderLayer::AttackHitBox);
          mPunch->SetKnockback(4000);
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
          mPunch->SetDestroy(true);
+
          mIsAttacking = true;
 
     }
@@ -212,11 +218,11 @@ void Player::ProcessMov() {
     }
 
     //Descer
-    if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
+    if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/6))
     {
         //SDL_Log("don't go bellow");
         //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
-        posCorrect.y = (float)mGame->GetWindowHeight() - ((float)mHeight/2) - abs(posCorrect.y - pos.y);
+        posCorrect.y = (float)mGame->GetWindowHeight() - ((float)mHeight/6) - abs(posCorrect.y - pos.y);
     }
 
     //Subir
@@ -227,10 +233,10 @@ void Player::ProcessMov() {
     }
 
     //Não pode voltar
-    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
+    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/5))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
-        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2) + abs(posCorrect.x - pos.x);
+        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/5) + abs(posCorrect.x - pos.x);
     }
 
     //Camera começa andar
