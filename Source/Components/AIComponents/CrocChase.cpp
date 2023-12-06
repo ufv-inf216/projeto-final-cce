@@ -116,8 +116,11 @@ void CrocChase::HandleStateTransition(float stateTime)
         if(mMob->GetDoAtk())
         {
 
-            int x_flip = 1;
+
             mMob->SetDoAtk(false);
+            mMob->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2::Zero);
+            mMob->BeginBite();
+            /*int x_flip = 1;
             mOwner->GetGame()->Remove_from_AtkStack(mMob);
             float dx = mAtkWidth*1;
             if(mOwner->GetRotation()==Math::Pi)
@@ -130,11 +133,19 @@ void CrocChase::HandleStateTransition(float stateTime)
             mHitbox->DetectCollision(mOwner->GetComponent<RigidBodyComponent>(),mOwner->GetGame()->GetColliders());
             mHitbox->SetDestroy(true);
             mHitbox->SetEnabled(false);
-            mMob->RemoveComponent(mHitbox);
+            mMob->RemoveComponent(mHitbox);*/
 
 
 
         }
+
+    }
+
+    if(mMob->GetDoAtk()== false && IsInRange())
+    {
         mFSM->SetState("Wait");
     }
+
+
+
 }

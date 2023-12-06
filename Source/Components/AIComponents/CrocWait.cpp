@@ -19,7 +19,7 @@ CrocWait::CrocWait(Mob* m,FSMComponent *fsm, const std::string &name, float spd,
 void CrocWait::Start()
 {
     auto mOwner = mFSM->GetOwner();
-    if(mOwner->GetPosition().y < mOwner->GetGame()->GetWindowHeight()/2)
+    if(mOwner->GetPosition().y < (float)mOwner->GetGame()->GetWindowHeight()/2)
     {
         mDir=1;
     }
@@ -31,7 +31,7 @@ void CrocWait::Start()
 
 void CrocWait::HandleStateTransition(float stateTime)
 {
-    mFSM->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2::Zero);
+    //mFSM->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2::Zero);
     if(stateTime>=6.0f)
     {
         mFSM->SetState("Chase");
@@ -42,12 +42,12 @@ void CrocWait::Update(float deltaTime)
 {
     auto mOwner = mFSM->GetOwner();
     CrocWait::Shuffle();
-    int tg = 30;
+    int tg = 10;
     auto roll = Random::GetIntRange(1,100);
 
     if(mOwner->GetGame()->GetPlayer()->GetRotation() == mOwner->GetRotation())
     {
-        tg -= 20;
+        tg -= 5;
     }
 
     if(roll <= tg)

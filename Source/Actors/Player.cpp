@@ -102,7 +102,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
          SDL_Log("punch");
          mPunch = new Hitbox(this,mWidth*2,1,mWidth,mHeight,ColliderLayer::AttackHitBox);
-         mPunch->SetKnockback(2000);
+         mPunch->SetKnockback(4000);
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);

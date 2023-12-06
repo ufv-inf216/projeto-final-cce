@@ -16,10 +16,14 @@ class Mob: public Actor
         std::string GetName() override;
         void Move(Vector2 mv) override;
 
+
         float GetFowardSpeed() const {return  mForwardSpeed;}
 
         bool GetDoAtk() const {return mDoAtk;}
         void SetDoAtk(bool b) {mDoAtk=b;}
+
+        void BeginBite();
+
 
 
 
@@ -30,6 +34,14 @@ class Mob: public Actor
         int mHeight;
         int mAtkRange;
         bool mDoAtk;
+        void ManageAnimations();
+        float mBiteCooldown;
+        bool  mIsBiting;
+
+        void DoBite();
+
+
+
 
         class RigidBodyComponent* mRigidBodyComponent;
         class DrawAnimatedComponent*  mDrawComponent;
@@ -40,6 +52,7 @@ class Mob: public Actor
         class StatBlock* mStatBlock;
 
         class FSMComponent* mCrocAi;
+
 
         class DrawPolygonComponent* mDrawPolygonComponent;
 
