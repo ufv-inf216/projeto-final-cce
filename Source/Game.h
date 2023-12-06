@@ -88,7 +88,7 @@ private:
     void UpdateState(float deltaTime);
 
     // Load data
-
+    void LoadLevel(const std::string& levelPath);
 
     // AI stuff
 

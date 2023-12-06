@@ -108,6 +108,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->SetEnabled(false);
          mPunch->SetDestroy(true);
          mIsAttacking = true;
+
     }
 
     if(keyState[SDL_SCANCODE_SPACE] && !GetIsJumping())

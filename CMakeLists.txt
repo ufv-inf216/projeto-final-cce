@@ -48,6 +48,8 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Floor.h
         Source/Actors/Wall.cpp
         Source/Actors/Wall.h
+        Source/Actors/WallDetail.cpp
+        Source/Actors/WallDetail.h
 )
 
 ####### DO NOT EDIT BELLOW

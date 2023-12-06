@@ -19,6 +19,7 @@
 #include "Actors/Mob.h"
 #include "Actors/Floor.h"
 #include "Actors/Wall.h"
+#include "Actors/WallDetail.h"
 #include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
@@ -80,21 +81,9 @@ bool Game::Initialize()
 void Game::InitializeActors()
 {
     // Background
+    LoadLevel("../Assets/Levels/Level0.txt");
 
-    float floorHeight  = (float)mWindowHeight*4.5/10;
-    float drawFloorHeight = floorHeight + 320;
-
-
-    //Wall
-    new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", 0, floorHeight);
-
-    //Floor
-    for (int n = 0;n<10;n++) {
-        new Floor(this, "../Assets/Sprites/Bg/teste-floor.png", n, drawFloorHeight);
-    }
-    
-    SetFloorHeight(floorHeight);
-
+    float floorHeight = GetFloorHeight();
 
     // Player
     mPlayer = new Player(this);
@@ -114,6 +103,43 @@ void Game::InitializeActors()
     croc->SetPosition(Vector2(1200.0f, floorHeight+100.f));
 
     SetGameState(State::Intro);
+}
+
+void Game::LoadLevel(const std::string &levelPath) {
+
+
+    float floorHeight  = (float)mWindowHeight*4.5/10;
+    SetFloorHeight(floorHeight);
+
+    std::fstream level;
+    level.open(levelPath);
+    std::string row;
+
+    std::string texPath = "../Assets/Sprites/Bg/";
+
+    //Tamanho do mapa
+    std::getline(level, row);
+    int nFloors = std::stoi(row);
+    //Floors
+    for (int n=0;n<nFloors;n++)
+        new Floor(this, "../Assets/Sprites/Bg/floor.png", n, floorHeight);
+
+    //Wall
+    int nWalls = nFloors * 640 / floorHeight*4;
+    if (nWalls < 1) nWalls = 1;
+    for (int n=0;n<nFloors;n++)
+        new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", n, floorHeight);
+
+
+    //Portas e portoes
+    std::getline(level, row);
+    for (int n=0;n<nFloors;n++) {
+        if (row[n] != '.')
+            new WallDetail(this, texPath, row[n], n, floorHeight);
+    }
+
+
+
 }
 
 void Game::SetGameState(State gameState) {
