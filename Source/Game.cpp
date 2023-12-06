@@ -17,6 +17,8 @@
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
 #include "Actors/Mob.h"
+#include "Actors/Floor.h"
+#include "Actors/Wall.h"
 #include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
@@ -84,29 +86,14 @@ void Game::InitializeActors()
 
 
     //Wall
-    auto wall = new Actor(this);
-    wall->SetPosition(Vector2(1000, floorHeight/2 + 3));
-    new DrawSpriteComponent(wall, "../Assets/Sprites/Bg/wall-bg.png", 2000, floorHeight, 0);
+    new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", 0, floorHeight);
 
     //Floor
-    auto background = new Actor(this);
-    background->SetPosition(Vector2(0.0f,  drawFloorHeight));
-    new DrawSpriteComponent(background, "../Assets/Sprites/Bg/teste-floor.png", 640, 640,0);
-
-
-    for(int a=1;a<=10;a++)
-    {
-        auto* background2 = new Actor(this);
-        background2->SetPosition(Vector2(606.0f*(float)a, drawFloorHeight ));
-        new DrawSpriteComponent(background2, "../Assets/Sprites/Bg/teste-floor.png", 640, 640,1);
+    for (int n = 0;n<10;n++) {
+        new Floor(this, "../Assets/Sprites/Bg/teste-floor.png", n, drawFloorHeight);
     }
     
     SetFloorHeight(floorHeight);
-
-    auto plac = new Actor(this);
-    plac->SetPosition(Vector2((float)mWindowHeight/2, (float)GetWindowHeight()*0.7f ));
-    int posq = (int)((float)GetWindowHeight()*0.7f);
-    new DrawSpriteComponent(plac,"../Assets/placeholder2.png",256,256,posq);
 
 
     // Player

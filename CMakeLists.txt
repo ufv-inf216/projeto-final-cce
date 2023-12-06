@@ -44,6 +44,10 @@ add_executable(${PROJECT_NAME}
         Source/Components/AIComponents/CrocChase.cpp
         Source/Components/AIComponents/CrocWait.h
         Source/Components/AIComponents/CrocWait.cpp
+        Source/Actors/Floor.cpp
+        Source/Actors/Floor.h
+        Source/Actors/Wall.cpp
+        Source/Actors/Wall.h
 )
 
 ####### DO NOT EDIT BELLOW

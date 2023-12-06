@@ -215,7 +215,7 @@ void Player::ProcessMov() {
     {
         //SDL_Log("don't go bellow");
         //SetPosition(Vector2(pos.x,mGame->GetWindowHeight()- ((float)mHeight/2)));
-        posCorrect.y = (float)mGame->GetWindowHeight() - ((float)mHeight/2);
+        posCorrect.y = (float)mGame->GetWindowHeight() - ((float)mHeight/2) - abs(posCorrect.y - pos.y);
     }
 
     //Subir
@@ -229,7 +229,7 @@ void Player::ProcessMov() {
     if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
-        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
+        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2) + abs(posCorrect.x - pos.x);
     }
 
     //Camera começa andar
