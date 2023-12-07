@@ -50,6 +50,8 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Wall.h
         Source/Actors/WallDetail.cpp
         Source/Actors/WallDetail.h
+        Source/Actors/Spawner.cpp
+        Source/Actors/Spawner.cpp
 )
 
 ####### DO NOT EDIT BELLOW
