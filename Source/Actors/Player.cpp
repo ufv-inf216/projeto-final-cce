@@ -73,12 +73,14 @@ void Player::OnProcessInput(const Uint8 *keyState)
 {
 
 
+  /* Mover pra direita */
     if(keyState[SDL_SCANCODE_D])
     {
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
         mRotation = 0.0f;
     }
 
+    /* Mover pra esquerda */
     if(keyState[SDL_SCANCODE_A])
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
@@ -86,7 +88,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
 
-
+    /* Mudanca de direcao no pulo */
     if(keyState[SDL_SCANCODE_W]  && !GetIsJumping() )
     {
         mRigidBodyComponent->ApplyForce(Vector2(0,-1 * mForwardSpeed));
@@ -100,6 +102,8 @@ void Player::OnProcessInput(const Uint8 *keyState)
     // Punch
     if(keyState[SDL_SCANCODE_P] && !mIsAttacking)
     {
+
+      // mGame->GetAudio()->PlaySound("soco.wav");
          SDL_Log("punch");
          int inv = 1;
          if (mRotation == Math::Pi) {

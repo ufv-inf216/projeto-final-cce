@@ -13,6 +13,7 @@
 #include <string>
 #include "Actors/Player.h"
 #include "stack"
+#include "AudioSystem.h"
 //#include "Actors/Mob.h"
 
 class Game
@@ -73,6 +74,8 @@ public:
 
     class Player* GetPlayer(){return  mPlayer;}
 
+  AudioSystem* GetAudio(){return mAudio;}
+
     //class PathNode* GetGhostPen() { return mGhostPen; }
 
 private:
@@ -105,6 +108,7 @@ private:
     // SDL stuff
     SDL_Window* mWindow;
     SDL_Renderer* mRenderer;
+    AudioSystem* mAudio;
 
     // Window properties
     int mWindowWidth;
