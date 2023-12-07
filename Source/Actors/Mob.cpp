@@ -111,7 +111,8 @@ void Mob::OnUpdate(float deltaTime)
     if(GetUpdateDrawOrder())
     {
         SetUpdateDrawOrder(false);
-        mDrawComponent->SetDrawOrder((int)GetPosition().y);
+        //mDrawComponent->SetDrawOrder((int)GetPosition().y);
+        mDrawComponent->SetDrawOrder((int)mShoeCollider->GetMin().y);
         mGame->SetResort(true);
     }
 
