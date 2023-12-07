@@ -6,6 +6,7 @@
 
 #include "FSMComponent.h"
 #include <string>
+#include "../../Math.h"
 
 class CrocWait : public FSMState
 {
@@ -20,4 +21,5 @@ class CrocWait : public FSMState
         float mSpeed;
         int mDir;
         class Mob* mMob;
+        Vector2 mDist;
 };

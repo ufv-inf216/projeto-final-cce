@@ -104,7 +104,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
 
       // mGame->GetAudio()->PlaySound("soco.wav");
-         SDL_Log("punch");
+         //SDL_Log("punch");
          int inv = 1;
          if (mRotation == Math::Pi) {
              inv = -1;
@@ -200,11 +200,11 @@ void Player::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
 
 void Player::TakeDamage(int d)
 {
-    SDL_Log("Player takes damage");
+    //SDL_Log("Player takes damage");
     mStatBlock->TakeDmg(d);
     if(mStatBlock->Is_dead())
     {
-        SDL_Log("Player will die");
+        //SDL_Log("Player will die");
         //SetShouldDie(true);
     }
 }

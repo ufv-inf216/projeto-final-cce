@@ -131,7 +131,7 @@ void Mob::TakeDamage(int d)
     if(mStatBlock->Is_dead())
     {
 
-        SDL_Log("mob will die");
+        //SDL_Log("mob will die");
         SetShouldDie(true);
         mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
     }

@@ -314,7 +314,7 @@ bool Game::Add_to_AtkStack(Mob* m)
     if(mAtkStack.empty())
     {
         mAtkStack.emplace_back(m);
-        SDL_Log("Mob will attack");
+        //SDL_Log("Mob will attack");
         m->SetDoAtk(true);
         return  true;
     }

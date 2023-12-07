@@ -115,7 +115,7 @@ void Actor::AddComponent(Component* c)
 }
 
 void Actor::TakeDamage(int d) {
-    SDL_Log("take daMAGE");
+    //SDL_Log("take daMAGE");
     if(d>0)
     {
        mShouldDie = true;
@@ -123,7 +123,7 @@ void Actor::TakeDamage(int d) {
 }
 
 void Actor::Kill() {
-    SDL_Log("Actor will die");
+    //SDL_Log("Actor will die");
     SetState(ActorState::Destroy);
 }
 
