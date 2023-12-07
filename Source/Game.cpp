@@ -210,6 +210,7 @@ void Game::UpdateGame()
     {
         deltaTime = 0.05f;
     }
+    int ei = 1;
 
     mTicksCount = SDL_GetTicks();
 
