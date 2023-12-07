@@ -32,7 +32,7 @@ void CrocWait::Start()
 void CrocWait::HandleStateTransition(float stateTime)
 {
     //mFSM->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2::Zero);
-    if(stateTime>=3.0f)
+    if(stateTime>=2.0f)
     {
         mFSM->SetState("Chase");
     }
@@ -72,7 +72,7 @@ void CrocWait::Shuffle()
     mDist = mOwner->GetGame()->GetPlayer()->GetPosition() - mOwner->GetPosition();
     mDist = Vector2::Normalize(mDist);
 
-    auto spd = mSpeed/2.0f;
+    auto spd = mSpeed/4.0f;
     auto apl =  spd* mDist * -1;
     switch (mDir)
     {

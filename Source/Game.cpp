@@ -17,6 +17,7 @@
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
 #include "Actors/Mob.h"
+#include "Actors/Spawner.h"
 #include "Actors/Floor.h"
 #include "Actors/Wall.h"
 #include "Actors/WallDetail.h"
@@ -99,8 +100,8 @@ void Game::InitializeActors()
      */
 
     // Croc placeholder
-    auto croc = new Mob(this);
-    croc->SetPosition(Vector2(1200.0f, floorHeight+100.f));
+    //auto croc = new Mob(this);
+    //croc->SetPosition(Vector2(1200.0f, floorHeight+100.f));
 
     SetGameState(State::Intro);
 }
@@ -137,6 +138,22 @@ void Game::LoadLevel(const std::string &levelPath) {
     for (int n=0;n<nFloors;n++) {
         if (row[n] != '.')
             new WallDetail(this, texPath, row[n], n, floorHeight);
+    }
+
+    std::getline(level, row);
+    for (int n=0;n<nFloors;n++) {
+        if (row[n] != '.')
+        {
+            std::string eat(1,row[n] );
+            int reps = std::stoi(eat );
+            for(int a=0;a<reps;a++)
+            {
+                auto s= new Spawner(this,606.f);
+                s->SetPosition(Vector2(606.f*(float)(a+1),floorHeight + 128.0f * a));
+
+            }
+        }
+
     }
 
 
