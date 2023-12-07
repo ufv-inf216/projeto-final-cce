@@ -141,7 +141,7 @@ void CrocChase::HandleStateTransition(float stateTime)
 
     }
 
-    if(mMob->GetDoAtk()== false && IsInRange())
+    if(mMob->GetDoAtk()== false && !mMob->GetIsBiting() &&IsInRange())
     {
         mFSM->SetState("Wait");
     }

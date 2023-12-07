@@ -32,7 +32,7 @@ void CrocWait::Start()
 void CrocWait::HandleStateTransition(float stateTime)
 {
     //mFSM->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2::Zero);
-    if(stateTime>=6.0f)
+    if(stateTime>=3.0f)
     {
         mFSM->SetState("Chase");
     }

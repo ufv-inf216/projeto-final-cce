@@ -22,6 +22,8 @@ class Mob: public Actor
         bool GetDoAtk() const {return mDoAtk;}
         void SetDoAtk(bool b) {mDoAtk=b;}
 
+        bool GetIsBiting() const {return mIsBiting;}
+
         void BeginBite();
 
 
