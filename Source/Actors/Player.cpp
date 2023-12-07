@@ -141,7 +141,8 @@ void Player::OnUpdate(float deltaTime)
     if(GetUpdateDrawOrder() && !GetIsJumping())
     {
         SetUpdateDrawOrder(false);
-        mDrawComponent->SetDrawOrder((int)GetPosition().y);
+        //mDrawComponent->SetDrawOrder((int)GetPosition().y);
+        mDrawComponent->SetDrawOrder((int)mShoeCollider->GetMin().y);
         mGame->SetResort(true);
     }
 

@@ -71,13 +71,13 @@ void CrocWait::Shuffle()
         case 1:
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,-1*mSpeed));
-            mOwner->Move(Vector2(0,-1*mSpeed));
+            mOwner->Move(Vector2(0,-1*mSpeed/8));
         }
 
         case 2:
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
-            mOwner->Move(Vector2(0,mSpeed));
+            mOwner->Move(Vector2(0,mSpeed/8));
         }
     }
 
