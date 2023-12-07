@@ -119,13 +119,14 @@ void Game::LoadLevel(const std::string &levelPath) {
 
     //Tamanho do mapa
     std::getline(level, row);
-    int nFloors = std::stoi(row);
+    mLevelSize = std::stoi(row);
+    int nFloors = mLevelSize/300;
     //Floors
     for (int n=0;n<nFloors;n++)
         new Floor(this, "../Assets/Sprites/Bg/floor.png", n, floorHeight);
 
     //Wall
-    int nWalls = nFloors * 640 / floorHeight*4;
+    int nWalls = mLevelSize / floorHeight*4;
     if (nWalls < 1) nWalls = 1;
     for (int n=0;n<nFloors;n++)
         new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", n, floorHeight);
@@ -214,6 +215,7 @@ void Game::UpdateCamera()
 
     if(mPlayer!=nullptr)
     {
+        if (GetCameraPos().x >= mLevelSize) mCameraIsBlocked = true;
         auto v= GetCameraPos();
         v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
 

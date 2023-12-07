@@ -92,6 +92,8 @@ private:
 
     // Load data
     void LoadLevel(const std::string& levelPath);
+    //Level Size
+    int mLevelSize;
 
     // AI stuff
 

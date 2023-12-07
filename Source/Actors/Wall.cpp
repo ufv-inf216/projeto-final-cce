@@ -8,6 +8,6 @@
 Wall::Wall(Game *game, const std::string &texturePath, int qt, float height)
     : Actor(game)
 {
-    this->SetPosition(Vector2(height*2 * (qt+1), height/2+10));
+    this->SetPosition(Vector2(height*2 + (qt*height*4), height/2+10));
     new DrawSpriteComponent(this, texturePath, height*4, height+20, 0);
 }
