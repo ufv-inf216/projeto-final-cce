@@ -37,6 +37,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mWindowHeight(windowHeight)
         ,mRespawnTimer(RESPAWN_TIME)
         ,mCameraIsBlocked(false)
+        ,mAliveMobs(0)
 {
     SetCameraPos(Vector2::Zero);
 }
@@ -141,15 +142,17 @@ void Game::LoadLevel(const std::string &levelPath) {
     }
 
     std::getline(level, row);
-    for (int n=0;n<nFloors;n++) {
+    //std::cout << row.length() << " " << nFloors << std::endl;
+    for (int n=0;n<row.length();n++) {
         if (row[n] != '.')
         {
             std::string eat(1,row[n] );
             int reps = std::stoi(eat );
+            std::cout << reps << std::endl;
             for(int a=0;a<reps;a++)
             {
                 auto s= new Spawner(this,606.f);
-                s->SetPosition(Vector2(606.f*(float)(a+1),floorHeight + 128.0f * a));
+                s->SetPosition(Vector2(606.f*(float)(n),floorHeight + (64.f * a)));
 
             }
         }
@@ -210,7 +213,7 @@ void Game::UpdateGame()
     {
         deltaTime = 0.05f;
     }
-    
+
 
     mTicksCount = SDL_GetTicks();
 
@@ -219,11 +222,21 @@ void Game::UpdateGame()
 
     UpdateColliders();
 
+    if(mAliveMobs>0)
+    {
+        mCameraIsBlocked=true;
+    }
+    else{
+        mCameraIsBlocked=false;
+    }
+
     // Update camera position
     UpdateCamera();
 
     // Update game state
     UpdateState(deltaTime);
+
+
 }
 
 void Game::UpdateCamera()

@@ -74,6 +74,9 @@ void CrocWait::Shuffle()
 
     auto spd = mSpeed/4.0f;
     auto apl =  spd* mDist * -1;
+
+    
+
     switch (mDir)
     {
         case 1:

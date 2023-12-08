@@ -59,6 +59,8 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     mCrocAi->SetState("Chase");
     SetDoAtk(false);
 
+    GetGame()->AddAliveMobs(1);
+
 
 
 }
@@ -100,11 +102,11 @@ void Mob::OnUpdate(float deltaTime)
 //        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
 //    }
 
-//    if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
-//    {
-//        //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
-//        posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
-//    }
+      if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth())
+      {
+          //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
+          posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth();
+      }
 
     SetPosition(posCorrect);
 
@@ -134,6 +136,7 @@ void Mob::TakeDamage(int d)
         //SDL_Log("mob will die");
         SetShouldDie(true);
         mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
+        GetGame()->AddAliveMobs(-1);
     }
 }
 

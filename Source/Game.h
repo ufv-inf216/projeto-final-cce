@@ -72,6 +72,9 @@ public:
     bool Add_to_AtkStack(class Mob* m);
     void Remove_from_AtkStack(class Mob* m);
 
+    int GetAliveMobs() const {return  mAliveMobs;}
+    void AddAliveMobs(int i) {mAliveMobs+=i;}
+
     class Player* GetPlayer(){return  mPlayer;}
 
   AudioSystem* GetAudio(){return mAudio;}
@@ -96,6 +99,9 @@ private:
     int mLevelSize;
 
     // AI stuff
+
+    //Inimigos vivos
+    int mAliveMobs;
 
 
     // All the actors in the game
