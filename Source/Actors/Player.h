@@ -6,7 +6,7 @@
 class Player: public  Actor
 {
     public:
-        explicit  Player(Game* game,float forwardSpeed = 2500.0f);
+        explicit  Player(Game* game,float forwardSpeed = 2500.0f, int lives = 3);
         void OnProcessInput(const Uint8* keyState) override;
         void OnUpdate(float deltaTime) override;
         void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses) override;
@@ -30,6 +30,7 @@ class Player: public  Actor
 
         bool mIsRunning;
         //bool mIs_jumping;
+        int mLives;
 
         float mOgY;
         float mJumpSpeed;

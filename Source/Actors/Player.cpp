@@ -13,9 +13,9 @@
 #include "../Components/StatBlock.h"
 
 
-Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
+Player::Player(Game *game, float forwardSpeed, int lives): Actor(game), mForwardSpeed(forwardSpeed)
 {
-
+  
       int size = 3;
       SetFriction(10);
       mWidth = mHeight = 32*size;
@@ -53,7 +53,7 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mDrawComponent->SetAnimFPS(4.0f);
 
 
-
+      mLives = lives;
       SetUpdateDrawOrder(true);
       mPunch = nullptr;
       mJumpSpeed = -750.0f;
@@ -212,10 +212,18 @@ void Player::TakeDamage(int d)
 {
     //SDL_Log("Player takes damage");
     mStatBlock->TakeDmg(d);
+    SDL_Log("TAKEN DAMAGE");
     if(mStatBlock->Is_dead())
     {
-        //SDL_Log("Player will die");
-        //SetShouldDie(true);
+        SDL_Log("Player will die");
+	mLives--;
+	std::cout << "lives" << mLives << std::endl;
+	mStatBlock->SetMaxHP(4);
+	if(mLives < 1){
+	  SDL_Log("Player will die fr");
+	  SetShouldDie(true);
+	  mGame->Quit();
+	}
     }
 }
 
