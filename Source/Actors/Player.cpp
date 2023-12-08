@@ -13,8 +13,6 @@
 #include "../Components/StatBlock.h"
 
 
-
-
 Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
@@ -34,14 +32,14 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mColliderComponent->SetName("Player Hitbox collider");
       mRigidBodyComponent->SetName("Player Rigid body");
 
-
-    std::vector<Vector2> verts;
-    Vector2 min = mShoeCollider->GetMin(); Vector2 max = mShoeCollider->GetMax();
-    verts.emplace_back(min);
-    verts.emplace_back(max.x , min.y);
-    verts.emplace_back(max);
-    verts.emplace_back(min.x, max.y);
-    mDrawPolygonComponent = new DrawPolygonComponent(this, verts);
+      /*
+      std::vector<Vector2> verts;
+      Vector2 min = mShoeCollider->GetMin(); Vector2 max = mShoeCollider->GetMax();
+      verts.emplace_back(min);
+      verts.emplace_back(max.x , min.y);
+      verts.emplace_back(max);
+      verts.emplace_back(min.x, max.y);
+      mDrawPolygonComponent = new DrawPolygonComponent(this, verts);*/
 
 
       //mDrawComponent = new DrawSpriteComponent(this,"../Assets/placeholder.png",mWidth,mHeight,1000);
@@ -81,7 +79,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
         mRotation = 0.0f;
 	if(walk_sound_counter % 30 == 0)
-	  mGame->GetAudio()->PlaySound("walk.wav");
+	    mGame->GetAudio()->PlaySound("walk.wav");
     }
 
     /* Mover pra esquerda */
@@ -90,7 +88,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
         mRotation = Math::Pi;
 	if(walk_sound_counter % 30 == 0)
-	  mGame->GetAudio()->PlaySound("walk.wav");
+	    mGame->GetAudio()->PlaySound("walk.wav");
     }
 
 
@@ -124,7 +122,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->SetDestroy(true);
 
          mIsAttacking = true;
-	 mGame->GetAudio()->PlaySound("cap_attack.wav");
+	     mGame->GetAudio()->PlaySound("cap_attack.wav");
 
     }
 
@@ -134,7 +132,11 @@ void Player::OnProcessInput(const Uint8 *keyState)
         SetIsJumping(true);
         mOgY=GetPosition().y;
         mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,mJumpSpeed));
-	mGame->GetAudio()->PlaySound("jump.wav");
+	    mGame->GetAudio()->PlaySound("jump.wav");
+    }
+
+    if(keyState[SDL_SCANCODE_ESCAPE]) {
+        mGame->Quit();
     }
 
     walk_sound_counter++;
