@@ -62,14 +62,32 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Capivaristo-ZHit-1.png",
+	"frame": {"x":224,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Capivaristo-ZHit-2.png",
+	"frame": {"x":256,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "Capivaristo.png",
 	"format": "RGBA8888",
-	"size": {"w":224,"h":32},
+	"size": {"w":288,"h":32},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e9cc5489501bd924259caaf0d8e4af91:d2fb9a127125a771bd441cd2407ceeb2:18abc4303cd1cd617b53047ed7d7e752$"
+	"smartupdate": "$TexturePacker:SmartUpdate:29f7826f1fdde0d2cb83bec88472a67b:525c151ef28bf55f67dfd27e2fd4125a:18abc4303cd1cd617b53047ed7d7e752$"
 }
 }
