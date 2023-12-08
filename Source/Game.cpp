@@ -38,6 +38,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mRespawnTimer(RESPAWN_TIME)
         ,mCameraIsBlocked(false)
         ,mAliveMobs(0)
+        ,mMobId(1)
 {
     SetCameraPos(Vector2::Zero);
 }
@@ -350,7 +351,7 @@ bool Game::Add_to_AtkStack(Mob* m)
     if(mAtkStack.empty())
     {
         mAtkStack.emplace_back(m);
-        //SDL_Log("Mob will attack");
+        SDL_Log("Mob will attack");
         m->SetDoAtk(true);
         return  true;
     }

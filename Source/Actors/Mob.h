@@ -30,6 +30,8 @@ class Mob: public Actor
 
 
 
+
+
    private:
         float mForwardSpeed;
         int mWidth;

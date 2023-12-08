@@ -77,6 +77,8 @@ public:
     int GetAliveMobs() const {return  mAliveMobs;}
     void AddAliveMobs(int i) {mAliveMobs+=i;}
 
+    int GetMobID() {return mMobId;mMobId++;}
+
     class Player* GetPlayer(){return  mPlayer;}
 
     //class PathNode* GetGhostPen() { return mGhostPen; }
@@ -102,6 +104,9 @@ private:
 
     //Inimigos vivos
     int mAliveMobs;
+
+    //Id dos inimigos
+    int mMobId;
 
 
     // All the actors in the game

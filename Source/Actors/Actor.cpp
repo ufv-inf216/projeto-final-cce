@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <typeinfo>
 #include "../Components/ColliderComponents/AABBColliderComponent.h"
+#include <iostream>
 
 Actor::Actor(Game* game)
         : mState(ActorState::Active)
@@ -131,3 +132,8 @@ void Actor::Kill() {
 void Actor::Move(Vector2 mv) {}
 
 std::string Actor::GetName() {return  "Generic actor";}
+
+void Actor::PrintNameWithID()
+{
+    std::cout << GetName() << " " << GetID() << std::endl;
+}

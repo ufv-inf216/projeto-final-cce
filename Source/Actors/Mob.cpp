@@ -11,6 +11,7 @@
 #include "../Components/ColliderComponents/Hitbox.h"
 
 
+
 Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpeed)
 {
 
@@ -60,6 +61,8 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     SetDoAtk(false);
 
     GetGame()->AddAliveMobs(1);
+
+    SetID(mGame->GetMobID());
 
 
 
@@ -189,3 +192,6 @@ void Mob::DoBite()
     mDrawComponent->SetAnimFPS(5.0f);
     mGame->GetAudio()->PlaySound("bite.wav");
 }
+
+
+

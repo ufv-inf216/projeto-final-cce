@@ -62,6 +62,11 @@ public:
     bool GetSentBack() const {return  mSentBack;}
     void SetSentBack(bool b ) {mSentBack=b;}
 
+    int GetID() const {return  mID;}
+    void SetID(int i) {mID=i;}
+
+    void PrintNameWithID();
+
     virtual void Move(Vector2 mv);
 
     // Game getter
@@ -130,6 +135,7 @@ private:
     bool mIs_jumping;
     float mFriction;
     bool mSentBack;
+    int mID;
 
     // Adds component to Actor (this is automatically called
     // in the component constructor)

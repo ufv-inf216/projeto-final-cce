@@ -54,6 +54,8 @@ void CrocWait::Update(float deltaTime)
 
         if(roll <= tg)
         {
+            mOwner->PrintNameWithID();
+            SDL_Log("wants to atk");
             mFSM->GetOwner()->GetGame()->Add_to_AtkStack(mMob);
         }
     }
