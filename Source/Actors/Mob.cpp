@@ -138,6 +138,7 @@ void Mob::TakeDamage(int d)
       SetShouldDie(true);
       mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
       GetGame()->AddAliveMobs(-1);
+      GetGame()->Remove_from_AtkStack(this);
     }
 }
 
