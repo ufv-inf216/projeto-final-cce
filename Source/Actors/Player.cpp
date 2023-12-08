@@ -253,11 +253,13 @@ void Player::ProcessMov() {
     }
 
     //Camera começa andar
+    /*
     if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
         posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
     }
+     */
 
     SetPosition(posCorrect);
 }

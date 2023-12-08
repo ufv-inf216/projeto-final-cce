@@ -243,7 +243,10 @@ void Game::UpdateCamera()
 
     if(mPlayer!=nullptr)
     {
+
         if (GetCameraPos().x >= mLevelSize) mCameraIsBlocked = true;
+        else mCameraIsBlocked = false;
+
         auto v= GetCameraPos();
         v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
 
