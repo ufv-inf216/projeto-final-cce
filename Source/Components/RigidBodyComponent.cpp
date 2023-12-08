@@ -67,6 +67,12 @@ void RigidBodyComponent::Update(float deltaTime)
         collider->DetectCollision(this,mOwner->GetGame()->GetColliders());
     }
 
+    if(mOwner->GetSentBack() && mVelocity.x==0.0f)
+    {
+        mOwner->SetSentBack(false);
+        mOwner->SetFriction(mOwner->GetFriction());
+    }
+
     SetAcceleration(Vector2::Zero);
 }
 

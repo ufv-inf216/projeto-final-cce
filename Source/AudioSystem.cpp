@@ -3,6 +3,8 @@
 #include "SDL_mixer.h"
 #include <filesystem>
 #include <system_error>
+#include <iostream>
+#include <unordered_map>
 
 SoundHandle SoundHandle::Invalid;
 
@@ -50,6 +52,9 @@ void AudioSystem::Update(float deltaTime)
 //       "Assets/Sounds/ChompLoop.wav".
 SoundHandle AudioSystem::PlaySound(const std::string& soundName, bool looping)
 {
+
+
+    //std::cout << mHandleMap.size() << std::endl;
     // Get the sound with the given name
     Mix_Chunk *sound = GetSound(soundName);
 

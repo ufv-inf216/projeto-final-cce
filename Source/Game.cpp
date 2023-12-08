@@ -64,7 +64,7 @@ bool Game::Initialize()
         return false;
     }
 
-    mAudio = new AudioSystem();
+    mAudio = new AudioSystem(48);
     
     Random::Init();
 
@@ -125,7 +125,7 @@ void Game::LoadLevel(const std::string &levelPath) {
         new Floor(this, "../Assets/Sprites/Bg/floor.png", n, floorHeight);
 
     //Wall
-    int nWalls = mLevelSize / floorHeight*4;
+    int nWalls = mLevelSize / (floorHeight*4);
     if (nWalls < 1) nWalls = 1;
     for (int n=0;n<nFloors;n++)
         new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", n, floorHeight);
@@ -214,6 +214,8 @@ void Game::UpdateGame()
 
     mTicksCount = SDL_GetTicks();
 
+    mAudio->Update(deltaTime);
+
     // Update all actors and pending actors
     UpdateActors(deltaTime);
 
@@ -244,8 +246,11 @@ void Game::UpdateCamera()
     if(mPlayer!=nullptr)
     {
 
-        if (GetCameraPos().x >= mLevelSize) mCameraIsBlocked = true;
-        else mCameraIsBlocked = false;
+        if (GetCameraPos().x >= mLevelSize)
+        {
+            mCameraIsBlocked = true;
+        }
+
 
         auto v= GetCameraPos();
         v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;

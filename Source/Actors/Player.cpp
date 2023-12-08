@@ -17,9 +17,9 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
 {
 
       int size = 3;
-
+      SetFriction(10);
       mWidth = mHeight = 32*size;
-      mRigidBodyComponent = new RigidBodyComponent(this,1.0,10);
+      mRigidBodyComponent = new RigidBodyComponent(this,1.0,GetFriction());
 
       mShoeCollider = new AABBColliderComponent(this,-5,mHeight/3,mWidth/3 + 10,mHeight/4,ColliderLayer::Shoe);
       mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::MobHitBox);
@@ -74,7 +74,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
 
 
   /* Mover pra direita */
-    if(keyState[SDL_SCANCODE_D])
+    if(keyState[SDL_SCANCODE_D] && !GetSentBack())
     {
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
         mRotation = 0.0f;
@@ -83,7 +83,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
     /* Mover pra esquerda */
-    if(keyState[SDL_SCANCODE_A])
+    if(keyState[SDL_SCANCODE_A] && !GetSentBack())
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
         mRotation = Math::Pi;
@@ -255,13 +255,13 @@ void Player::ProcessMov() {
     }
 
     //Camera começa andar
-    /*
+
     if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2))
     {
         //SetPosition(Vector2(mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2),pos.y));
         posCorrect.x = mGame->GetCameraPos().x + (float)mGame->GetWindowWidth() - ((float)mWidth/2);
     }
-     */
+
 
     SetPosition(posCorrect);
 }

@@ -16,11 +16,11 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
 
     mBiteCooldown=0.0f;
     mIsBiting=false;
-
+    SetFriction(10);
 
     mHeight = 64;
     mWidth = mHeight*2;
-    mRigidBodyComponent = new RigidBodyComponent(this,0.5,10);
+    mRigidBodyComponent = new RigidBodyComponent(this,0.5,GetFriction());
 
     mShoeCollider = new AABBColliderComponent(this,0,0,mWidth,mHeight/2,ColliderLayer::Shoe);
     mColliderComponent = new AABBColliderComponent(this,0,0,mWidth,mHeight,ColliderLayer::MobHitBox);

@@ -49,12 +49,18 @@ public:
     float GetRotation() const { return mRotation; }
     void SetRotation(float rotation) { mRotation = rotation; }
 
+    float GetFriction() const { return mFriction; }
+    void SetFriction(float f) { mFriction=f; }
+
     // State getter/setter
     ActorState GetState() const { return mState; }
     void SetState(ActorState state) { mState = state; }
 
     bool GetIsJumping() const {return  mIs_jumping;}
     void SetIsJumping(bool b ) {mIs_jumping=b;}
+
+    bool GetSentBack() const {return  mSentBack;}
+    void SetSentBack(bool b ) {mSentBack=b;}
 
     virtual void Move(Vector2 mv);
 
@@ -122,6 +128,8 @@ private:
     bool mUpdateDrawOrder;
     bool mShouldDie;
     bool mIs_jumping;
+    float mFriction;
+    bool mSentBack;
 
     // Adds component to Actor (this is automatically called
     // in the component constructor)

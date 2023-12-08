@@ -87,6 +87,7 @@ void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AA
                 float mod = mKnockback*target->GetOwner()->GetComponent<StatBlock>()->GetKnockbackMod();
                 //target->GetOwner()->GetComponent<RigidBodyComponent>()->SetFrictionCoefficient(1);
                 target->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2(mKnockDir*mod));
+                //target->GetOwner()->SetSentBack(true);
 
             }
 
