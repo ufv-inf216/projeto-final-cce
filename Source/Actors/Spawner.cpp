@@ -5,6 +5,7 @@
 #include "Spawner.h"
 #include "../Game.h"
 #include "Mob.h"
+#include "../Random.h"
 
 
 
@@ -23,7 +24,15 @@ void Spawner::OnUpdate(float deltaTime)
     if(abs(v.x) < mSpawnDistance )
     {
         auto g = new Mob(GetGame());
-        g->SetPosition(GetPosition());
+        auto og_pos = GetPosition();
+
+        if(Random::GetIntRange(1,2)==2)
+        {
+            og_pos.x =  og_pos.x - 640.f - 128;
+        }
+
+
+        g->SetPosition(og_pos);
         //g->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2(-1 * GOOMBA_FORWARD_SPEED,0));
 
         mState = ActorState::Destroy;

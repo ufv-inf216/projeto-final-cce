@@ -351,9 +351,13 @@ bool Game::Add_to_AtkStack(Mob* m)
     if(mAtkStack.empty())
     {
         mAtkStack.emplace_back(m);
-        SDL_Log("Mob will attack");
+        //SDL_Log("Mob will attack");
         m->SetDoAtk(true);
         return  true;
+    }
+    else{
+        //SDL_Log("In list");
+        //mAtkStack[0]->PrintNameWithID();
     }
     return  false;
 }

@@ -99,11 +99,11 @@ void Mob::OnUpdate(float deltaTime)
     }
 
 
-//    if(pos.x < mGame->GetCameraPos().x + ((float)mWidth/2))
-//    {
-//        //SetPosition(Vector2(mGame->GetCameraPos().x + ((float)mWidth/2),pos.y));
-//        posCorrect.x = mGame->GetCameraPos().x + ((float)mWidth/2);
-//    }
+      if(pos.x < mGame->GetCameraPos().x)
+      {
+          SetPosition(Vector2(mGame->GetCameraPos().x,pos.y));
+          posCorrect.x = mGame->GetCameraPos().x;
+     }
 
       if(pos.x > mGame->GetCameraPos().x + (float)mGame->GetWindowWidth())
       {

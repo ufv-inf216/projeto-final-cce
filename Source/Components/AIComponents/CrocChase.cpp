@@ -53,6 +53,8 @@ bool CrocChase::IsInRange()
     float x_dif = pl->GetPosition().x - mOwner->GetPosition().x;
     float y_dif = pl->GetPosition().y - mOwner->GetPosition().y;
 
+    //mOwner->GetComponent<AABBColliderComponent>()->GetMin().y;
+
     float too_far = mAtkWidth * 2;
 
     if(mMob->GetDoAtk())
@@ -68,7 +70,7 @@ bool CrocChase::IsInRange()
 
 
 
-    if(Math::Abs(y_dif) >= mAtkHeight)
+    if(Math::Abs(y_dif) >= mAtkHeight/8 )
     {
         return  false;
     }
@@ -94,15 +96,20 @@ void CrocChase::MoveToRange()
     }
 
     //float x_dif = mOwner->GetPosition().x - tg.x;
-
+    float speed_mod = -1.f;
 
 
     tg.y = mOwner->GetPosition().y - tg.y ;
     //y_dif *= -1.0f;
 
+    if(mMob->GetDoAtk())
+    {
+        speed_mod *= 2;
+    }
+
     //Vector2 v = tg - mOwner->GetPosition();
     //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2::Normalize(v) * mSpeed * -1);
-    mOwner->Move(Vector2::Normalize(tg) * mSpeed*-1);
+    mOwner->Move(Vector2::Normalize(tg) * mSpeed*speed_mod);
 
 
 }

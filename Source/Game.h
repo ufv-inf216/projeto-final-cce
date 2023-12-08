@@ -77,7 +77,7 @@ public:
     int GetAliveMobs() const {return  mAliveMobs;}
     void AddAliveMobs(int i) {mAliveMobs+=i;}
 
-    int GetMobID() {return mMobId;mMobId++;}
+    int GetMobID() {return mMobId++;}
 
     class Player* GetPlayer(){return  mPlayer;}
 

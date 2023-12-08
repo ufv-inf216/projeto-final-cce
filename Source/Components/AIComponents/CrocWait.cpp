@@ -8,6 +8,7 @@
 #include "CrocWait.h"
 #include "../../Random.h"
 #include "../../Game.h"
+#include "../../Actors/Mob.h"
 
 
 CrocWait::CrocWait(Mob* m,FSMComponent *fsm, const std::string &name, float spd, int updateOrder) : FSMState(fsm,name)
@@ -42,7 +43,7 @@ void CrocWait::Update(float deltaTime)
 {
     auto mOwner = mFSM->GetOwner();
     CrocWait::Shuffle();
-    if((int)deltaTime%3==0)
+    if((int)deltaTime%3==0 && !mMob->GetDoAtk())
     {
         int tg = 10;
         auto roll = Random::GetIntRange(1,100);
@@ -54,8 +55,8 @@ void CrocWait::Update(float deltaTime)
 
         if(roll <= tg)
         {
-            mOwner->PrintNameWithID();
-            SDL_Log("wants to atk");
+            //mOwner->PrintNameWithID();
+            //SDL_Log("wants to atk");
             mFSM->GetOwner()->GetGame()->Add_to_AtkStack(mMob);
         }
     }
@@ -74,7 +75,7 @@ void CrocWait::Shuffle()
     mDist = mOwner->GetGame()->GetPlayer()->GetPosition() - mOwner->GetPosition();
     mDist = Vector2::Normalize(mDist);
 
-    auto spd = mSpeed/4.0f;
+    auto spd = mSpeed/1.0f;
     auto apl =  spd* mDist * -1;
 
     
@@ -92,14 +93,14 @@ void CrocWait::Shuffle()
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
             //mOwner->Move(Vector2(0,mSpeed/8));
-            mOwner->Move(Vector2(0,apl.y));
+            mOwner->Move(Vector2(0,apl.y*-1));
         }
 
         case 3:
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
             //mOwner->Move(Vector2(0,mSpeed/8));
-            mOwner->Move(Vector2(apl.x,apl.y));
+            mOwner->Move(Vector2(apl.x,apl.y*-1));
         }
     }
 
