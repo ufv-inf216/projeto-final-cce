@@ -34,6 +34,8 @@ class Player: public  Actor
         float mOgY;
         float mJumpSpeed;
 
+        unsigned walk_sound_counter;
+  
         class Hitbox* mPunch;
 
         class RigidBodyComponent* mRigidBodyComponent;

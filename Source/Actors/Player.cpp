@@ -66,6 +66,8 @@ Player::Player(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwa
       mStatBlock = new StatBlock(this,4);
       mStatBlock->SetName("Player Statblock componenent");
       SetShouldDie(false);
+
+      walk_sound_counter = 0;
 }
 
 
@@ -78,6 +80,8 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
         mRigidBodyComponent->ApplyForce(Vector2(mForwardSpeed,0));
         mRotation = 0.0f;
+	if(walk_sound_counter % 30 == 0)
+	  mGame->GetAudio()->PlaySound("walk.wav");
     }
 
     /* Mover pra esquerda */
@@ -85,6 +89,8 @@ void Player::OnProcessInput(const Uint8 *keyState)
     {
         mRigidBodyComponent->ApplyForce(Vector2(-1 * mForwardSpeed,0));
         mRotation = Math::Pi;
+	if(walk_sound_counter % 30 == 0)
+	  mGame->GetAudio()->PlaySound("walk.wav");
     }
 
 
@@ -118,6 +124,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
          mPunch->SetDestroy(true);
 
          mIsAttacking = true;
+	 mGame->GetAudio()->PlaySound("cap_attack.wav");
 
     }
 
@@ -127,9 +134,10 @@ void Player::OnProcessInput(const Uint8 *keyState)
         SetIsJumping(true);
         mOgY=GetPosition().y;
         mRigidBodyComponent->SetVelocity(Vector2(mRigidBodyComponent->GetVelocity().x,mJumpSpeed));
+	mGame->GetAudio()->PlaySound("jump.wav");
     }
 
-
+    walk_sound_counter++;
 }
 
 void Player::OnUpdate(float deltaTime)

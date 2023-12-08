@@ -134,9 +134,10 @@ void Mob::TakeDamage(int d)
     {
 
         //SDL_Log("mob will die");
-        SetShouldDie(true);
-        mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
-        GetGame()->AddAliveMobs(-1);
+      mGame->GetAudio()->PlaySound("kill_croc.wav");
+      SetShouldDie(true);
+      mRigidBodyComponent->SetVelocity(Vector2(0,-1000));
+      GetGame()->AddAliveMobs(-1);
     }
 }
 
@@ -159,6 +160,7 @@ void Mob::BeginBite()
     mDrawComponent->SetAnimation("bite");
     mDrawComponent->SetAnimFPS(0.0f);
     mIsBiting=true;
+    mGame->GetAudio()->PlaySound("before_bite.wav");
 }
 
 void Mob::ManageAnimations()
@@ -184,4 +186,5 @@ void Mob::DoBite()
     RemoveComponent(mHitbox);
     mDrawComponent->SetAnimation("run");
     mDrawComponent->SetAnimFPS(5.0f);
+    mGame->GetAudio()->PlaySound("bite.wav");
 }

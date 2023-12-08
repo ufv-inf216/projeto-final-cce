@@ -52,6 +52,8 @@ public:
     int GetWindowWidth() const { return mWindowWidth; }
     int GetWindowHeight() const { return mWindowHeight; }
 
+    AudioSystem* GetAudio(){return mAudio;}
+
     SDL_Texture* LoadTexture(const std::string& texturePath);
 
     // Game-specific
@@ -76,8 +78,6 @@ public:
     void AddAliveMobs(int i) {mAliveMobs+=i;}
 
     class Player* GetPlayer(){return  mPlayer;}
-
-  AudioSystem* GetAudio(){return mAudio;}
 
     //class PathNode* GetGhostPen() { return mGhostPen; }
 
@@ -116,7 +116,7 @@ private:
     // SDL stuff
     SDL_Window* mWindow;
     SDL_Renderer* mRenderer;
-    AudioSystem* mAudio;
+    AudioSystem* mAudio = nullptr;
 
     // Window properties
     int mWindowWidth;

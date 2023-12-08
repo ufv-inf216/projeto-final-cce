@@ -64,18 +64,15 @@ bool Game::Initialize()
         return false;
     }
 
+    mAudio = new AudioSystem();
+    
     Random::Init();
 
     mTicksCount = SDL_GetTicks();
 
+    mAudio->PlaySound("bgm.mp3", true);
     // Init all game actors
     InitializeActors();
-
-    /*auto s= new AudioSystem();
-    s->CacheSound("punch-2-37333.mp3");
-    s->PlaySound("punch-2-37333.mp3");*/
-
-
 
     return true;
 }
