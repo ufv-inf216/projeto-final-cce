@@ -48,6 +48,7 @@ Player::Player(Game *game, float forwardSpeed, int lives): Actor(game), mForward
       mDrawComponent->AddAnimation("run", {4,5,6,5});
       mDrawComponent->AddAnimation("jump", {4});
       mDrawComponent->AddAnimation("punch", {2,3});
+      mDrawComponent->AddAnimation("hit", {7,8});
 
       mDrawComponent->SetAnimation("idle");
       mDrawComponent->SetAnimFPS(4.0f);
@@ -192,9 +193,10 @@ void Player::OnUpdate(float deltaTime)
 void Player::ManageAnimations() {
     Vector2 velocity = mRigidBodyComponent->GetVelocity();
 
+
     if (mIsAttacking) {
-        mDrawComponent->SetAnimation("punch");
-        mDrawComponent->SetAnimFPS(3.f);
+        mDrawComponent->SetAnimation("punch", false);
+        mDrawComponent->SetAnimFPS(8.f);
     }
     else {
         mDrawComponent->SetAnimFPS(4.f);
@@ -220,6 +222,8 @@ void Player::TakeDamage(int d)
     //SDL_Log("Player takes damage");
     mStatBlock->TakeDmg(d);
     SDL_Log("TAKEN DAMAGE");
+    mDrawComponent->SetAnimation("hit", false, true);
+    mDrawComponent->SetAnimFPS(18.f);
     if(mStatBlock->Is_dead())
     {
         SDL_Log("Player will die");

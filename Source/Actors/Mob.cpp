@@ -31,6 +31,7 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     mDrawComponent = new DrawAnimatedComponent(this,"../Assets/Sprites/Croc/Croc.png", "../Assets/Sprites/Croc/Croc.json",3);
     mDrawComponent->AddAnimation("run", {1,2});
     mDrawComponent->AddAnimation("bite", {0});
+    mDrawComponent->AddAnimation("hit", {3,4});
 
     mDrawComponent->SetAnimation("run");
     mDrawComponent->SetAnimFPS(5.0f);
@@ -74,6 +75,11 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
 
 void Mob::OnUpdate(float deltaTime)
 {
+    if (mCrocAi->GetState()->GetName() == "Wait") {
+        mDrawComponent->SetAnimation("run");
+        mDrawComponent->SetAnimFPS(5.0f);
+    }
+
     auto pos = GetPosition();
     auto posCorrect = Vector2();
     posCorrect.x = pos.x; posCorrect.y = pos.y;
@@ -141,6 +147,9 @@ std::string Mob::GetName() {return  "Mob actor";}
 
 void Mob::TakeDamage(int d)
 {
+
+    mDrawComponent->SetAnimation("hit", false);
+    mDrawComponent->SetAnimFPS(18.f);
 
     mStatBlock->TakeDmg(d);
     if(mStatBlock->Is_dead())

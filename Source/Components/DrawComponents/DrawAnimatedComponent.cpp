@@ -12,7 +12,6 @@ DrawAnimatedComponent::DrawAnimatedComponent(class Actor* owner, const std::stri
         :DrawSpriteComponent(owner, spriteSheetPath, 0, 0, drawOrder)
 {
 
-    is_pacman=do_flip;
     LoadSpriteSheet(spriteSheetPath, spriteSheetData);
     mResize = resize;
 }
@@ -82,15 +81,38 @@ void DrawAnimatedComponent::Update(float deltaTime)
     }
 
     mAnimTimer += mAnimFPS * deltaTime;
-    if((int)mAnimTimer >= mAnimations[mAnimName].size()) {
-        while ((int)mAnimTimer >= mAnimations[mAnimName].size()) {
-            mAnimTimer -= (float)mAnimations[mAnimName].size();
+
+    // End of animation
+    if((int)mAnimTimer >= mAnimations[mAnimName].size())
+    {
+        if(!mShouldLoop) {
+            // Reset animation to last frame
+            mAnimTimer = (float)mAnimations[mAnimName].size() - 1.0f;
+            mIsPaused = true;
+            mShouldLoop = true;
+        }
+        else {
+            // Reset animation to first frame
+            while ((int)mAnimTimer >= mAnimations[mAnimName].size()) {
+                mAnimTimer -= (float)mAnimations[mAnimName].size();
+            }
         }
     }
 }
 
-void DrawAnimatedComponent::SetAnimation(const std::string& name)
+void DrawAnimatedComponent::SetAnimation(const std::string& name, bool loop, bool priority)
 {
+    // Only set new animation if previous has stopped
+    if (!mShouldLoop) {
+        return;
+    }
+
+    if(name != mAnimName) {
+        mAnimTimer = .0f;
+    }
+
+    mIsPaused = false;
+    mShouldLoop = loop;
     mAnimName = name;
 
     // Force Update to restart mCurrentSprite

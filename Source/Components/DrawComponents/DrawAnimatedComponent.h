@@ -20,12 +20,15 @@ public:
     void SetAnimFPS(float fps) { mAnimFPS = fps; }
 
     // Set the current active animation
-    void SetAnimation(const std::string& name);
+    void SetAnimation(const std::string& name, bool loop = true, bool priority = false);
+
+    std::vector <SDL_Rect*>& GetSpriteSheetData() { return mSpriteSheetData; }
 
     void ResetAnim() { mAnimTimer = 0.0f; }
 
     // Use to pause/unpause the animation
     void SetIsPaused(bool pause) { mIsPaused = pause; }
+    bool IsPaused() const { return mIsPaused; }
 
     // Add an animation of the corresponding name to the animation map
     void AddAnimation(const std::string& name, const std::vector<int>& images);
@@ -35,8 +38,6 @@ private:
 
     // Vector of sprites
     std::vector<SDL_Rect*> mSpriteSheetData;
-
-    bool is_pacman;
 
     // Map of animation name to vector of textures corresponding to the animation
     std::unordered_map<std::string, std::vector<int>> mAnimations;
@@ -52,6 +53,9 @@ private:
 
     // Whether or not the animation is paused (defaults to false)
     bool mIsPaused = false;
+
+    // Whether or not the animation should loop (defaults to true)
+    bool mShouldLoop = true;
 
     //Resize
     int mResize = 1;
