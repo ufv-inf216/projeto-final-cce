@@ -150,7 +150,7 @@ void Game::LoadLevel(const std::string &levelPath) {
             for(int a=0;a<reps;a++)
             {
                 auto s= new Spawner(this,606.f);
-                s->SetPosition(Vector2(606.f*(float)(n),floorHeight + (64.f * a)));
+                s->SetPosition(Vector2(606.f*(float)(n),floorHeight + (128.f * a)));
 
             }
         }
@@ -369,6 +369,7 @@ void Game::Remove_from_AtkStack(class Mob *m)
     {
         std::iter_swap(iter,mAtkStack.end()-1);
         mAtkStack.pop_back();
+        m->SetDoAtk(false);
     }
 }
 
@@ -468,7 +469,26 @@ void Game::GenerateOutput()
     SDL_RenderPresent(mRenderer);
 }
 
+bool Game::IsinAtkersWay(SDL_FRect col)
+{
+    if(mAtkStack.empty()){return false;}
+    float x1 = mAtkStack[0]->GetPosition().x;
+    float y1 = mAtkStack[0]->GetPosition().y;
+    float x2 = mPlayer->GetPosition().x;
+    float y2 = mPlayer->GetPosition().y;
+    SDL_FRect* poi = &col;
 
+    auto b = SDL_IntersectFRectAndLine(poi,&x1,&y1,&x2,&y2);
+
+    return  b == SDL_bool::SDL_TRUE;
+
+
+}
+
+Vector2 Game::GetAtKPath()
+{
+    return  (mPlayer->GetPosition() - mAtkStack[0]->GetPosition()) * -1;
+}
 
 void Game::Shutdown()
 {

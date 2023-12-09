@@ -16,10 +16,12 @@ class CrocWait : public FSMState
         void Shuffle();
         void Start() override;
         void Update(float deltaTime) override;
+        void Update_Move_dir();
 
     private:
         float mSpeed;
         int mDir;
         class Mob* mMob;
         Vector2 mDist;
+        Vector2 mMoveDir;
 };

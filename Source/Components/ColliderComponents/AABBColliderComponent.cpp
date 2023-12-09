@@ -26,6 +26,17 @@ AABBColliderComponent::~AABBColliderComponent()
     //mOwner->GetGame()->RemoveCollider(this);
 }
 
+
+SDL_FRect AABBColliderComponent::AABBtoRect()
+{
+    SDL_FRect  outx = SDL_FRect();
+    outx.x = GetMin().x;
+    outx.y = GetMin().y;
+    outx.w = GetMax().x - outx.x;
+    outx.h = GetMax().y - outx.y;
+    return  outx;
+
+}
 Vector2 AABBColliderComponent::GetMin() const
 {
     return mOwner->GetPosition() - Vector2(mWidth/2.0f, mHeight/2.0f) + mOffset;

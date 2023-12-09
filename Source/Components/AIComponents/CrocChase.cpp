@@ -70,7 +70,7 @@ bool CrocChase::IsInRange()
 
 
 
-    if(Math::Abs(y_dif) >= mAtkHeight/8 )
+    if(Math::Abs(y_dif) >= mAtkHeight)
     {
         return  false;
     }

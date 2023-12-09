@@ -9,6 +9,7 @@
 #include "../Components/AIComponents/CrocChase.h"
 #include "../Components/AIComponents/CrocWait.h"
 #include "../Components/ColliderComponents/Hitbox.h"
+#include "../Components/ColliderComponents/AABBColliderComponent.h"
 
 
 
@@ -63,6 +64,9 @@ Mob::Mob(Game *game, float forwardSpeed): Actor(game), mForwardSpeed(forwardSpee
     GetGame()->AddAliveMobs(1);
 
     SetID(mGame->GetMobID());
+
+    mDoAtk=false;
+    mColHappened=false;
 
 
 
@@ -191,6 +195,76 @@ void Mob::DoBite()
     mDrawComponent->SetAnimation("run");
     mDrawComponent->SetAnimFPS(5.0f);
     mGame->GetAudio()->PlaySound("bite.wav");
+}
+
+void Mob::OnCollision(std::vector<AABBColliderComponent::Overlap> &responses)
+{
+    if(!GetDoAtk() && !GetIsBiting()){return;}
+    for(auto rp:responses)
+    {
+        if(rp.target->GetOwner()->GetName()==GetName())
+        {
+            mColHappened=true;
+            return;
+        }
+    }
+
+
+
+
+    /*if(GetDoAtk() || GetIsBiting()){return;}
+    for(auto rp:responses)
+    {
+        if(true)
+        {
+
+            //Checamos para ver se o collisor é de um mob
+            if(rp.target->GetOwner()->GetName()==GetName())
+            {
+
+                bool vert_done =false;
+                bool hori_done = false;
+                SDL_Log("swap");
+
+                auto main_pos = GetPosition();
+                auto hold = rp.target->GetOwner()->GetPosition();
+
+                //rp.target->GetOwner()->SetPosition(GetPosition());
+                //SetPosition(hold);
+                auto neg_dist = rp.distance *-1;
+                SDL_Rect *rp_rect = new SDL_Rect();
+                rp_rect->x = (int)rp.target->GetMin().x;
+                rp_rect->y = (int)rp.target->GetMin().y;
+                rp_rect->w = (int)rp.target->GetMax().x - rp_rect->x;
+                rp_rect->h = (int) rp.target->GetMax().y - rp_rect->y;
+
+                int x1 = (int)GetPosition().x;
+                int y1 = (int)GetPosition().y;
+                int x2 = (int)GetGame()->GetPlayer()->GetPosition().x;
+                int y2 = (int)GetGame()->GetPlayer()->GetPosition().y;
+
+                auto in = SDL_IntersectRectAndLine(rp_rect,&x1,&y1,&x2,&y2);
+                if(in ==SDL_bool::SDL_FALSE)
+                {
+                    continue;
+                }
+                else{
+                    rp.target->GetOwner()->SetPosition(GetPosition()+neg_dist);
+                    SetPosition(hold+rp.distance);
+                    return;
+                }
+
+
+
+                rp.target->GetOwner()->GetComponent<AABBColliderComponent>()->DetectCollision(
+                        rp.target->GetOwner()->GetComponent<RigidBodyComponent>(),
+                                GetGame()->GetColliders());
+
+
+                if(vert_done&&hori_done){ return;}
+            }
+        }
+    }*/
 }
 
 

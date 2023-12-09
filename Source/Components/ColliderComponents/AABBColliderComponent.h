@@ -8,6 +8,7 @@
 #include "../RigidBodyComponent.h"
 #include <vector>
 #include <set>
+#include "SDL.h"
 
 
 enum class ColliderLayer
@@ -58,6 +59,7 @@ public:
     Vector2 GetCenter() const;
     Vector2 GetOffset() const { return mOffset; }
     ColliderLayer GetLayer() const { return mLayer; }
+    SDL_FRect AABBtoRect();
 
 
 

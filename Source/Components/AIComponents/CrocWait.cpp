@@ -24,7 +24,7 @@ void CrocWait::Start()
     mDist = mOwner->GetGame()->GetPlayer()->GetPosition() - mOwner->GetPosition();
     mDist = Vector2::Normalize(mDist);
 
-    mDir = Random::GetIntRange(1,3);
+    mDir = Random::GetIntRange(1,4);
     //std::cout << mDir << std::endl;
 
 }
@@ -42,7 +42,15 @@ void CrocWait::HandleStateTransition(float stateTime)
 void CrocWait::Update(float deltaTime)
 {
     auto mOwner = mFSM->GetOwner();
-    CrocWait::Shuffle();
+    //CrocWait::Shuffle();
+    /*if(mMob->GetColHappened())
+    {
+        mMob->SetDoAtk(false);
+        mDir = Random::GetIntRange(1,4);
+    }*/
+
+    Update_Move_dir();
+    mOwner->Move(mMoveDir);
     if((int)deltaTime%3==0 && !mMob->GetDoAtk())
     {
         int tg = 10;
@@ -93,14 +101,14 @@ void CrocWait::Shuffle()
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
             //mOwner->Move(Vector2(0,mSpeed/8));
-            mOwner->Move(Vector2(0,apl.y*-1));
+            mOwner->Move(Vector2(0,apl.y));
         }
 
         case 3:
         {
             //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
             //mOwner->Move(Vector2(0,mSpeed/8));
-            mOwner->Move(Vector2(apl.x,apl.y*-1));
+            mOwner->Move(Vector2(apl.x,apl.y));
         }
     }
 
@@ -108,4 +116,58 @@ void CrocWait::Shuffle()
 
 
 
+}
+
+
+void CrocWait::Update_Move_dir()
+{
+
+    auto mOwner = mFSM->GetOwner();
+    mDist = mOwner->GetGame()->GetPlayer()->GetPosition() - mOwner->GetPosition();
+    mDist = Vector2::Normalize(mDist);
+
+    auto spd = mSpeed/2.0f;
+    auto apl =  spd* mDist * -1;
+    auto col = mMob->GetComponent<AABBColliderComponent>()->AABBtoRect();
+
+    bool in_the_way = !mMob->GetIsBiting() && !mMob->GetDoAtk() &&  mMob->GetGame()->IsinAtkersWay(col);
+
+    if(in_the_way)
+    {
+        //mMoveDir *= -1;
+        auto v2 = mMob->GetGame()->GetAtKPath();
+        auto v3 = Vector2::Normalize(v2+mMoveDir);
+        mMoveDir = v3 *spd;
+
+    }
+    else{
+        switch (mDir)
+        {
+            case 1:
+            {
+                mMoveDir = Vector2(apl.x,0);
+            }
+
+            case 2:
+            {
+                //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
+                //mOwner->Move(Vector2(0,mSpeed/8));
+
+                mMoveDir = Vector2(0,apl.y);
+            }
+
+            case 3:
+            {
+                //mOwner->GetComponent<RigidBodyComponent>()->ApplyForce(Vector2(0,mSpeed));
+                //mOwner->Move(Vector2(0,mSpeed/8));
+                //mOwner->Move();
+                mMoveDir = Vector2(apl.x,apl.y);
+            }
+
+            case 4:
+            {
+                mMoveDir = Vector2(0,apl.y*-1);
+            }
+        }
+    }
 }

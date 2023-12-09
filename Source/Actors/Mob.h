@@ -22,9 +22,14 @@ class Mob: public Actor
         bool GetDoAtk() const {return mDoAtk;}
         void SetDoAtk(bool b) {mDoAtk=b;}
 
+        bool GetColHappened() const {return mColHappened;}
+        void SetColHappened(bool b) {mColHappened=b;}
+
         bool GetIsBiting() const {return mIsBiting;}
 
         void BeginBite();
+
+        void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses) override;
 
 
 
@@ -41,6 +46,7 @@ class Mob: public Actor
         void ManageAnimations();
         float mBiteCooldown;
         bool  mIsBiting;
+        bool mColHappened;
 
         void DoBite();
 

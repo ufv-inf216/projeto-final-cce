@@ -77,6 +77,9 @@ public:
     int GetAliveMobs() const {return  mAliveMobs;}
     void AddAliveMobs(int i) {mAliveMobs+=i;}
 
+    bool IsinAtkersWay(SDL_FRect col);
+    Vector2 GetAtKPath();
+
     int GetMobID() {return mMobId++;}
 
     class Player* GetPlayer(){return  mPlayer;}
