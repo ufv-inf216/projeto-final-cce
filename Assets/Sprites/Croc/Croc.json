@@ -26,14 +26,32 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":32},
 	"sourceSize": {"w":64,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Croc-ZHit-1.png",
+	"frame": {"x":192,"y":0,"w":64,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":32},
+	"sourceSize": {"w":64,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Croc-ZHit-2.png",
+	"frame": {"x":256,"y":0,"w":64,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":32},
+	"sourceSize": {"w":64,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "Croc.png",
 	"format": "RGBA8888",
-	"size": {"w":192,"h":32},
+	"size": {"w":320,"h":32},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d79ab0b35d573dcc3f267248e21b0635:6eee761a7570591f7908d9470041edcc:8a85ce8c4ae26f9b37437aa3e7868e30$"
+	"smartupdate": "$TexturePacker:SmartUpdate:95feb78efc1f8ed75bae069abf7638d9:b9ab22ca61425904c4b3b4af56f5e467:8a85ce8c4ae26f9b37437aa3e7868e30$"
 }
 }
