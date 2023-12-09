@@ -216,14 +216,17 @@ void Player::TakeDamage(int d)
     if(mStatBlock->Is_dead())
     {
         SDL_Log("Player will die");
-	mLives--;
-	std::cout << "lives" << mLives << std::endl;
-	mStatBlock->SetMaxHP(4);
-	if(mLives < 1){
-	  SDL_Log("Player will die fr");
-	  SetShouldDie(true);
-	  mGame->Quit();
-	}
+	    mLives--;
+	    //std::cout << "lives" << mLives << std::endl;
+	    mStatBlock->SetMaxHP(4);
+	    if(mLives < 1)
+        {
+	        SDL_Log("Player will die fr");
+	        SetShouldDie(true);
+	        //mGame->Quit();
+            mGame->SetGameState(Game::State::Over);
+	    }
+
     }
 }
 

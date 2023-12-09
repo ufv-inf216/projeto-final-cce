@@ -85,6 +85,8 @@ public:
     class Player* GetPlayer(){return  mPlayer;}
 
     //class PathNode* GetGhostPen() { return mGhostPen; }
+    void PrepareScreenMsg(std::string txt, int sz);
+    void DestroyScreenMsg();
 
 private:
     const float RESPAWN_TIME = 1.1f;
@@ -131,6 +133,15 @@ private:
     int mWindowHeight;
     float mFloorHeight;
 
+    //Menssagens na tela
+    SDL_Texture* mMsg_tex;
+    SDL_Rect mMsg_rect;
+    SDL_Rect mMsg_src;
+
+
+
+
+
     // Track elapsed time since game start
     Uint32 mTicksCount;
 
@@ -152,6 +163,7 @@ private:
     class PathNode* mTunnelLeft = nullptr;
     class PathNode* mTunnelRight = nullptr;
     class PathNode* mGhostPen = nullptr;*/
+    class Font* mFont;
 
     bool mShowGraph = false;
     bool mShowGhostPaths = false;

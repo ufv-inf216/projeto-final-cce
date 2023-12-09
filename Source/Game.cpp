@@ -13,6 +13,7 @@
 #include "SDL_image.h"
 #include "Random.h"
 #include "Game.h"
+#include "SDL_ttf.h"
 
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
@@ -24,23 +25,28 @@
 #include "AudioSystem.h"
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
+#include "Font.h"
 
 
 
 Game::Game(int windowWidth, int windowHeight)
-        :mWindow(nullptr)
-        ,mRenderer(nullptr)
-        ,mTicksCount(0)
-        ,mIsRunning(true)
-        ,mUpdatingActors(false)
-        ,mWindowWidth(windowWidth)
-        ,mWindowHeight(windowHeight)
-        ,mRespawnTimer(RESPAWN_TIME)
-        ,mCameraIsBlocked(false)
-        ,mAliveMobs(0)
-        ,mMobId(1)
+        : mWindow(nullptr)
+        , mRenderer(nullptr)
+        , mTicksCount(0)
+        , mIsRunning(true)
+        , mUpdatingActors(false)
+        , mWindowWidth(windowWidth)
+        , mWindowHeight(windowHeight)
+        , mRespawnTimer(RESPAWN_TIME)
+        , mCameraIsBlocked(false)
+        , mAliveMobs(0)
+        , mMobId(1)
+        , mMsg_tex(nullptr)
 {
     SetCameraPos(Vector2::Zero);
+    mMsg_rect = SDL_Rect();
+    mMsg_src= SDL_Rect ();
+
 }
 
 bool Game::Initialize()
@@ -65,7 +71,19 @@ bool Game::Initialize()
         return false;
     }
 
+    auto ttf = TTF_Init();
+
+    if(ttf==-1)
+    {
+        SDL_Log("Failed to load SDL_ttf: %s", TTF_GetError());
+        return false;
+    }
+
     mAudio = new AudioSystem(48);
+
+    mFont = new Font();
+
+    mFont->Load("../Assets/Fonts/Carlito-Regular.ttf");
     
     Random::Init();
 
@@ -212,6 +230,16 @@ void Game::UpdateGame()
         deltaTime = 0.05f;
     }
 
+    if(mGameState == State::Won && mMsg_tex== nullptr)
+    {
+        PrepareScreenMsg("You win!",30);
+    }
+
+    if(mGameState == State::Over && mMsg_tex== nullptr)
+    {
+        PrepareScreenMsg("Game over",30);
+    }
+
 
     mTicksCount = SDL_GetTicks();
 
@@ -250,6 +278,7 @@ void Game::UpdateCamera()
         if (GetCameraPos().x >= mLevelSize)
         {
             mCameraIsBlocked = true;
+            SetGameState(Game::State::Won);
         }
 
 
@@ -465,6 +494,11 @@ void Game::GenerateOutput()
         }
     }
 
+    if(mMsg_tex!= nullptr)
+    {
+        SDL_RenderCopy(mRenderer,mMsg_tex,&mMsg_src,&mMsg_rect);
+    }
+
     // Swap front buffer and back buffer
     SDL_RenderPresent(mRenderer);
 }
@@ -503,3 +537,23 @@ void Game::Shutdown()
 }
 
 void Game::SetResort(bool b) {mResortSprites=b;}
+
+void Game::PrepareScreenMsg(std::string txt, int sz)
+{
+    mMsg_tex = mFont->RenderText(mRenderer,txt);
+    uint32_t* junk = nullptr;
+    int *junk2  = nullptr;
+    mMsg_src.x = mMsg_src.y=0;
+    SDL_QueryTexture(mMsg_tex,junk,junk2,&mMsg_src.w,&mMsg_src.h);
+    mMsg_rect.w =mMsg_src.w;  mMsg_rect.h =mMsg_src.h;
+
+    mMsg_rect.x = (mWindowWidth/2) - (mMsg_rect.w/2);
+    mMsg_rect.y = (mWindowHeight/2) - (mMsg_rect.h/2);
+
+
+}
+
+void Game::DestroyScreenMsg() {
+    delete mMsg_tex;
+    mMsg_tex= nullptr;
+}
