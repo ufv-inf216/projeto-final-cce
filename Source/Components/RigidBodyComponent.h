@@ -21,6 +21,7 @@ public:
     void SetAcceleration(const Vector2& acceleration) { mAcceleration = acceleration; }
 
     void SetFrictionCoefficient(const float f) { mFrictionCoefficient = f; }
+    float GetFrictionCoefficient() const { return mFrictionCoefficient; }
 
     void ApplyForce(const Vector2 &force);
 

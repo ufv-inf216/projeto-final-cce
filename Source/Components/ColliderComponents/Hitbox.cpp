@@ -80,12 +80,14 @@ void Hitbox::DetectCollision(RigidBodyComponent *rigidBody, std::vector<class AA
 
             bool jump_check = target->GetOwner()->GetIsJumping() <= GetStopJump();
             Overlap minOverlap = GetMinOverlap(target);
-            if (jump_check&&target->GetLayer() == ColliderLayer::MobHitBox) {
+            bool same_type = target->GetOwner()->GetName() == mOwner->GetName();
+
+            if (jump_check&&!same_type&&target->GetLayer() == ColliderLayer::MobHitBox) {
                 //ResolveCollisions(rigidBody, minOverlap);
                 //target->GetOwner()->SetState(ActorState::Destroy);
                 target->GetOwner()->TakeDamage(mDmg);
                 float mod = mKnockback*target->GetOwner()->GetComponent<StatBlock>()->GetKnockbackMod();
-                //target->GetOwner()->GetComponent<RigidBodyComponent>()->SetFrictionCoefficient(1);
+                target->GetOwner()->GetComponent<RigidBodyComponent>()->SetFrictionCoefficient(1);
                 target->GetOwner()->GetComponent<RigidBodyComponent>()->SetVelocity(Vector2(mKnockDir*mod));
                 //target->GetOwner()->SetSentBack(true);
 

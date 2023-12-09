@@ -115,7 +115,8 @@ void Player::OnProcessInput(const Uint8 *keyState)
          }
 
          mPunch = new Hitbox(this,mWidth/2*inv,0,mWidth/2,mHeight/2,ColliderLayer::AttackHitBox);
-         mPunch->SetKnockback(4000);
+         mPunch->SetKnockback(8000);
+         mPunch->SetKnockDir(Vector2(inv,0));
 
          mPunch->DetectCollision(mRigidBodyComponent,mGame->GetColliders());
          mPunch->SetEnabled(false);
@@ -146,6 +147,12 @@ void Player::OnUpdate(float deltaTime)
 {
 
     ProcessMov();
+    if((int)deltaTime % 10 == 0 && mRigidBodyComponent->GetFrictionCoefficient() < GetFriction())
+    {
+        mRigidBodyComponent->SetFrictionCoefficient(mRigidBodyComponent->GetFrictionCoefficient()+1);
+    }
+
+
 
     //Ordem de desenhar
     if(GetUpdateDrawOrder() && !GetIsJumping())

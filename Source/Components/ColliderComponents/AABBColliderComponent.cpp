@@ -136,6 +136,7 @@ void AABBColliderComponent::DetectCollision(RigidBodyComponent *rigidBody, std::
             bool jump_check = target->GetOwner()->GetIsJumping() <= GetStopJump() && mOwner->GetIsJumping() <=  target->GetStopJump();
             //std::cout << ((target->GetOwner()->GetIsJumping())? "true":"false") << std::endl;
             Overlap minOverlap = GetMinOverlap(target);
+            bool same_type = target->GetOwner()->GetName() == mOwner->GetName();
             if (jump_check&&target->GetLayer() == ColliderLayer::Shoe) {
                 ResolveCollisions(rigidBody, minOverlap);
             }

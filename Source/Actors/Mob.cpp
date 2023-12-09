@@ -77,6 +77,12 @@ void Mob::OnUpdate(float deltaTime)
     auto pos = GetPosition();
     auto posCorrect = Vector2();
     posCorrect.x = pos.x; posCorrect.y = pos.y;
+
+    if((int)deltaTime % 10 == 0 && mRigidBodyComponent->GetFrictionCoefficient() < GetFriction())
+    {
+        mRigidBodyComponent->SetFrictionCoefficient(mRigidBodyComponent->GetFrictionCoefficient()+1);
+    }
+
     if(pos.y > (float)mGame->GetWindowHeight() - ((float)mHeight/2))
     {
         //SDL_Log("don't go bellow");
@@ -187,7 +193,7 @@ void Mob::DoBite()
         x_flip = -1;
     }
     auto mHitbox = new Hitbox(this,(int)dx*x_flip,1,mWidth,(int)mHeight,ColliderLayer::AttackHitBox);
-    mHitbox->SetKnockback(1000*x_flip);
+    mHitbox->SetKnockback(16000*x_flip);
     mHitbox->DetectCollision(GetComponent<RigidBodyComponent>(),GetGame()->GetColliders());
     mHitbox->SetDestroy(true);
     mHitbox->SetEnabled(false);
