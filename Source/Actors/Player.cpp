@@ -194,7 +194,7 @@ void Player::ManageAnimations() {
     Vector2 velocity = mRigidBodyComponent->GetVelocity();
 
 
-    if (mIsAttacking) {
+    if (mIsAttacking && mPunchCooldown <= .25f) {
         mDrawComponent->SetAnimation("punch", false);
         mDrawComponent->SetAnimFPS(8.f);
     }
@@ -222,7 +222,7 @@ void Player::TakeDamage(int d)
     //SDL_Log("Player takes damage");
     mStatBlock->TakeDmg(d);
     SDL_Log("TAKEN DAMAGE");
-    mDrawComponent->SetAnimation("hit", false, true);
+    mDrawComponent->SetAnimation("hit", false);
     mDrawComponent->SetAnimFPS(18.f);
     if(mStatBlock->Is_dead())
     {

@@ -100,10 +100,10 @@ void DrawAnimatedComponent::Update(float deltaTime)
     }
 }
 
-void DrawAnimatedComponent::SetAnimation(const std::string& name, bool loop, bool priority)
+void DrawAnimatedComponent::SetAnimation(const std::string& name, bool loop)
 {
     // Only set new animation if previous has stopped
-    if (!mShouldLoop) {
+    if (!mShouldLoop && name != "hit") {
         return;
     }
 

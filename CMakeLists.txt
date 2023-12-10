@@ -53,6 +53,7 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Spawner.cpp
         Source/Actors/Spawner.cpp
         Source/Font.cpp
+        Source/Font.cpp
 )
 
 ####### DO NOT EDIT BELLOW

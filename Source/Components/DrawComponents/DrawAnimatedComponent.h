@@ -20,7 +20,7 @@ public:
     void SetAnimFPS(float fps) { mAnimFPS = fps; }
 
     // Set the current active animation
-    void SetAnimation(const std::string& name, bool loop = true, bool priority = false);
+    void SetAnimation(const std::string& name, bool loop = true);
 
     std::vector <SDL_Rect*>& GetSpriteSheetData() { return mSpriteSheetData; }
 
