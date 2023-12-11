@@ -9,6 +9,7 @@ build de release versão 0.1
 ## CCE
 
 #### Objetivo do jogo
+O objetivo do jogador é netreter o jogador com gameplay "Beat’em up"
 
 
 #### Mecânicas
