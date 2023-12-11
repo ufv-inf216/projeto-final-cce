@@ -9,14 +9,12 @@ build de release versão 0.1
 ## Capivara Combat Experience (CCE)
 
 #### Objetivo do jogo
-O objetivo do jogo é Salvar o Centro de Ciênicas exatas, para isso, o jogador deve percorrer todos os niveis derrotando todos os inimigos.
+O objetivo do jogo é salvar o Centro de Ciênicas Exatas do ataque dos jacarEs, para isso, o jogador deve percorrer todos os nIveis derrotando todos os inimigos.
 
 
 #### Mecânicas
 
-O jogador pode se mover em quatro direções, pode pular e socar, existem inimigos nos níveis, e para progredir, 
-o jogador precisa derrotar todos presentes na tela, os inimigos pode ser danificados pelo soco, e podem o 
-danificar com seus ataques, o jogador pode evitar os ataques dos inimigos com o pulo.
+O jogador pode se mover em quatro direções, alEm de pular e socar. Existem inimigos nos nIveis, e, para progredir, o jogador precisa derrotar todos presentes na tela. Os inimigos pode ser danificados pelo soco, e podem danificar o jogador com seus ataques. O jogador pode evitar os ataques dos inimigos com o pulo.
 
 ###### Controles:
 
@@ -28,7 +26,7 @@ danificar com seus ataques, o jogador pode evitar os ataques dos inimigos com o 
 
 #### Condições de vitória e derrota
 
-O jogador é derrotado se perder todas as suas vidas. O jogador ganha se chegar ao final do nível.
+O jogador ganha se chegar ao final do nível. E o jogador é derrotado se perder todas as suas vidas.
 
 
 #### Funcionalidades a serem testadas
