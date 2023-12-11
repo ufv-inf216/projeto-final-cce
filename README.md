@@ -35,6 +35,7 @@ O jogador ganha se chegar ao final do nível. E o jogador é derrotado se perder
 * Jogabilidade
 * Dificuldade do jogo
 * Qualidade e utilização da música e efeitos sonoros
+* Animação
   
 
 
