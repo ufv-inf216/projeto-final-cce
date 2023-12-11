@@ -6,10 +6,10 @@ Commits feitos pelo usuário "Campo" se referem a [gabriel-cmf](https://github.c
 build de release versão 0.1
 
 
-## CCE
+## Capivara Combat Experience (CCE)
 
 #### Objetivo do jogo
-O objetivo do jogador é netreter o jogador com gameplay "Beat’em up"
+O objetivo do jogo é Salvar o Centro de Ciênicas exatas, para isso, o jogador deve percorrer todos os niveis derrotando todos os inimigos.
 
 
 #### Mecânicas
