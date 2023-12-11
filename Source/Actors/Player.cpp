@@ -105,7 +105,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
     }
 
     // Punch
-    if(keyState[SDL_SCANCODE_P] && !mIsAttacking)
+    if(keyState[SDL_SCANCODE_P] && !mIsAttacking && !GetIsJumping())
     {
 
       // mGame->GetAudio()->PlaySound("soco.wav");
@@ -221,18 +221,18 @@ void Player::TakeDamage(int d)
 {
     //SDL_Log("Player takes damage");
     mStatBlock->TakeDmg(d);
-    SDL_Log("TAKEN DAMAGE");
+    //SDL_Log("TAKEN DAMAGE");
     mDrawComponent->SetAnimation("hit", false);
     mDrawComponent->SetAnimFPS(18.f);
     if(mStatBlock->Is_dead())
     {
-        SDL_Log("Player will die");
+        //SDL_Log("Player will die");
 	    mLives--;
 	    //std::cout << "lives" << mLives << std::endl;
 	    mStatBlock->SetMaxHP(4);
 	    if(mLives < 1)
         {
-	        SDL_Log("Player will die fr");
+	        //SDL_Log("Player will die fr");
 	        SetShouldDie(true);
 	        //mGame->Quit();
             mGame->SetGameState(Game::State::Over);

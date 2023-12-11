@@ -159,12 +159,12 @@ void Game::LoadLevel(const std::string &levelPath) {
 
     std::getline(level, row);
     //std::cout << row.length() << " " << nFloors << std::endl;
-    for (int n=0;n<row.length();n++) {
-        if (row[n] != '.')
+    for (int n=0;n<nFloors;n++) {
+        if (row[n] != '.' && isalnum(row[n]))
         {
             std::string eat(1,row[n] );
             int reps = std::stoi(eat );
-            std::cout << reps << std::endl;
+            //std::cout << reps << std::endl;
             for(int a=0;a<reps;a++)
             {
                 auto s= new Spawner(this,606.f);
