@@ -14,6 +14,7 @@
 #include "Random.h"
 #include "Game.h"
 #include "SDL_ttf.h"
+#include "Hud.h"
 
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
@@ -26,6 +27,7 @@
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
 #include "Font.h"
+
 
 
 
@@ -80,6 +82,8 @@ bool Game::Initialize()
     }
 
     mAudio = new AudioSystem(48);
+
+    mHud = new Hud(this);
 
     mFont = new Font();
 
@@ -494,6 +498,12 @@ void Game::GenerateOutput()
         }
     }
 
+    if(mGameState!=State::Over)
+    {
+        mHud->DrawHud();
+    }
+
+
     if(mMsg_tex!= nullptr)
     {
         SDL_RenderCopy(mRenderer,mMsg_tex,&mMsg_src,&mMsg_rect);
@@ -556,4 +566,9 @@ void Game::PrepareScreenMsg(std::string txt, int sz)
 void Game::DestroyScreenMsg() {
     delete mMsg_tex;
     mMsg_tex= nullptr;
+}
+
+SDL_Texture* Game::Render_text(std::string txt)
+{
+    return  mFont->RenderText(mRenderer,txt);
 }

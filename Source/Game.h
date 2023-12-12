@@ -87,6 +87,9 @@ public:
     //class PathNode* GetGhostPen() { return mGhostPen; }
     void PrepareScreenMsg(std::string txt, int sz);
     void DestroyScreenMsg();
+    SDL_Texture* Render_text(std::string txt);
+    SDL_Renderer* GetRenderer() const {return  mRenderer;}
+
 
 private:
     const float RESPAWN_TIME = 1.1f;
@@ -155,6 +158,7 @@ private:
 
     // Game-specific
     class Player *mPlayer= nullptr;
+
     /*std::vector<class Item*> mItems;
     std::vector<class Wall*> mWalls;
     std::vector<class Ghost*> mGhosts;
@@ -164,6 +168,7 @@ private:
     class PathNode* mTunnelRight = nullptr;
     class PathNode* mGhostPen = nullptr;*/
     class Font* mFont;
+    class Hud* mHud;
 
     bool mShowGraph = false;
     bool mShowGhostPaths = false;

@@ -11,6 +11,8 @@ class StatBlock: public Component
     public:
         explicit StatBlock(class Actor* owner,int hp, int updateOrder = 10);
         int GetMaxHP() const {return  mMaxHp;}
+        int GetHP() const {return  mHp;}
+
         void SetMaxHP(int i) {mMaxHp=i;mHp=i;}
         void TakeDmg(int d) {mHp-=d;}
         bool Is_dead() const { return mHp  <= 0;}

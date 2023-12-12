@@ -54,6 +54,10 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Spawner.cpp
         Source/Font.cpp
         Source/Font.cpp
+        Source/Scenes/Scene.cpp
+        Source/Scenes/Scene.h
+        Source/Hud.h
+        Source/Hud.cpp
 )
 
 ####### DO NOT EDIT BELLOW

@@ -235,6 +235,7 @@ void Player::TakeDamage(int d)
 	        //SDL_Log("Player will die fr");
 	        SetShouldDie(true);
 	        //mGame->Quit();
+            mStatBlock->SetMaxHP(4);
             mGame->SetGameState(Game::State::Over);
 	    }
 
@@ -287,3 +288,5 @@ void Player::ProcessMov() {
 
     SetPosition(posCorrect);
 }
+
+

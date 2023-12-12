@@ -12,6 +12,7 @@ class Player: public  Actor
         void OnCollision(std::vector<AABBColliderComponent::Overlap>& responses) override;
         virtual void TakeDamage(int d);
         std::string GetName() override;
+        int GetLives() const {return  mLives;}
 
 
 
