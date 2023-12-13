@@ -58,6 +58,8 @@ add_executable(${PROJECT_NAME}
         Source/Scenes/Scene.h
         Source/Hud.h
         Source/Hud.cpp
+        Source/Actors/Background.cpp
+        Source/Actors/Background.h
 )
 
 ####### DO NOT EDIT BELLOW

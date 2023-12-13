@@ -23,7 +23,7 @@ void WallDetail::GeneratePlaque(const std::string &texturePath, int id, float he
 }
 
 void WallDetail::GenerateDoorGate(const std::string &texturePath, int id, const char type, float height) {
-    Vector2 pos(640*id, height/2 + 10);
+    Vector2 pos(640*id, height/2);
     if (type == 'G') {
         this->SetPosition(pos);
         new DrawSpriteComponent(this, texturePath+"gate.png", height, height, 1);

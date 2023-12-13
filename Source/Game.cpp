@@ -20,6 +20,7 @@
 #include "Actors/Player.h"
 #include "Actors/Mob.h"
 #include "Actors/Spawner.h"
+#include "Actors/Background.h"
 #include "Actors/Floor.h"
 #include "Actors/Wall.h"
 #include "Actors/WallDetail.h"
@@ -129,6 +130,7 @@ void Game::InitializeActors()
 
 void Game::LoadLevel(const std::string &levelPath) {
 
+    float overlay = 640 - 111.f;
 
     float floorHeight  = (float)mWindowHeight*4.5/10;
     SetFloorHeight(floorHeight);
@@ -141,8 +143,14 @@ void Game::LoadLevel(const std::string &levelPath) {
 
     //Tamanho do mapa
     std::getline(level, row);
-    mLevelSize = std::stoi(row);
+    int nBackgrounds = std::stoi(row);
+    mLevelSize = 640 + ( overlay * (nBackgrounds-1) ) - 660;
     int nFloors = mLevelSize/300;
+
+    for (int n=0;n<nBackgrounds;n++) {
+        new Background(this, "../Assets/Sprites/Bg/floor-wall.png", n, mWindowHeight, mWindowWidth, overlay);
+    }
+    /*
     //Floors
     for (int n=0;n<nFloors;n++)
         new Floor(this, "../Assets/Sprites/Bg/floor.png", n, floorHeight);
@@ -152,18 +160,21 @@ void Game::LoadLevel(const std::string &levelPath) {
     if (nWalls < 1) nWalls = 1;
     for (int n=0;n<nFloors;n++)
         new Wall(this, "../Assets/Sprites/Bg/wall-bg.png", n, floorHeight);
+    */
 
 
     //Portas e portoes
     std::getline(level, row);
-    for (int n=0;n<nFloors;n++) {
+    for (int n=0;n<nBackgrounds;n++) {
+        if (n >= row.size()) break;
         if (row[n] != '.')
             new WallDetail(this, texPath, row[n], n, floorHeight);
     }
 
     std::getline(level, row);
     //std::cout << row.length() << " " << nFloors << std::endl;
-    for (int n=0;n<nFloors;n++) {
+    for (int n=0;n<nBackgrounds;n++) {
+        if (n >= row.size()) break;
         if (row[n] != '.' && isalnum(row[n]))
         {
             std::string eat(1,row[n] );
