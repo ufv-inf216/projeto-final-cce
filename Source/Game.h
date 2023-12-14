@@ -112,7 +112,7 @@ public:
     SDL_Texture* Render_text(std::string txt,Vector3 col=Color::White,int pointsize=30);
     SDL_Renderer* GetRenderer() const {return  mRenderer;}
 
-    void Game::SetScene(GameScene gameState);
+    void SetScene(GameScene gameState);
     void LoadLevel(const std::string& levelPath);
 
     void ClearLevel();
