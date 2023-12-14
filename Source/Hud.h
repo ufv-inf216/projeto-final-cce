@@ -1,13 +1,9 @@
 //
 // Created by Campo on 11/12/2023.
 //
+#pragma once
+
 #include <SDL.h>
-#ifndef T1_CCE_HUD_H
-#define T1_CCE_HUD_H
-
-#endif //T1_CCE_HUD_H
-
-
 
 class Hud
 {
@@ -18,7 +14,7 @@ class Hud
 
 
     private:
-        class Game* mOwner;
+        class Game* mGame;
         SDL_Rect* mSrc;
         SDL_Rect* mDist;
         void PreparedRects(SDL_Texture* tex);

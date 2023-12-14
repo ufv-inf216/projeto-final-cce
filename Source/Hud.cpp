@@ -11,7 +11,7 @@
 
 Hud::Hud(class Game *owner)
 {
-    mOwner = owner;
+    mGame = owner;
     mSrc = mDist = nullptr;
 }
 
@@ -38,8 +38,8 @@ void Hud::PreparedRects(SDL_Texture *tex)
 
 void Hud::DrawHud()
 {
-    int qrt = mOwner->GetWindowWidth()/4;
-    int hx = mOwner->GetWindowHeight()/16;
+    int qrt = mGame->GetWindowWidth()/4;
+    int hx = mGame->GetWindowHeight()/16;
     SDL_Rect hp = SDL_Rect();
     hp.x = hp.y=0;
     hp.w = qrt;
@@ -47,26 +47,26 @@ void Hud::DrawHud()
 
 
 
-    SDL_SetRenderDrawColor(mOwner->GetRenderer(),255,0,0,255);
-    SDL_RenderFillRect(mOwner->GetRenderer(),&hp);
+    SDL_SetRenderDrawColor(mGame->GetRenderer(),255,0,0,255);
+    SDL_RenderFillRect(mGame->GetRenderer(),&hp);
 
-    SDL_SetRenderDrawColor(mOwner->GetRenderer(),0,255,0,255);
+    SDL_SetRenderDrawColor(mGame->GetRenderer(),0,255,0,255);
 
 
-    float mod = (float)((float)mOwner->GetPlayer()->GetComponent<StatBlock>()->GetHP()/
-            (float)mOwner->GetPlayer()->GetComponent<StatBlock>()->GetMaxHP());
+    float mod = (float)((float)mGame->GetPlayer()->GetComponent<StatBlock>()->GetHP()/
+            (float)mGame->GetPlayer()->GetComponent<StatBlock>()->GetMaxHP());
 
 
     hp.w = (int)(qrt * mod);
-    SDL_RenderFillRect(mOwner->GetRenderer(),&hp);
+    SDL_RenderFillRect(mGame->GetRenderer(),&hp);
 
     std::string liv ="";
     std::stringstream ss;
-    ss << mOwner->GetPlayer()->GetLives();
+    ss << mGame->GetPlayer()->GetLives();
     liv = ss.str();
     liv = "x" + liv;
 
-    SDL_Texture* lives= mOwner->Render_text(liv);
+    SDL_Texture* lives= mGame->Render_text(liv);
     if(mSrc == nullptr)
     {
         PreparedRects(lives);
@@ -75,10 +75,10 @@ void Hud::DrawHud()
     mDist->x = qrt + 8;
     mDist->y = (hp.h/2) - (mDist->h/2);
 
-    SDL_RenderCopy(mOwner->GetRenderer(),lives,mSrc,mDist);
+    SDL_RenderCopy(mGame->GetRenderer(),lives,mSrc,mDist);
 
 
-    SDL_SetRenderDrawColor(mOwner->GetRenderer(),255,255,255,255);
+    SDL_SetRenderDrawColor(mGame->GetRenderer(),255,255,255,255);
 
 
 }
