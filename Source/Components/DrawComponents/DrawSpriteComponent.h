@@ -16,6 +16,7 @@ public:
 
     void FlipHorizontally(const bool flip) { mIsFlippedHorizontally = flip; };
     void FlipVertically(const bool flip) { mIsFlippedVertically = flip; };
+    void SpriteSheetOverride(SDL_Texture* t) {delete mSpriteSheetSurface;mSpriteSheetSurface=t;}
 
 protected:
     // Map of textures loaded

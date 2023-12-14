@@ -23,3 +23,8 @@ void Scene::ProcessInput(const Uint8* keyState)
 {
     // Process scene input
 }
+
+void Scene::Draw()
+{
+
+}

@@ -14,10 +14,12 @@ public:
 
     virtual void Load();
     virtual void ProcessInput(const Uint8* keyState);
+    virtual void Draw();
 
     class Game* GetGame() { return mGame; }
 
     virtual const Vector2& GetCameraPos();
+    virtual bool ShowHud(){return  true;}
 
 protected:
     class Game* mGame;

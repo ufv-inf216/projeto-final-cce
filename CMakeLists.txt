@@ -58,8 +58,12 @@ add_executable(${PROJECT_NAME}
         Source/Scenes/Scene.h
         Source/Hud.h
         Source/Hud.cpp
+        Source/Scenes/Menu.h
+        Source/Scenes/Menu.cpp
         Source/Actors/Background.cpp
         Source/Actors/Background.h
+        Source/Components/DrawComponents/DrawTextComponent.cpp
+        Source/Components/DrawComponents/DrawTextComponent.h
 )
 
 ####### DO NOT EDIT BELLOW

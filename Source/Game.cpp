@@ -15,6 +15,9 @@
 #include "Game.h"
 #include "SDL_ttf.h"
 #include "Hud.h"
+#include "Scenes/Scene.h"
+#include "Scenes/Menu.h"
+
 
 #include "Actors/Actor.h"
 #include "Actors/Player.h"
@@ -45,6 +48,8 @@ Game::Game(int windowWidth, int windowHeight)
         , mAliveMobs(0)
         , mMobId(1)
         , mMsg_tex(nullptr)
+        ,mScene(nullptr)
+        , mCurrentScene(GameScene::Menu)
 {
     SetCameraPos(Vector2::Zero);
     mMsg_rect = SDL_Rect();
@@ -103,6 +108,26 @@ bool Game::Initialize()
 
 void Game::InitializeActors()
 {
+
+    if(mCurrentScene!=GameScene::None)
+    {
+        switch (mCurrentScene) {
+            case GameScene::Menu:
+            {
+                mScene = new Menu(this);
+                break;
+            }
+
+            default:
+            {
+
+                break;
+            }
+        }
+        mScene->Load();
+        return;
+    }
+
     // Background
     LoadLevel("../Assets/Levels/Level0.txt");
 
@@ -199,6 +224,18 @@ void Game::SetGameState(State gameState) {
     mGameState = gameState;
 }
 
+void Game::SetScene(GameScene gameState)
+{
+    // Stop all sounds
+    mAudio->StopAllSounds();
+
+
+    // Handle scene transition
+    mCurrentScene= gameState;
+//    UnloadActors();
+//    InitializeActors();
+}
+
 
 void Game::RunLoop()
 {
@@ -233,6 +270,13 @@ void Game::ProcessInput()
 
     mPrev1Input = static_cast<bool>(state[SDL_SCANCODE_1]);
     mPrev2Input = static_cast<bool>(state[SDL_SCANCODE_2]);
+
+    mAudio->ProcessInput(state);
+    if(mScene!= nullptr)
+    {
+        mScene->ProcessInput(state);
+    }
+
 }
 
 void Game::UpdateGame()
@@ -482,7 +526,14 @@ void Game::RemoveCollider(AABBColliderComponent* collider)
 void Game::GenerateOutput()
 {
     // Set draw color to black
-    SDL_SetRenderDrawColor(mRenderer, 250, 250, 206, 255);
+    if(mCurrentScene!=GameScene::Menu)
+    {
+        SDL_SetRenderDrawColor(mRenderer, 250, 250, 206, 255);
+    }
+    else{
+        SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+    }
+
 
     // Clear back buffer
     SDL_RenderClear(mRenderer);
@@ -498,7 +549,10 @@ void Game::GenerateOutput()
         });
     }
 
-
+    if(mCurrentScene == GameScene::Menu)
+    {
+        mScene->Draw();
+    }
 
     //std::cout << mDrawables.size() <<std::endl;
     for (auto drawable : mDrawables)
@@ -509,7 +563,7 @@ void Game::GenerateOutput()
         }
     }
 
-    if(mGameState!=State::Over)
+    if(mGameState!=State::Over && (mScene== nullptr||mScene->ShowHud()))
     {
         mHud->DrawHud();
     }
@@ -519,6 +573,8 @@ void Game::GenerateOutput()
     {
         SDL_RenderCopy(mRenderer,mMsg_tex,&mMsg_src,&mMsg_rect);
     }
+
+
 
     // Swap front buffer and back buffer
     SDL_RenderPresent(mRenderer);
@@ -579,7 +635,7 @@ void Game::DestroyScreenMsg() {
     mMsg_tex= nullptr;
 }
 
-SDL_Texture* Game::Render_text(std::string txt)
+SDL_Texture* Game::Render_text(std::string txt,Vector3 col,int pointsize)
 {
-    return  mFont->RenderText(mRenderer,txt);
+    return  mFont->RenderText(mRenderer,txt,Color::White,pointsize);
 }

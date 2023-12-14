@@ -27,6 +27,13 @@ public:
         Won
     };
 
+    enum class GameScene
+    {
+        None,
+        Menu,
+        Level1,
+    };
+
     Game(int windowWidth, int windowHeight);
 
     bool Initialize();
@@ -84,11 +91,15 @@ public:
 
     class Player* GetPlayer(){return  mPlayer;}
 
+    class Font* GetFont() const {return  mFont;}
+
     //class PathNode* GetGhostPen() { return mGhostPen; }
     void PrepareScreenMsg(std::string txt, int sz);
     void DestroyScreenMsg();
-    SDL_Texture* Render_text(std::string txt);
+    SDL_Texture* Render_text(std::string txt,Vector3 col=Color::White,int pointsize=30);
     SDL_Renderer* GetRenderer() const {return  mRenderer;}
+
+    void Game::SetScene(GameScene gameState);
 
 
 private:
@@ -130,6 +141,8 @@ private:
     SDL_Window* mWindow;
     SDL_Renderer* mRenderer;
     AudioSystem* mAudio = nullptr;
+    GameScene mCurrentScene;
+    class Scene* mScene;
 
     // Window properties
     int mWindowWidth;
