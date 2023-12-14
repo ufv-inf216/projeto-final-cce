@@ -28,6 +28,8 @@ class Menu : public Scene
         std::vector<class Actor*> mOptActors;
         int mKeyCooldown;
         int mRectwRef;
+        SDL_Texture* sel_tex;
+        class Actor* mSelBar;
 
         class Actor* mBgActor;
 

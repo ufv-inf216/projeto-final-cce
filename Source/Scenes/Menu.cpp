@@ -10,6 +10,7 @@
 #include "../Components/DrawComponents/DrawTextComponent.h"
 #include "../Components/DrawComponents/DrawSpriteComponent.h"
 
+
 Menu::Menu(Game* game) : Scene(game)
 {
     mSel=0;
@@ -65,6 +66,7 @@ void Menu::Load()
          auto at = new Actor(mGame);
          auto dtc = new DrawTextComponent(at,st,mGame->GetFont(),st.length()*14,28,28);
          dtc->AdjustSize();
+         dtc->SetDrawOrder(111);
          Vector2 newp = Vector2(middle,0);
          newp.y = st_pos_y + (42.f*(float)i);
          at->SetPosition(newp);
@@ -83,6 +85,17 @@ void Menu::Load()
     mBgActor = new Actor(mGame);
     mBgActor->SetPosition( Vector2(mGame->GetWindowWidth()/2, mGame->GetWindowHeight()/2) );
     new DrawSpriteComponent(mBgActor, "../Assets/Sprites/Bg/menu-cce-bg.png", mGame->GetWindowWidth(), mGame->GetWindowHeight(), 0);
+
+    std::string t_path = "../Assets/menu_sel.png";
+    mSelBar = new Actor(mGame);
+    auto Ssdc = new DrawSpriteComponent(mSelBar,t_path,max_str_l*14,28,1);
+
+
+    Vector2 sbp= Vector2::Zero;
+    sbp.x = middle;
+    sbp.y = mOptActors[0]->GetPosition().y;
+    mSelBar->SetPosition(sbp);
+    //sel_tex = GetGame()->LoadTexture(t_path);
 }
 
 void Menu::ProcessInput(const Uint8 *keyState)
@@ -130,16 +143,25 @@ void Menu::Draw()
 
 
     //SDL_Log("Menu draw");
-    auto dtc = mOptActors[mRectwRef]->GetComponent<DrawTextComponent>();
-    auto rec =dtc->GetRenderRect();
-    rec.y = mOptActors[mSel]->GetComponent<DrawTextComponent>()->GetRenderRect().y;
-    rec.y -=4;
+    //auto dtc = mOptActors[mRectwRef]->GetComponent<DrawTextComponent>();
+    //auto rec =dtc->GetRenderRect();
+    //rec.y = mOptActors[mSel]->GetComponent<DrawTextComponent>()->GetRenderRect().y;
+    //rec.y -=4;
+
+    auto np = mOptActors[mSel]->GetPosition();
+
+    np.y-=4;
+    mSelBar->SetPosition(np);
 
 
 
-    SDL_SetRenderDrawColor(GetGame()->GetRenderer(),255,0,0,255);
 
-    SDL_RenderFillRect(mGame->GetRenderer(),&rec);
+
+    //SDL_SetRenderDrawColor(GetGame()->GetRenderer(),255,0,0,255);
+
+    //SDL_RenderFillRect(mGame->GetRenderer(),&rec);
+    //SDL_RenderCopy(mGame->GetRenderer(),sel_tex, nullptr,&rec);
+
 }
 
 void Menu::SelChoice()
@@ -155,6 +177,7 @@ void Menu::SelChoice()
         mTitleActor->SetState(ActorState::Destroy);
 
         mSubTitleActor->SetState(ActorState::Destroy);
+        mSelBar->SetState(ActorState::Destroy);
         for(auto st : mOptActors)
         {
             st->SetState(ActorState::Destroy);

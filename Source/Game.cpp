@@ -650,10 +650,7 @@ void Game::GenerateOutput()
         });
     }
 
-    if(mCurrentScene == GameScene::Menu)
-    {
-        mScene->Draw();
-    }
+
 
     //std::cout << mDrawables.size() <<std::endl;
     for (auto drawable : mDrawables)
@@ -662,6 +659,11 @@ void Game::GenerateOutput()
         {
             drawable->Draw(mRenderer);
         }
+    }
+
+    if(mCurrentScene == GameScene::Menu)
+    {
+        mScene->Draw();
     }
 
     if(mGameState!=State::Over && (mScene== nullptr||mScene->ShowHud()))
