@@ -35,13 +35,13 @@ void Menu::Load()
      *
      */
 
-    auto td = new DrawTextComponent(mTitleActor,"CCE",mGame->GetFont(),108,72,72);
-    td->AdjustSize();
+    //auto td = new DrawTextComponent(mTitleActor,"CCE",mGame->GetFont(),108,72,72);
+    //td->AdjustSize();
 
     mSubTitleActor = new Actor(mGame);
     std::string subn = "Capivara Combat Experience";
-    auto sb = new DrawTextComponent(mSubTitleActor,subn,mGame->GetFont(),subn.length()*15,30,30);
-    sb->AdjustSize();
+    //auto sb = new DrawTextComponent(mSubTitleActor,subn,mGame->GetFont(),subn.length()*15,30,30);
+    //sb->AdjustSize();
 
     //auto title_tex = mGame->Render_text("CCE",Color::White,30);
 
