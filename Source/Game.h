@@ -104,6 +104,8 @@ public:
     void Game::SetScene(GameScene gameState);
     void LoadLevel(const std::string& levelPath);
 
+    float GetCameraOffset();
+
 
 private:
     const float RESPAWN_TIME = 1.1f;
@@ -151,6 +153,8 @@ private:
     int mWindowWidth;
     int mWindowHeight;
     float mFloorHeight;
+
+    float mCameraMult;
 
     //Menssagens na tela
     SDL_Texture* mMsg_tex;

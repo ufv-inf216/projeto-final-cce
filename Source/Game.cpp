@@ -49,6 +49,7 @@ Game::Game(int windowWidth, int windowHeight)
         , mMsg_tex(nullptr)
         ,mScene(nullptr)
         , mCurrentScene(GameScene::Menu)
+        ,mCameraMult(50.f)
 {
     SetCameraPos(Vector2::Zero);
     mMsg_rect = SDL_Rect();
@@ -329,7 +330,9 @@ void Game::UpdateGame()
         mCameraIsBlocked=true;
     }
     else{
+        if(mCameraIsBlocked){mCameraMult=90.f;}
         mCameraIsBlocked=false;
+
     }
 
     // Update camera position
@@ -341,23 +344,36 @@ void Game::UpdateGame()
 
 }
 
+
+float Game::GetCameraOffset()
+{
+    std::cout << (mCameraMult/100.f) << std::endl;
+    return ((float)mWindowWidth)*(mCameraMult/100.f);
+}
+
 void Game::UpdateCamera()
 {
 
     //SDL_Log("update camera");
+    if(!mCameraIsBlocked &&mCameraMult > 50.f)
+    {
+        mCameraMult -= 1.f;
+    }
+
 
     if(mPlayer!=nullptr)
     {
 
-        if (GetCameraPos().x >= mLevelSize)
+        if (GetCameraPos().x >= (float)mLevelSize)
         {
             mCameraIsBlocked = true;
             SetGameState(Game::State::Won);
         }
-
+        std::cout << GetCameraOffset() << " , " << (float)mWindowWidth/2 << std::endl;
+        std::cout << ((GetCameraOffset()==(float)mWindowWidth/2) ?"True" : "False") <<  std::endl;
 
         auto v= GetCameraPos();
-        v.x = mPlayer->GetPosition().x - ((float)mWindowWidth/2) ;
+        v.x = mPlayer->GetPosition().x - GetCameraOffset();
 
         if(!mCameraIsBlocked && v.x >= GetCameraPos().x)
         {
