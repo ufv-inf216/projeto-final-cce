@@ -31,8 +31,7 @@
 #include "Components/DrawComponents/DrawComponent.h"
 #include "Components/DrawComponents/DrawSpriteComponent.h"
 #include "Font.h"
-
-
+#include "Scenes/Level1.h"
 
 
 Game::Game(int windowWidth, int windowHeight)
@@ -106,6 +105,11 @@ bool Game::Initialize()
     return true;
 }
 
+void Game::InitPlayer()
+{
+    mPlayer =new Player(this);
+}
+
 void Game::InitializeActors()
 {
 
@@ -115,6 +119,12 @@ void Game::InitializeActors()
             case GameScene::Menu:
             {
                 mScene = new Menu(this);
+                break;
+            }
+
+            case GameScene::Level1:
+            {
+                mScene = new Level1(this);
                 break;
             }
 
@@ -139,6 +149,8 @@ void Game::InitializeActors()
     playerPosInit.y += 256;
     mPlayer->SetPosition(playerPosInit);
 
+    SetGameState(State::Intro);
+
     // Line para background e chão
     /*
     auto* line = new Actor(this);
@@ -150,11 +162,13 @@ void Game::InitializeActors()
     //auto croc = new Mob(this);
     //croc->SetPosition(Vector2(1200.0f, floorHeight+100.f));
 
-    SetGameState(State::Intro);
+
 }
 
 void Game::LoadLevel(const std::string &levelPath) {
 
+
+    SDL_Log("Load level");
     float overlay = 640 - 111.f;
 
     float floorHeight  = (float)mWindowHeight*4.5/10;
@@ -227,13 +241,14 @@ void Game::SetGameState(State gameState) {
 void Game::SetScene(GameScene gameState)
 {
     // Stop all sounds
-    mAudio->StopAllSounds();
+    //mAudio->StopAllSounds();
 
 
     // Handle scene transition
     mCurrentScene= gameState;
 //    UnloadActors();
 //    InitializeActors();
+    InitializeActors();
 }
 
 

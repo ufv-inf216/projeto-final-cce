@@ -22,6 +22,8 @@ class Menu : public Scene
         void Draw() override;
 
     private:
+        void SelChoice();
+
         int mSel;
         std::vector<std::string> mOptions;
         class Actor* mTitleActor;

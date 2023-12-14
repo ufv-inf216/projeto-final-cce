@@ -64,6 +64,8 @@ add_executable(${PROJECT_NAME}
         Source/Actors/Background.h
         Source/Components/DrawComponents/DrawTextComponent.cpp
         Source/Components/DrawComponents/DrawTextComponent.h
+        Source/Scenes/Level1.h
+        Source/Scenes/Level1.cpp
 )
 
 ####### DO NOT EDIT BELLOW

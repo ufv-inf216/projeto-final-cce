@@ -114,6 +114,11 @@ void Menu::ProcessInput(const Uint8 *keyState)
         mKeyCooldown=10;
     }
 
+    if(keyState[SDL_SCANCODE_RETURN])
+    {
+        SelChoice();
+    }
+
 
 
 }
@@ -137,6 +142,28 @@ void Menu::Draw()
     SDL_SetRenderDrawColor(GetGame()->GetRenderer(),255,0,0,255);
 
     SDL_RenderFillRect(mGame->GetRenderer(),&rec);
+}
+
+void Menu::SelChoice()
+{
+    if(mOptions[mSel]=="Quit")
+    {
+        mGame->Quit();
+    }
+
+    if(mOptions[mSel]=="New game")
+    {
+
+        mTitleActor->SetState(ActorState::Destroy);
+
+        mSubTitleActor->SetState(ActorState::Destroy);
+        for(auto st : mOptActors)
+        {
+            st->SetState(ActorState::Destroy);
+        }
+        mGame->SetScene(Game::GameScene::Level1);
+    }
+
 }
 
 

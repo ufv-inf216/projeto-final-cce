@@ -70,6 +70,8 @@ public:
     bool GetGameState() { return mGameState; }
     void SetResort(bool b);
 
+    void InitPlayer();
+
     void AddCollider(class AABBColliderComponent* collider);
     void RemoveCollider(class AABBColliderComponent* collider);
     void UpdateColliders();
@@ -100,6 +102,7 @@ public:
     SDL_Renderer* GetRenderer() const {return  mRenderer;}
 
     void Game::SetScene(GameScene gameState);
+    void LoadLevel(const std::string& levelPath);
 
 
 private:
@@ -115,7 +118,7 @@ private:
     void UpdateState(float deltaTime);
 
     // Load data
-    void LoadLevel(const std::string& levelPath);
+
     //Level Size
     int mLevelSize;
 
