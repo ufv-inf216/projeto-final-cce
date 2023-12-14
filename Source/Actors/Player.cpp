@@ -252,7 +252,7 @@ void Player::ProcessMov() {
 
     if(GetIsJumping())
     {
-        upper_bound = mHeight;
+        upper_bound = mHeight/2;
     }
 
     //Descer

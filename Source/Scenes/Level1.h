@@ -17,6 +17,8 @@ class Level1: public Scene
     public:
         explicit Level1(Game* game);
         void Load() override;
+        void Unload() override;
 
         bool ShowHud()  override;
+        int GetNextScene() override;
 };

@@ -13,8 +13,8 @@ Menu::Menu(Game* game) : Scene(game)
 {
     mSel=0;
     mOptions = std::vector<std::string>();
-    mOptions.emplace_back("New game");
-    mOptions.emplace_back("Quit");
+    mOptions.emplace_back("Novo jogo");
+    mOptions.emplace_back("Sair");
     mTitleActor=nullptr;
     mSubTitleActor=nullptr;
     mOptActors = std::vector<Actor*>();
@@ -146,12 +146,12 @@ void Menu::Draw()
 
 void Menu::SelChoice()
 {
-    if(mOptions[mSel]=="Quit")
+    if(mOptions[mSel]=="Sair")
     {
         mGame->Quit();
     }
 
-    if(mOptions[mSel]=="New game")
+    if(mOptions[mSel]=="Novo jogo")
     {
 
         mTitleActor->SetState(ActorState::Destroy);

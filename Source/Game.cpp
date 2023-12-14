@@ -32,6 +32,7 @@
 #include "Components/DrawComponents/DrawSpriteComponent.h"
 #include "Font.h"
 #include "Scenes/Level1.h"
+#include "Scenes/Level2.h"
 
 
 Game::Game(int windowWidth, int windowHeight)
@@ -50,6 +51,7 @@ Game::Game(int windowWidth, int windowHeight)
         ,mScene(nullptr)
         , mCurrentScene(GameScene::Menu)
         ,mCameraMult(50.f)
+        ,mStopActorInput(false)
 {
     SetCameraPos(Vector2::Zero);
     mMsg_rect = SDL_Rect();
@@ -129,6 +131,12 @@ void Game::InitializeActors()
                 break;
             }
 
+            case GameScene::Level2:
+            {
+                mScene = new Level2(this);
+                break;
+            }
+
             default:
             {
 
@@ -136,6 +144,7 @@ void Game::InitializeActors()
             }
         }
         mScene->Load();
+        mGameState =State::Started;
         return;
     }
 
@@ -277,10 +286,14 @@ void Game::ProcessInput()
     }
 
     const Uint8* state = SDL_GetKeyboardState(nullptr);
-
-    for (auto actor : mActors)
+    if(!mStopActorInput)
     {
-        actor->ProcessInput(state);
+
+
+        for (auto actor : mActors)
+        {
+            actor->ProcessInput(state);
+        }
     }
 
 
@@ -299,15 +312,37 @@ void Game::UpdateGame()
 {
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16));
 
+
+
     float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
     if (deltaTime > 0.05f)
     {
         deltaTime = 0.05f;
     }
 
-    if(mGameState == State::Won && mMsg_tex== nullptr)
+    if(mGameState == State::Won)
     {
-        PrepareScreenMsg("You win!",30);
+        if(mMsg_tex== nullptr)
+        {
+            PrepareScreenMsg("You win!",30);
+        }
+
+        auto val=  static_cast<GameScene>(mScene->GetNextScene());
+        if(val != GameScene::None)
+        {
+            mScene->Unload();
+            SetStopActorInput(true);
+            DestroyScreenMsg();
+            SetScene(val);
+
+            //SetCameraPos(Vector2::Zero);
+
+
+        }
+
+
+
+
     }
 
     if(mGameState == State::Over && mMsg_tex== nullptr)
@@ -347,7 +382,7 @@ void Game::UpdateGame()
 
 float Game::GetCameraOffset()
 {
-    std::cout << (mCameraMult/100.f) << std::endl;
+    //std::cout << (mCameraMult/100.f) << std::endl;
     return ((float)mWindowWidth)*(mCameraMult/100.f);
 }
 
@@ -369,8 +404,8 @@ void Game::UpdateCamera()
             mCameraIsBlocked = true;
             SetGameState(Game::State::Won);
         }
-        std::cout << GetCameraOffset() << " , " << (float)mWindowWidth/2 << std::endl;
-        std::cout << ((GetCameraOffset()==(float)mWindowWidth/2) ?"True" : "False") <<  std::endl;
+        //std::cout << GetCameraOffset() << " , " << (float)mWindowWidth/2 << std::endl;
+        //std::cout << ((GetCameraOffset()==(float)mWindowWidth/2) ?"True" : "False") <<  std::endl;
 
         auto v= GetCameraPos();
         v.x = mPlayer->GetPosition().x - GetCameraOffset();
@@ -662,11 +697,22 @@ void Game::PrepareScreenMsg(std::string txt, int sz)
 }
 
 void Game::DestroyScreenMsg() {
-    delete mMsg_tex;
+    //delete mMsg_tex;
     mMsg_tex= nullptr;
 }
 
 SDL_Texture* Game::Render_text(std::string txt,Vector3 col,int pointsize)
 {
     return  mFont->RenderText(mRenderer,txt,Color::White,pointsize);
+}
+
+void Game::ClearLevel()
+{
+    for(auto at : mActors)
+    {
+        if(at!=mPlayer)
+        {
+            at->SetState(ActorState::Destroy);
+        }
+    }
 }

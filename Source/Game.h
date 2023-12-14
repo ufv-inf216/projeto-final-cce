@@ -32,6 +32,7 @@ public:
         None,
         Menu,
         Level1,
+        Level2,
     };
 
     Game(int windowWidth, int windowHeight);
@@ -104,7 +105,12 @@ public:
     void Game::SetScene(GameScene gameState);
     void LoadLevel(const std::string& levelPath);
 
+    void ClearLevel();
+
     float GetCameraOffset();
+
+    bool GetStopActorInput() const {return mStopActorInput;}
+    void SetStopActorInput(bool b) {mStopActorInput=b;}
 
 
 private:
@@ -175,6 +181,8 @@ private:
     bool mCameraIsBlocked;
 
     Vector2 mCameraPos;
+
+    bool mStopActorInput;
 
     // Game-specific
     class Player *mPlayer= nullptr;

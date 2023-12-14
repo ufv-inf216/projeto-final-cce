@@ -28,3 +28,8 @@ void Scene::Draw()
 {
 
 }
+
+void Scene::Unload()
+{
+
+}

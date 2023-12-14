@@ -20,7 +20,10 @@ public:
 
     virtual const Vector2& GetCameraPos();
     virtual bool ShowHud(){return  true;}
+    virtual void Unload();
+    virtual int GetNextScene() {return  0;}
 
 protected:
     class Game* mGame;
+
 };
