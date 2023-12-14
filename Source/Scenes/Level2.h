@@ -21,4 +21,5 @@ public:
 
     bool ShowHud()  override;
     int GetNextScene() override;
+    std::string GetSceneTitle()  override;
 };

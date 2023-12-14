@@ -19,6 +19,9 @@
 class Game
 {
 public:
+
+    const float SCENE_TRANSITION_TIME = 0.75f;
+
     enum State
     {
         Intro,
@@ -33,6 +36,13 @@ public:
         Menu,
         Level1,
         Level2,
+    };
+
+    enum class FadeState
+    {
+        FadeIn,
+        FadeOut,
+        None
     };
 
     Game(int windowWidth, int windowHeight);
@@ -112,6 +122,8 @@ public:
     bool GetStopActorInput() const {return mStopActorInput;}
     void SetStopActorInput(bool b) {mStopActorInput=b;}
 
+    std::string GetSceneTitle(GameScene s);
+
 
 private:
     const float RESPAWN_TIME = 1.1f;
@@ -161,6 +173,10 @@ private:
     float mFloorHeight;
 
     float mCameraMult;
+
+    // Scene transition effect
+    FadeState mFadeState;
+    float mSceneTransitionTime;
 
     //Menssagens na tela
     SDL_Texture* mMsg_tex;

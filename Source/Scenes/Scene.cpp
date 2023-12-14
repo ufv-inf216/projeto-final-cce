@@ -33,3 +33,8 @@ void Scene::Unload()
 {
 
 }
+
+std::string Scene::GetSceneTitle()
+{
+    return  "Default Scene";
+}

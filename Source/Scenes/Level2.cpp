@@ -43,3 +43,8 @@ void Level2::Unload()
 int Level2::GetNextScene() { return 0; }//
 // Created by Campo on 14/12/2023.
 //
+
+std::string Level2::GetSceneTitle()
+{
+    return  "Nível 2";
+}

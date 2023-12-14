@@ -6,6 +6,7 @@
 
 #include <SDL_stdinc.h>
 #include "../Math.h"
+#include <string>
 
 class Scene
 {
@@ -22,6 +23,7 @@ public:
     virtual bool ShowHud(){return  true;}
     virtual void Unload();
     virtual int GetNextScene() {return  0;}
+    virtual std::string GetSceneTitle();
 
 protected:
     class Game* mGame;

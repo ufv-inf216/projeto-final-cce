@@ -42,3 +42,8 @@ void Level1::Unload()
 }
 
 int Level1::GetNextScene() { return (int)Game::GameScene::Level2; }
+
+std::string Level1::GetSceneTitle()
+{
+    return  "Nível 1";
+}

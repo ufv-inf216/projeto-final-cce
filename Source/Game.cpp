@@ -52,6 +52,8 @@ Game::Game(int windowWidth, int windowHeight)
         , mCurrentScene(GameScene::Menu)
         ,mCameraMult(50.f)
         ,mStopActorInput(false)
+        ,mFadeState(FadeState::None)
+        ,mSceneTransitionTime(0.0f)
 {
     SetCameraPos(Vector2::Zero);
     mMsg_rect = SDL_Rect();
@@ -143,6 +145,7 @@ void Game::InitializeActors()
                 break;
             }
         }
+
         mScene->Load();
         mGameState =State::Started;
         return;
@@ -255,10 +258,14 @@ void Game::SetScene(GameScene gameState)
 
 
     // Handle scene transition
+    mFadeState = FadeState::FadeOut;
     mCurrentScene= gameState;
+    PrepareScreenMsg(GetSceneTitle(mCurrentScene),30);
+
+
 //    UnloadActors();
 //    InitializeActors();
-    InitializeActors();
+    //InitializeActors();
 }
 
 
@@ -331,9 +338,11 @@ void Game::UpdateGame()
         if(val != GameScene::None)
         {
             mScene->Unload();
+
             SetStopActorInput(true);
             DestroyScreenMsg();
             SetScene(val);
+
 
             //SetCameraPos(Vector2::Zero);
 
@@ -375,6 +384,31 @@ void Game::UpdateGame()
 
     // Update game state
     UpdateState(deltaTime);
+
+    if (mFadeState == FadeState::FadeOut)
+    {
+        mSceneTransitionTime += deltaTime;
+        if (mSceneTransitionTime >= SCENE_TRANSITION_TIME)
+        {
+            mSceneTransitionTime = 0.0f;
+
+            mFadeState = FadeState::FadeIn;
+
+            InitializeActors();
+
+
+        }
+    }
+    else if (mFadeState == FadeState::FadeIn)
+    {
+        mMsg_tex= nullptr;
+        mSceneTransitionTime += deltaTime;
+        if (mSceneTransitionTime >= SCENE_TRANSITION_TIME)
+        {
+            mFadeState = FadeState::None;
+            mSceneTransitionTime = 0.0f;
+        }
+    }
 
 
 }
@@ -594,7 +628,8 @@ void Game::GenerateOutput()
     // Set draw color to black
     if(mCurrentScene!=GameScene::Menu)
     {
-        SDL_SetRenderDrawColor(mRenderer, 250, 250, 206, 255);
+        SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+        //SDL_SetRenderDrawColor(mRenderer, 250, 250, 206, 255);
     }
     else{
         SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
@@ -634,6 +669,20 @@ void Game::GenerateOutput()
         mHud->DrawHud();
     }
 
+
+    // Apply fade effect if changing scene
+    if (mFadeState == FadeState::FadeOut)
+    {
+        SDL_SetRenderDrawBlendMode(mRenderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, static_cast<Uint8>(255 * mSceneTransitionTime/SCENE_TRANSITION_TIME));
+        SDL_RenderFillRect(mRenderer, nullptr);
+    }
+    else if (mFadeState == FadeState::FadeIn)
+    {
+        SDL_SetRenderDrawBlendMode(mRenderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, static_cast<Uint8>(255 * (1.0f - mSceneTransitionTime/SCENE_TRANSITION_TIME)));
+        SDL_RenderFillRect(mRenderer, nullptr);
+    }
 
     if(mMsg_tex!= nullptr)
     {
@@ -714,5 +763,23 @@ void Game::ClearLevel()
         {
             at->SetState(ActorState::Destroy);
         }
+    }
+}
+
+std::string Game::GetSceneTitle(Game::GameScene s)
+{
+    switch (s)
+    {
+        case  GameScene::Level1:
+        {
+            return "Nível 1";
+        }
+
+
+       case  GameScene::Level2:
+       {
+           return "Nível 2";
+       }
+
     }
 }
