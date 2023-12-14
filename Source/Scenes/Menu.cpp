@@ -104,13 +104,13 @@ void Menu::ProcessInput(const Uint8 *keyState)
 
     if(keyState[SDL_SCANCODE_W])
     {
-        --mSel;
+        if(mSel>0){--mSel;}
         mKeyCooldown=10;
     }
 
     if(keyState[SDL_SCANCODE_S])
     {
-        ++mSel;
+        if(mSel<mOptions.size()-1){++mSel;}
         mKeyCooldown=10;
     }
 
