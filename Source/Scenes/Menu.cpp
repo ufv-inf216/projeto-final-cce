@@ -8,6 +8,7 @@
 #include "../Game.h"
 #include "../Actors/Actor.h"
 #include "../Components/DrawComponents/DrawTextComponent.h"
+#include "../Components/DrawComponents/DrawSpriteComponent.h"
 
 Menu::Menu(Game* game) : Scene(game)
 {
@@ -24,6 +25,7 @@ Menu::Menu(Game* game) : Scene(game)
 void Menu::Load()
 {
     float middle = mGame->GetWindowWidth()/2.0f;
+
     mTitleActor = new Actor(mGame);
     /*Como saber tamanho de uma textura de texto:
      * altura de um charactere é igual ao tamanho da fonte
@@ -33,17 +35,15 @@ void Menu::Load()
      *
      */
 
-
     auto td = new DrawTextComponent(mTitleActor,"CCE",mGame->GetFont(),108,72,72);
     td->AdjustSize();
-    mSubTitleActor = new Actor(mGame);
-    std::string subn = "Capivara combat experience";
 
+    mSubTitleActor = new Actor(mGame);
+    std::string subn = "Capivara Combat Experience";
     auto sb = new DrawTextComponent(mSubTitleActor,subn,mGame->GetFont(),subn.length()*15,30,30);
     sb->AdjustSize();
 
     //auto title_tex = mGame->Render_text("CCE",Color::White,30);
-
 
 
     Vector2 tpos = Vector2::Zero;
@@ -80,11 +80,9 @@ void Menu::Load()
          i++;
     }
 
-
-
-
-
-
+    mBgActor = new Actor(mGame);
+    mBgActor->SetPosition( Vector2(mGame->GetWindowWidth()/2, mGame->GetWindowHeight()/2) );
+    new DrawSpriteComponent(mBgActor, "../Assets/Sprites/Bg/menu-cce-bg.png", mGame->GetWindowWidth(), mGame->GetWindowHeight(), 0);
 }
 
 void Menu::ProcessInput(const Uint8 *keyState)

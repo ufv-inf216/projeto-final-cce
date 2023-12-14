@@ -2,10 +2,7 @@
 // Created by Campo on 13/12/2023.
 //
 
-#ifndef T1_CCE_MENU_H
-#define T1_CCE_MENU_H
-
-#endif //T1_CCE_MENU_H
+#pragma once
 
 #include "Scene.h"
 #include <string>
@@ -32,7 +29,6 @@ class Menu : public Scene
         int mKeyCooldown;
         int mRectwRef;
 
-
-
+        class Actor* mBgActor;
 
 };

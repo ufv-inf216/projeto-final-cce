@@ -2,10 +2,7 @@
 // Created by Campo on 14/12/2023.
 //
 
-#ifndef T1_CCE_LEVEL2_H
-#define T1_CCE_LEVEL2_H
-
-#endif //T1_CCE_LEVEL2_H
+#pragma once
 
 #include "Scene.h"
 #include <string>
