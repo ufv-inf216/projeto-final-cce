@@ -14,7 +14,7 @@ Daniel Monteiro Rosado - 102972
 
 
 
-![plot](cce-gameplay-gif.gif)
+![what is this](cce-gameplay-gif.gif)
 
 ## Intenção artística
 
