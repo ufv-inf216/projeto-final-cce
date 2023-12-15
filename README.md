@@ -19,6 +19,14 @@ Daniel Monteiro Rosado - 102972
 
 ![plot](cce-gameplay-gif.gif)
 
+#### Intenção artística
+
+O jogo se baseia nos jogos Beat’em up e no ambiente universitário, na cultura e simbolismo característicos da UFV e do Curso da Ciência da Computação
+
+#### Audiência
+
+O jogo é direcionado para fãs do gênero “Beat’em up” e a jogos clássicos de ação 2D. Com foco nos estudantes do curso de Ciência da Computação.
+
 #### Objetivo do jogo
 O objetivo do jogo é salvar o Centro de Ciências Exatas do ataque dos jacarés, para isso, o jogador deve percorrer todos os níveis derrotando todos os inimigos.
 
