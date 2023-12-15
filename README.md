@@ -15,6 +15,10 @@ Gabriel Campos Moreira Fernandes - 105461
 Daniel Monteiro Rosado - 102972
 
 
+![Alt text](relative%20cce-gameplay-gif.gif?raw=true "Gif")
+
+![plot](cce-gameplay-gif.gif)
+
 #### Objetivo do jogo
 O objetivo do jogo é salvar o Centro de Ciências Exatas do ataque dos jacarés, para isso, o jogador deve percorrer todos os níveis derrotando todos os inimigos.
 
