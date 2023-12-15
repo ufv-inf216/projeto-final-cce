@@ -1,5 +1,5 @@
 # t1-cce
-Trabalho de INF 216
+Trabalho de INF 216 Semestre: 2023/2
 
 Commits feitos pelo usuário "Campo" se referem a [gabriel-cmf](https://github.com/gabriel-cmf)
 
@@ -7,6 +7,9 @@ build de release versão 0.1
 
 
 ## Capivara Combat Experience (CCE)
+
+Gabriel Campos Moreira Fernandes ES105461
+
 
 #### Objetivo do jogo
 O objetivo do jogo é salvar o Centro de Ciências Exatas do ataque dos jacarés, para isso, o jogador deve percorrer todos os níveis derrotando todos os inimigos.
