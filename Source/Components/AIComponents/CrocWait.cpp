@@ -16,6 +16,7 @@ CrocWait::CrocWait(Mob* m,FSMComponent *fsm, const std::string &name, float spd,
        //mDir=0;
        mSpeed=spd;
        mMob=m;
+
 }
 
 void CrocWait::Start()

@@ -16,18 +16,34 @@ CrocChase::CrocChase(class Mob* m,FSMComponent* fsm,const std::string &name, flo
             mSpeed=spd;
             mMob=m;
             mHitbox = nullptr;
+            mAtkWait=0;
         }
 
 
 
+void CrocChase::Start()
+{
+    mAtkWait=0;
+}
 void CrocChase::Update(float deltaTime)
 {
-
+     if( mMob->GetDoAtk())
+     {
+         mAtkWait+=deltaTime;
+     }
      ChangeRotation();
      if(!IsInRange())
      {
          //SDL_Log("Get in range");
          MoveToRange();
+     }
+
+     if(mAtkWait > 2000.f)
+     {
+         //SDL_Log("Failed atk");
+         mMob->GetGame()->Remove_from_AtkStack(mMob);
+         mMob->SetDoAtk(false);
+         mAtkWait=0;
      }
 
 }

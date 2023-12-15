@@ -33,6 +33,8 @@
 #include "Font.h"
 #include "Scenes/Level1.h"
 #include "Scenes/Level2.h"
+#include "Scenes/Level3.h"
+#include "Scenes/Level4.h"
 
 
 Game::Game(int windowWidth, int windowHeight)
@@ -136,6 +138,18 @@ void Game::InitializeActors()
             case GameScene::Level2:
             {
                 mScene = new Level2(this);
+                break;
+            }
+
+            case GameScene::Level3:
+            {
+                mScene = new Level3(this);
+                break;
+            }
+
+            case GameScene::Level4:
+            {
+                mScene = new Level4(this);
                 break;
             }
 
@@ -319,7 +333,18 @@ void Game::UpdateGame()
 {
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16));
 
+    if(!mAtkStack.empty())
+    {
+        if (mAtkStack[0]->GetState()==ActorState::Destroy)
+        {
+            Remove_from_AtkStack(mAtkStack[0]);
+        }
 
+        if(mAtkStack[0]== nullptr)
+        {
+            mAtkStack.pop_back();
+        }
+    }
 
     float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
     if (deltaTime > 0.05f)
@@ -780,6 +805,16 @@ std::string Game::GetSceneTitle(Game::GameScene s)
        case  GameScene::Level2:
        {
            return "Nível 2";
+       }
+
+       case  GameScene::Level3:
+       {
+            return "Nível 3";
+       }
+
+       case  GameScene::Level4:
+       {
+            return "Nível 4";
        }
 
     }

@@ -15,6 +15,7 @@ class CrocChase : public FSMState
     public:
         explicit CrocChase(class Mob* m,FSMComponent* fsm,const std::string &name, float atk_w, float atk_h, float spd, int updateOrder = 50);
         void Update(float deltaTime) override;
+        void Start() override;
         bool IsInRange();
         void MoveToRange();
         void ChangeRotation();
@@ -33,6 +34,7 @@ class CrocChase : public FSMState
 
         class Mob* mMob;
         class Hitbox* mHitbox;
+        float mAtkWait;
 
 
 

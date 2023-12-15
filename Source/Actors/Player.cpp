@@ -115,7 +115,7 @@ void Player::OnProcessInput(const Uint8 *keyState)
              inv = -1;
          }
 
-         mPunch = new Hitbox(this,mWidth/2*inv,0,mWidth/2,mHeight/2,ColliderLayer::AttackHitBox);
+         mPunch = new Hitbox(this,mWidth/2*inv,0,mWidth/2,mHeight/4,ColliderLayer::AttackHitBox);
          mPunch->SetKnockback(8000);
          mPunch->SetKnockDir(Vector2(inv,0));
 

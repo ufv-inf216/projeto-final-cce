@@ -68,6 +68,11 @@ add_executable(${PROJECT_NAME}
         Source/Scenes/Level1.cpp
         Source/Scenes/Level2.h
         Source/Scenes/Level2.cpp
+        Source/Scenes/Level3.h
+        Source/Scenes/Level3.h
+        Source/Scenes/Level3.cpp
+        Source/Scenes/Level4.h
+        Source/Scenes/Level4.cpp
 )
 
 ####### DO NOT EDIT BELLOW
