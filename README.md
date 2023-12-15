@@ -11,6 +11,8 @@ Gabriel Campos Moreira Fernandes - 105461
 
 Daniel Monteiro Rosado - 102972
 
+Cícero Cipriano Maciel - 102021
+
 
 
 
