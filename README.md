@@ -3,7 +3,7 @@ Trabalho de INF 216 Semestre: 2023/2
 
 Commits feitos pelo usuário "Campo" se referem a [gabriel-cmf](https://github.com/gabriel-cmf)
 
-build de release versão 0.1
+Build de release versão 1.0
 
 
 ## Capivara Combat Experience (CCE)
