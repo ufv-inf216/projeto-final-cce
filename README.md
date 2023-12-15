@@ -15,7 +15,7 @@ Gabriel Campos Moreira Fernandes - 105461
 Daniel Monteiro Rosado - 102972
 
 
-![Alt text](relative%20cce-gameplay-gif.gif?raw=true "Gif")
+
 
 ![plot](cce-gameplay-gif.gif)
 
