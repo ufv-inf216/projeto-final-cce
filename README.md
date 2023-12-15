@@ -8,6 +8,8 @@ build de release versão 0.1
 
 ## Capivara Combat Experience (CCE)
 
+#### Criadores
+
 Gabriel Campos Moreira Fernandes ES105461
 
 
