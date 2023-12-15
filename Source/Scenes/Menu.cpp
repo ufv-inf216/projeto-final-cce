@@ -115,13 +115,19 @@ void Menu::ProcessInput(const Uint8 *keyState)
 
     if(keyState[SDL_SCANCODE_W])
     {
-        if(mSel>0){--mSel;}
+        if(mSel>0){
+	  mGame->GetAudio()->PlaySound("change.wav", false);
+	  --mSel;
+	}
         mKeyCooldown=10;
     }
 
     if(keyState[SDL_SCANCODE_S])
     {
-        if(mSel<mOptions.size()-1){++mSel;}
+        if(mSel<mOptions.size()-1){
+	  mGame->GetAudio()->PlaySound("change.wav", false);
+	  ++mSel;
+	}
         mKeyCooldown=10;
     }
 
