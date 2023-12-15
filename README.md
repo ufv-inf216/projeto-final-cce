@@ -11,6 +11,7 @@ build de release versão 0.1
 #### Criadores
 
 Gabriel Campos Moreira Fernandes - 105461
+
 Daniel Monteiro Rosado - 102972
 
 
