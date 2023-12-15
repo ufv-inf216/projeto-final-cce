@@ -112,6 +112,8 @@ public:
     SDL_Texture* Render_text(std::string txt,Vector3 col=Color::White,int pointsize=30);
     SDL_Renderer* GetRenderer() const {return  mRenderer;}
 
+    //Game Scene
+    GameScene GetGameScene() {return mCurrentScene;}
     void SetScene(GameScene gameState);
     void LoadLevel(const std::string& levelPath);
 
@@ -123,6 +125,8 @@ public:
     void SetStopActorInput(bool b) {mStopActorInput=b;}
 
     std::string GetSceneTitle(GameScene s);
+
+
 
 
 private:
@@ -183,10 +187,6 @@ private:
     SDL_Rect mMsg_rect;
     SDL_Rect mMsg_src;
 
-
-
-
-
     // Track elapsed time since game start
     Uint32 mTicksCount;
 
@@ -203,14 +203,7 @@ private:
     // Game-specific
     class Player *mPlayer= nullptr;
 
-    /*std::vector<class Item*> mItems;
-    std::vector<class Wall*> mWalls;
-    std::vector<class Ghost*> mGhosts;
-    std::vector<class PathNode*> mPathNodes;
 
-    class PathNode* mTunnelLeft = nullptr;
-    class PathNode* mTunnelRight = nullptr;
-    class PathNode* mGhostPen = nullptr;*/
     class Font* mFont;
     class Hud* mHud;
 

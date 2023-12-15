@@ -8,6 +8,8 @@
 #include "Components/StatBlock.h"
 #include <string>
 #include <sstream>
+#include "./Actors/Actor.h"
+#include "./Components/DrawComponents/DrawSpriteComponent.h"
 
 Hud::Hud(class Game *owner)
 {
@@ -19,6 +21,7 @@ Hud::~Hud()
 {
     delete mSrc;
     delete mDist;
+
 }
 
 void Hud::PreparedRects(SDL_Texture *tex)
@@ -38,14 +41,21 @@ void Hud::PreparedRects(SDL_Texture *tex)
 
 void Hud::DrawHud()
 {
-    int qrt = mGame->GetWindowWidth()/4;
-    int hx = mGame->GetWindowHeight()/16;
+
+    //Icone
+    int dimensionSize = 32 * 3; int padding = 10; int pos = dimensionSize/2 + padding;
+    SDL_Texture* icon = mGame->LoadTexture("../Assets/Sprites/Capivaristo/Capivaristo-Icon.png");
+    SDL_Rect dest = {padding, padding, dimensionSize, dimensionSize};
+
+    SDL_RenderCopy(mGame->GetRenderer(), icon, nullptr, &dest);
+
+    int qrt = dimensionSize;//mGame->GetWindowWidth()/4;
+    int hx = dimensionSize/8;
     SDL_Rect hp = SDL_Rect();
-    hp.x = hp.y=0;
+    hp.x = padding;
+    hp.y = padding + dimensionSize + 10;
     hp.w = qrt;
     hp.h = hx;
-
-
 
     SDL_SetRenderDrawColor(mGame->GetRenderer(),255,0,0,255);
     SDL_RenderFillRect(mGame->GetRenderer(),&hp);
@@ -72,8 +82,8 @@ void Hud::DrawHud()
         PreparedRects(lives);
     }
 
-    mDist->x = qrt + 8;
-    mDist->y = (hp.h/2) - (mDist->h/2);
+    mDist->x = padding + dimensionSize + 5;
+    mDist->y = dimensionSize - padding - 5;
 
     SDL_RenderCopy(mGame->GetRenderer(),lives,mSrc,mDist);
 

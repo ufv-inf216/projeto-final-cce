@@ -710,7 +710,6 @@ bool Game::IsinAtkersWay(SDL_FRect col)
 
     return  b == SDL_bool::SDL_TRUE;
 
-
 }
 
 Vector2 Game::GetAtKPath()

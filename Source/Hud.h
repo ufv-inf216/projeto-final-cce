@@ -7,16 +7,15 @@
 
 class Hud
 {
-    public:
-        explicit Hud(class Game* owner);
-        ~Hud();
-        void DrawHud();
+public:
+    explicit Hud(class Game* owner);
+    ~Hud();
+    void DrawHud();
 
-
-    private:
-        class Game* mGame;
-        SDL_Rect* mSrc;
-        SDL_Rect* mDist;
-        void PreparedRects(SDL_Texture* tex);
+private:
+    class Game* mGame;
+    SDL_Rect* mSrc;
+    SDL_Rect* mDist;
+    void PreparedRects(SDL_Texture* tex);
 
 };
